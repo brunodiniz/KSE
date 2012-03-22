@@ -1,0 +1,15 @@
+
+  <k:Argument rdf:ID="model_athlete_as_class">  
+  	<k:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+  	>An athlete element involves multiple fields</k:hasText>
+  	
+  	<k:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+  	>2008-04-08T16:50:03</k:hasCreationDate>
+  	
+  	<k:considers rdf:resource="#what_elements"/>
+  	
+  	<k:inFavorOf rdf:resource="#athlete"/>
+  	
+  	<k:objectsTo rdf:resource="#attribute"/>
+  </k:Argument>
+  

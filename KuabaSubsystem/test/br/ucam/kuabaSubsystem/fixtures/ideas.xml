@@ -1,0 +1,63 @@
+<k:Idea rdf:ID="class">
+	<k:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Class</k:hasText>
+
+	<k:hasCreationDate
+		rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">
+		2008-06-21T20:22:03
+	</k:hasCreationDate>
+	<k:isConcludedBy rdf:resource="#model_person_as_class" />	
+	<k:address rdf:resource="#how_model_person" />
+</k:Idea>
+
+<k:Idea rdf:ID="person">
+	<k:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Person</k:hasText>
+
+	<k:hasCreationDate
+		rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">
+		2008-06-21T20:22:03
+	</k:hasCreationDate>
+	<k:suggests rdf:resource="#how_model_person" />
+	<k:address rdf:resource="#what_elements"/>
+</k:Idea>
+
+<k:Idea rdf:ID="attribute">
+	<k:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Attribute</k:hasText>
+
+	<k:hasCreationDate
+		rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">
+		2008-06-21T20:22:03
+	</k:hasCreationDate>
+	
+	<k:suggests rdf:resource="#email_owner"/>
+	<k:address rdf:resource="#how_model_email"/>
+</k:Idea>
+
+<k:Idea rdf:ID="email">
+	<k:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">email</k:hasText>
+
+	<k:hasCreationDate
+		rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">
+		2008-06-21T20:22:03
+	</k:hasCreationDate>
+	
+	<k:suggests rdf:resource="#how_model_email"/>
+	<k:address rdf:resource="#what_elements"/>
+</k:Idea>
+
+<k:Idea rdf:ID="athlete">
+	<k:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Athlete</k:hasText>
+
+	<k:hasCreationDate
+		rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">
+		2008-06-21T20:22:03
+	</k:hasCreationDate>
+</k:Idea>
+
+<k:Idea rdf:ID="dog">
+	<k:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dog</k:hasText>
+
+	<k:hasCreationDate
+		rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">
+		2008-06-21T20:22:03
+	</k:hasCreationDate>
+</k:Idea>

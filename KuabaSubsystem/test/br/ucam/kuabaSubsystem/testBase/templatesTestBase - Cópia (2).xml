@@ -1,0 +1,574 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE Ontology [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.progen.kilu.de/DesignRationale/DesignEx1.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     ontologyIRI="http://www.progen.kilu.de/DesignRationale/DesignEx1.owl">
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="vCard" IRI="http://www.w3.org/2001/vcard-rdf/3.0#"/>
+    <Prefix name="" IRI="http://www.progen.kilu.de/DesignRationale/DesignEx1.owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="p1" IRI="http://www.owl-ontologies.com/assert.owl#"/>
+    <Import>http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl</Import>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <Literal datatypeIRI="&xsd;string">Design Rationale Ontology</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="owl:versionInfo"/>
+        <Literal datatypeIRI="&xsd;string">TODO: </Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <Literal datatypeIRI="&xsd;string">Design Rationale Vocabulary</Literal>
+    </Annotation>
+    <Declaration>
+        <NamedIndividual IRI="#How_Model_"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ida1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ida2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ida3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ida4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#idb1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#idb2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#idb3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#idb4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#idb5"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#idc1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#idc2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#idc3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#idc4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#qtb1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#qtb2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#qtb3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#qtb4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#qtc1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#qtc2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#qtc3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#qtd1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#qtd2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#qtd3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#qtd4"/>
+    </Declaration>
+    <ClassAssertion>
+        <Class IRI="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Question"/>
+        <NamedIndividual IRI="#How_Model_"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Idea"/>
+        <NamedIndividual IRI="#ida1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Idea"/>
+        <NamedIndividual IRI="#ida2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Idea"/>
+        <NamedIndividual IRI="#ida3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Idea"/>
+        <NamedIndividual IRI="#ida4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Idea"/>
+        <NamedIndividual IRI="#idb1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Idea"/>
+        <NamedIndividual IRI="#idb2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Idea"/>
+        <NamedIndividual IRI="#idb3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Idea"/>
+        <NamedIndividual IRI="#idb4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Idea"/>
+        <NamedIndividual IRI="#idb5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Idea"/>
+        <NamedIndividual IRI="#idc1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Idea"/>
+        <NamedIndividual IRI="#idc2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Idea"/>
+        <NamedIndividual IRI="#idc3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Idea"/>
+        <NamedIndividual IRI="#idc4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Question"/>
+        <NamedIndividual IRI="#qtb1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Question"/>
+        <NamedIndividual IRI="#qtb2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Question"/>
+        <NamedIndividual IRI="#qtb3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Question"/>
+        <NamedIndividual IRI="#qtb4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Question"/>
+        <NamedIndividual IRI="#qtc1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Question"/>
+        <NamedIndividual IRI="#qtc2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Question"/>
+        <NamedIndividual IRI="#qtc3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Question"/>
+        <NamedIndividual IRI="#qtd1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Question"/>
+        <NamedIndividual IRI="#qtd2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Question"/>
+        <NamedIndividual IRI="#qtd3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Question"/>
+        <NamedIndividual IRI="#qtd4"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isAddressedBy"/>
+        <NamedIndividual IRI="#How_Model_"/>
+        <NamedIndividual IRI="#ida1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isAddressedBy"/>
+        <NamedIndividual IRI="#How_Model_"/>
+        <NamedIndividual IRI="#ida2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isAddressedBy"/>
+        <NamedIndividual IRI="#How_Model_"/>
+        <NamedIndividual IRI="#ida4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isAddressedBy"/>
+        <NamedIndividual IRI="#How_Model_"/>
+        <NamedIndividual IRI="#ida3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#address"/>
+        <NamedIndividual IRI="#ida1"/>
+        <NamedIndividual IRI="#How_Model_"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#suggests"/>
+        <NamedIndividual IRI="#ida1"/>
+        <NamedIndividual IRI="#qtb1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#address"/>
+        <NamedIndividual IRI="#ida2"/>
+        <NamedIndividual IRI="#How_Model_"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#suggests"/>
+        <NamedIndividual IRI="#ida2"/>
+        <NamedIndividual IRI="#qtb2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#address"/>
+        <NamedIndividual IRI="#ida3"/>
+        <NamedIndividual IRI="#How_Model_"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#suggests"/>
+        <NamedIndividual IRI="#ida3"/>
+        <NamedIndividual IRI="#qtb3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#address"/>
+        <NamedIndividual IRI="#ida4"/>
+        <NamedIndividual IRI="#How_Model_"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#suggests"/>
+        <NamedIndividual IRI="#ida4"/>
+        <NamedIndividual IRI="#qtb4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#address"/>
+        <NamedIndividual IRI="#idb1"/>
+        <NamedIndividual IRI="#qtd3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#address"/>
+        <NamedIndividual IRI="#idb1"/>
+        <NamedIndividual IRI="#qtb1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#address"/>
+        <NamedIndividual IRI="#idb1"/>
+        <NamedIndividual IRI="#qtd1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#address"/>
+        <NamedIndividual IRI="#idb2"/>
+        <NamedIndividual IRI="#qtb2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#suggests"/>
+        <NamedIndividual IRI="#idb2"/>
+        <NamedIndividual IRI="#qtc1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#address"/>
+        <NamedIndividual IRI="#idb3"/>
+        <NamedIndividual IRI="#qtc3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#address"/>
+        <NamedIndividual IRI="#idb3"/>
+        <NamedIndividual IRI="#qtb2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#suggests"/>
+        <NamedIndividual IRI="#idb3"/>
+        <NamedIndividual IRI="#qtc2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#address"/>
+        <NamedIndividual IRI="#idb4"/>
+        <NamedIndividual IRI="#qtb3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#suggests"/>
+        <NamedIndividual IRI="#idb4"/>
+        <NamedIndividual IRI="#qtc3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#address"/>
+        <NamedIndividual IRI="#idb5"/>
+        <NamedIndividual IRI="#qtb4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#address"/>
+        <NamedIndividual IRI="#idb5"/>
+        <NamedIndividual IRI="#qtd2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#address"/>
+        <NamedIndividual IRI="#idb5"/>
+        <NamedIndividual IRI="#qtd4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#address"/>
+        <NamedIndividual IRI="#idc1"/>
+        <NamedIndividual IRI="#qtc1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#suggests"/>
+        <NamedIndividual IRI="#idc1"/>
+        <NamedIndividual IRI="#qtd1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#address"/>
+        <NamedIndividual IRI="#idc2"/>
+        <NamedIndividual IRI="#qtc1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#suggests"/>
+        <NamedIndividual IRI="#idc2"/>
+        <NamedIndividual IRI="#qtd2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#address"/>
+        <NamedIndividual IRI="#idc3"/>
+        <NamedIndividual IRI="#qtc2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#suggests"/>
+        <NamedIndividual IRI="#idc3"/>
+        <NamedIndividual IRI="#qtd3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#address"/>
+        <NamedIndividual IRI="#idc4"/>
+        <NamedIndividual IRI="#qtc2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#suggests"/>
+        <NamedIndividual IRI="#idc4"/>
+        <NamedIndividual IRI="#qtd4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isAddressedBy"/>
+        <NamedIndividual IRI="#qtb1"/>
+        <NamedIndividual IRI="#idb1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isAddressedBy"/>
+        <NamedIndividual IRI="#qtb2"/>
+        <NamedIndividual IRI="#idb2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isAddressedBy"/>
+        <NamedIndividual IRI="#qtb2"/>
+        <NamedIndividual IRI="#idb3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isAddressedBy"/>
+        <NamedIndividual IRI="#qtb3"/>
+        <NamedIndividual IRI="#idb4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isAddressedBy"/>
+        <NamedIndividual IRI="#qtb4"/>
+        <NamedIndividual IRI="#idb5"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isAddressedBy"/>
+        <NamedIndividual IRI="#qtc1"/>
+        <NamedIndividual IRI="#idc1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isAddressedBy"/>
+        <NamedIndividual IRI="#qtc1"/>
+        <NamedIndividual IRI="#idc2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isAddressedBy"/>
+        <NamedIndividual IRI="#qtc2"/>
+        <NamedIndividual IRI="#idc3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isAddressedBy"/>
+        <NamedIndividual IRI="#qtc2"/>
+        <NamedIndividual IRI="#idc4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isAddressedBy"/>
+        <NamedIndividual IRI="#qtd1"/>
+        <NamedIndividual IRI="#idb1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isAddressedBy"/>
+        <NamedIndividual IRI="#qtd2"/>
+        <NamedIndividual IRI="#idb5"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isAddressedBy"/>
+        <NamedIndividual IRI="#qtd3"/>
+        <NamedIndividual IRI="#idb1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isAddressedBy"/>
+        <NamedIndividual IRI="#qtd4"/>
+        <NamedIndividual IRI="#idb5"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasText"/>
+        <NamedIndividual IRI="#How_Model_"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">What are the model elements?</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasText"/>
+        <NamedIndividual IRI="#ida1"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">CD</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasText"/>
+        <NamedIndividual IRI="#ida2"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Performance</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasText"/>
+        <NamedIndividual IRI="#ida3"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Type</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasText"/>
+        <NamedIndividual IRI="#ida4"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Musican</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasText"/>
+        <NamedIndividual IRI="#idb1"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Class</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasText"/>
+        <NamedIndividual IRI="#idb2"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Association</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasText"/>
+        <NamedIndividual IRI="#idb3"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Association Class</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasText"/>
+        <NamedIndividual IRI="#idb4"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Attribute</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasText"/>
+        <NamedIndividual IRI="#idb5"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Class</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasText"/>
+        <NamedIndividual IRI="#idc1"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Destination</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasText"/>
+        <NamedIndividual IRI="#idc2"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Origin</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasText"/>
+        <NamedIndividual IRI="#idc3"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Destination</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasText"/>
+        <NamedIndividual IRI="#idc4"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Origin</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasText"/>
+        <NamedIndividual IRI="#qtb1"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">How to model CD?</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasText"/>
+        <NamedIndividual IRI="#qtb2"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">How to model Performance?</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasText"/>
+        <NamedIndividual IRI="#qtb3"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">How to model Type?</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasText"/>
+        <NamedIndividual IRI="#qtb4"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">How to model Musican?</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasText"/>
+        <NamedIndividual IRI="#qtc1"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Ends?</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasText"/>
+        <NamedIndividual IRI="#qtc2"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Ends?</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasText"/>
+        <NamedIndividual IRI="#qtc3"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Whose?</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasText"/>
+        <NamedIndividual IRI="#qtd1"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Participant?</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasText"/>
+        <NamedIndividual IRI="#qtd2"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Participant?</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasText"/>
+        <NamedIndividual IRI="#qtd3"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Participant?</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasText"/>
+        <NamedIndividual IRI="#qtd4"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Participant?</Literal>
+    </DataPropertyAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
+

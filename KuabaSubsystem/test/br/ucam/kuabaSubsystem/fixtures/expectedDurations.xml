@@ -1,0 +1,17 @@
+
+  <k:ExpectedDuration rdf:ID="one month">
+    <k:hasAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >30</k:hasAmount>
+		
+	<k:hasUnitTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+	>day</k:hasUnitTime>		
+  </k:ExpectedDuration>
+  
+  <k:ExpectedDuration rdf:ID="two_weeks">
+    <k:hasAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >2</k:hasAmount>
+		
+	<k:hasUnitTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+	>week</k:hasUnitTime>		
+  </k:ExpectedDuration>
+  

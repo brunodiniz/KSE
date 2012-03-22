@@ -1,0 +1,42 @@
+<k:Question rdf:ID="how_model_cd">
+	<k:hasType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XOR</k:hasType>
+
+	<k:is_DefinedBy rdf:resource="#UML" />
+</k:Question>
+
+<k:Question rdf:ID="what_elements">
+	<k:hasType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OR</k:hasType>
+
+	<k:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">What elements?</k:hasText>
+
+	<k:is_DefinedBy rdf:resource="#UML" />
+	<k:isAddressedBy rdf:resource="#person"/>
+	<k:isAddressedBy rdf:resource="#email"/>
+	<k:hasDecision rdf:resource="#person_is_a_model_element"/>
+</k:Question>
+
+<k:Question rdf:ID="how_model_athlete">
+	<k:hasType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XOR</k:hasType>
+
+	<k:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">How_Model athlete</k:hasText>
+</k:Question>
+
+<k:Question rdf:ID="how_model_person">
+	<k:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">How_Model Person?</k:hasText>
+	<k:isAddressedBy rdf:resource="#class" />
+	<k:isSuggestedBy rdf:resource="#person" />
+	<k:hasDecision rdf:resource="#model_person_as_class" />
+</k:Question>
+
+<k:Question rdf:ID="how_model_email">
+	<k:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">How_Model email?</k:hasText>
+	<k:isAddressedBy rdf:resource="#attribute" />
+	<k:isSuggestedBy rdf:resource="#email" />	
+</k:Question>
+
+<k:Question rdf:ID="email_owner">
+	<k:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Owner?</k:hasText>
+	<k:isAddressedBy rdf:resource="#class" />
+	<k:isSuggestedBy rdf:resource="#attribute" />
+
+</k:Question>

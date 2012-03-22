@@ -1,0 +1,9 @@
+
+  <k:FormalModel rdf:ID="UML">
+  	<k:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Unified Modeling Language</k:hasName>
+    
+    <k:hasLocalization rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >www.omg.org</k:hasLocalization>
+  </k:FormalModel>
+  

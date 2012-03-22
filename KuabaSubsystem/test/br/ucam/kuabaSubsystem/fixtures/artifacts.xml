@@ -1,0 +1,18 @@
+
+  <k:Artifact rdf:ID="cd_class">
+  	<k:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"
+    >2008-06-21T20:22:00</k:hasCreationDate>
+    
+    <k:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A CD class</k:hasDescription>
+    
+    <k:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CD class</k:hasName>
+    
+    <k:hasUrl rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://kuaba-project/googlecode/svn</k:hasUrl>
+    
+    <k:isCreatedBy rdf:resource="#pedro"/>
+    
+    <k:isDescribedBy rdf:resource="#UML"/>    
+  </k:Artifact>

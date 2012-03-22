@@ -1,0 +1,441 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#"
+     xml:base="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:KuabaOntology="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:KuabaOntologyGeneratedTemplate="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#">
+    <owl:Ontology rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl">
+        <owl:imports rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#OO -->
+
+    <owl:NamedIndividual rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#OO">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Method"/>
+        <KuabaOntology:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Object Oriented</KuabaOntology:hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#UML -->
+
+    <owl:NamedIndividual rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#UML">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#FormalModel"/>
+        <KuabaOntology:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Unified Modeling Language</KuabaOntology:hasName>
+        <KuabaOntology:hasLocalization rdf:datatype="http://www.w3.org/2001/XMLSchema#string">www.omg.org</KuabaOntology:hasLocalization>
+        <KuabaOntology:describes rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#cd_class"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#UP -->
+
+    <owl:NamedIndividual rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#UP">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Method"/>
+        <KuabaOntology:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Unified Process</KuabaOntology:hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#UmlClass -->
+
+    <owl:NamedIndividual rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#UmlClass">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#FormalModel"/>
+        <KuabaOntology:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Unified Modeling Language</KuabaOntology:hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#athlete -->
+
+    <owl:NamedIndividual rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#athlete">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Idea"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2008-07-21T20:22:03</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Athlete</KuabaOntology:hasText>
+        <KuabaOntology:isInvolved rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#diagram_domain_model"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#attribute -->
+
+    <owl:NamedIndividual rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#attribute">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Idea"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2008-07-21T20:22:03</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Attribute</KuabaOntology:hasText>
+        <KuabaOntology:isDefinedBy rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#UML"/>
+        <KuabaOntology:suggests rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#email_owner"/>
+        <KuabaOntology:address rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#how_model_email"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#cd_class -->
+
+    <owl:NamedIndividual rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#cd_class">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Artifact"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#AtomicArtifact"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2008-07-21T20:22:00</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A CD class</KuabaOntology:hasDescription>
+        <KuabaOntology:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CD class</KuabaOntology:hasName>
+        <KuabaOntology:hasUrl rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://kuaba-project/googlecode/svn</KuabaOntology:hasUrl>
+        <KuabaOntology:isDescribedBy rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#UML"/>
+        <KuabaOntology:isCreatedBy rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#pedro"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#class -->
+
+    <owl:NamedIndividual rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#class">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Idea"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2008-07-21T20:22:03</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Class</KuabaOntology:hasText>
+        <KuabaOntology:isDefinedBy rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#UML"/>
+        <KuabaOntology:isInvolved rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#diagram_domain_model"/>
+        <KuabaOntology:address rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#email_owner"/>
+        <KuabaOntology:address rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#how_model_person"/>
+        <KuabaOntology:isConcludedBy rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#model_person_as_class"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#class_diagram -->
+
+    <owl:NamedIndividual rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#class_diagram">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Artifact"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#CompositeArtifact"/>
+        <KuabaOntology:compositionOf rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#cd_class"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#design_domain_model -->
+
+    <owl:NamedIndividual rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#design_domain_model">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Activity"/>
+        <KuabaOntology:hasStartDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2008-07-14T08:30:00</KuabaOntology:hasStartDate>
+        <KuabaOntology:hasFinishDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2008-07-21T20:22:03</KuabaOntology:hasFinishDate>
+        <KuabaOntology:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Design Domain model</KuabaOntology:hasName>
+        <KuabaOntology:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">designing domain model</KuabaOntology:hasDescription>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#developer -->
+
+    <owl:NamedIndividual rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#developer">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Role"/>
+        <KuabaOntology:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">developer</KuabaOntology:hasName>
+        <KuabaOntology:isRequiredBy rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#diagram_domain_model"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#diagram_domain_model -->
+
+    <owl:NamedIndividual rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#diagram_domain_model">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Activity"/>
+        <KuabaOntology:hasStartDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2008-07-14T08:30:00</KuabaOntology:hasStartDate>
+        <KuabaOntology:hasFinishDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2008-07-21T20:22:03</KuabaOntology:hasFinishDate>
+        <KuabaOntology:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Domain model design</KuabaOntology:hasName>
+        <KuabaOntology:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">this Activity focus on domain model design</KuabaOntology:hasDescription>
+        <KuabaOntology:involves rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#athlete"/>
+        <KuabaOntology:involves rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#class"/>
+        <KuabaOntology:requires rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#developer"/>
+        <KuabaOntology:involves rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#how_model_athlete"/>
+        <KuabaOntology:involves rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#model_athlete_as_class"/>
+        <KuabaOntology:isExecutedBy rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#pedro"/>
+        <KuabaOntology:involves rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#root_question"/>
+        <KuabaOntology:hasExpectedDuration rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#two_weeks"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#dog -->
+
+    <owl:NamedIndividual rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#dog">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Idea"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2008-07-21T20:22:03</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dog</KuabaOntology:hasText>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#email -->
+
+    <owl:NamedIndividual rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#email">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Idea"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2008-07-21T20:22:03</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">email</KuabaOntology:hasText>
+        <KuabaOntology:suggests rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#how_model_email"/>
+        <KuabaOntology:address rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#root_question"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#email_owner -->
+
+    <owl:NamedIndividual rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#email_owner">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Question"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-01-23T13:24:44</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Owner?</KuabaOntology:hasText>
+        <KuabaOntology:isSuggestedBy rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#attribute"/>
+        <KuabaOntology:isAddressedBy rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#class"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#how_model_athlete -->
+
+    <owl:NamedIndividual rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#how_model_athlete">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Question"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-01-23T13:24:44</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">How to Model athlete</KuabaOntology:hasText>
+        <KuabaOntology:hasType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XOR</KuabaOntology:hasType>
+        <KuabaOntology:isInvolved rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#diagram_domain_model"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#how_model_cd -->
+
+    <owl:NamedIndividual rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#how_model_cd">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Question"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-01-23T13:24:44</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XOR</KuabaOntology:hasType>
+        <KuabaOntology:isDefinedBy rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#UML"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#how_model_email -->
+
+    <owl:NamedIndividual rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#how_model_email">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Question"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-01-23T13:24:44</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">How to Model email?</KuabaOntology:hasText>
+        <KuabaOntology:isAddressedBy rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#attribute"/>
+        <KuabaOntology:isSuggestedBy rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#email"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#how_model_person -->
+
+    <owl:NamedIndividual rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#how_model_person">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Question"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-01-23T13:24:44</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">How to Model Person?</KuabaOntology:hasText>
+        <KuabaOntology:isAddressedBy rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#class"/>
+        <KuabaOntology:hasDecision rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#model_person_as_class"/>
+        <KuabaOntology:isSuggestedBy rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#person"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#include -->
+
+    <owl:NamedIndividual rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#include">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#RelatedType"/>
+        <KuabaOntology:hasRelationType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">include</KuabaOntology:hasRelationType>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#manoel -->
+
+    <owl:NamedIndividual rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#manoel">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Person"/>
+        <KuabaOntology:hasTelephone rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2227225121</KuabaOntology:hasTelephone>
+        <KuabaOntology:hasTelephone rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2227235334</KuabaOntology:hasTelephone>
+        <KuabaOntology:hasTelephone rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2227350817</KuabaOntology:hasTelephone>
+        <KuabaOntology:hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Amaro Silveira</KuabaOntology:hasAddress>
+        <KuabaOntology:hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Campos</KuabaOntology:hasAddress>
+        <KuabaOntology:hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rua Domingos Andretti n° 35</KuabaOntology:hasAddress>
+        <KuabaOntology:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">manoel</KuabaOntology:hasName>
+        <KuabaOntology:hasEmail rdf:datatype="http://www.w3.org/2001/XMLSchema#string">slash_thiago@yahoo.com.br</KuabaOntology:hasEmail>
+        <KuabaOntology:hasEmail rdf:datatype="http://www.w3.org/2001/XMLSchema#string">thiagonunes@gmail.com</KuabaOntology:hasEmail>
+        <KuabaOntology:hasEmail rdf:datatype="http://www.w3.org/2001/XMLSchema#string">thiagorinu@gmail.com</KuabaOntology:hasEmail>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#model_athlete_as_class -->
+
+    <owl:NamedIndividual rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#model_athlete_as_class">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Argument"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2008-05-08T16:50:03</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An athlete element involves multiple fields</KuabaOntology:hasText>
+        <KuabaOntology:inFavorOf rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#athlete"/>
+        <KuabaOntology:objectsTo rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#attribute"/>
+        <KuabaOntology:isInvolved rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#diagram_domain_model"/>
+        <KuabaOntology:considers rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#root_question"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#model_cd_as_attribute -->
+
+    <owl:NamedIndividual rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#model_cd_as_attribute">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Decision"/>
+        <KuabaOntology:hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2008-07-21T20:22:03</KuabaOntology:hasDate>
+        <KuabaOntology:isAccepted rdf:datatype="http://www.w3.org/2001/XMLSchema#string">true</KuabaOntology:isAccepted>
+        <KuabaOntology:concludes rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#attribute"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#model_cd_as_class -->
+
+    <owl:NamedIndividual rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#model_cd_as_class">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Decision"/>
+        <KuabaOntology:hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2008-07-21T20:22:03</KuabaOntology:hasDate>
+        <KuabaOntology:isAccepted rdf:datatype="http://www.w3.org/2001/XMLSchema#string">false</KuabaOntology:isAccepted>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#model_person_as_class -->
+
+    <owl:NamedIndividual rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#model_person_as_class">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Decision"/>
+        <KuabaOntology:hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2008-07-21T20:22:03</KuabaOntology:hasDate>
+        <KuabaOntology:isAccepted rdf:datatype="http://www.w3.org/2001/XMLSchema#string">true</KuabaOntology:isAccepted>
+        <KuabaOntology:concludes rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#class"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#one_month -->
+
+    <owl:NamedIndividual rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#one_month">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ExpectedDuration"/>
+        <KuabaOntology:hasAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#string">30</KuabaOntology:hasAmount>
+        <KuabaOntology:hasUnitTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">day</KuabaOntology:hasUnitTime>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#pedro -->
+
+    <owl:NamedIndividual rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#pedro">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Person"/>
+        <KuabaOntology:hasTelephone rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2227225121</KuabaOntology:hasTelephone>
+        <KuabaOntology:hasTelephone rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2227235334</KuabaOntology:hasTelephone>
+        <KuabaOntology:hasTelephone rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2227350817</KuabaOntology:hasTelephone>
+        <KuabaOntology:hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Amaro Silveira</KuabaOntology:hasAddress>
+        <KuabaOntology:hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Campos</KuabaOntology:hasAddress>
+        <KuabaOntology:hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rua Domingos Andretti n° 35</KuabaOntology:hasAddress>
+        <KuabaOntology:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pedro</KuabaOntology:hasName>
+        <KuabaOntology:hasEmail rdf:datatype="http://www.w3.org/2001/XMLSchema#string">slash_thiago@yahoo.com.br</KuabaOntology:hasEmail>
+        <KuabaOntology:hasEmail rdf:datatype="http://www.w3.org/2001/XMLSchema#string">thiagonunes@gmail.com</KuabaOntology:hasEmail>
+        <KuabaOntology:hasEmail rdf:datatype="http://www.w3.org/2001/XMLSchema#string">thiagorinu@gmail.com</KuabaOntology:hasEmail>
+        <KuabaOntology:creates rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#cd_class"/>
+        <KuabaOntology:executes rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#diagram_domain_model"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#person -->
+
+    <owl:NamedIndividual rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#person">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Idea"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2008-07-21T20:22:03</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Person</KuabaOntology:hasText>
+        <KuabaOntology:suggests rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#how_model_person"/>
+        <KuabaOntology:address rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#root_question"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#person_is_a_model_element -->
+
+    <owl:NamedIndividual rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#person_is_a_model_element">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Decision"/>
+        <KuabaOntology:hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2008-07-21T20:22:03</KuabaOntology:hasDate>
+        <KuabaOntology:isAccepted rdf:datatype="http://www.w3.org/2001/XMLSchema#string">true</KuabaOntology:isAccepted>
+        <KuabaOntology:concludes rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#person"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#root_question -->
+
+    <owl:NamedIndividual rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#root_question">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Question"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-01-23T13:24:44</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OR</KuabaOntology:hasType>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">What are the Model Elements?</KuabaOntology:hasText>
+        <KuabaOntology:isDefinedBy rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#UML"/>
+        <KuabaOntology:isInvolved rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#diagram_domain_model"/>
+        <KuabaOntology:isAddressedBy rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#email"/>
+        <KuabaOntology:isAddressedBy rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#person"/>
+        <KuabaOntology:hasDecision rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#person_is_a_model_element"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#two_weeks -->
+
+    <owl:NamedIndividual rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#two_weeks">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ExpectedDuration"/>
+        <KuabaOntology:hasAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2</KuabaOntology:hasAmount>
+        <KuabaOntology:hasUnitTime rdf:datatype="http://www.w3.org/2001/XMLSchema#string">week</KuabaOntology:hasUnitTime>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#use_case_diagram -->
+
+    <owl:NamedIndividual rdf:about="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#use_case_diagram">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Artifact"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#CompositeArtifact"/>
+        <KuabaOntology:compositionOf rdf:resource="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl#cd_class"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.4.1806) http://owlapi.sourceforge.net -->
+

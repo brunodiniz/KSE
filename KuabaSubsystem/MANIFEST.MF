@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Class-Path: ext/protege.jar ext/protege-owl.jar ext/commons-logging-1.1.jar ext/easymock.jar ext/icu4j_3_4.jar ext/interprolog.jar ext/iri.jar ext/jcalendar.jar ext/jena.jar ext/jmi.jar ext/jmiutils.jar ext/log4j-1.2.12.jar ext/looks-2.1.3.jar ext/mdrapi.jar  ext/mof.jar nbmdr.jar ext/xercesImpl.jar ext/xml-apis.jar
+

@@ -1,0 +1,55 @@
+  
+  <k:Person rdf:ID="pedro">  
+    <k:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >pedro</k:hasName>
+    
+    <k:hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Campos</k:hasAddress>
+    <k:hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Amaro Silveira</k:hasAddress>
+    <k:hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Rua Domingos Andretti n° 35</k:hasAddress>
+    
+    <k:hasTelephone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >2227225121</k:hasTelephone>
+    <k:hasTelephone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >2227235334</k:hasTelephone>
+    <k:hasTelephone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >2227350817</k:hasTelephone>
+    
+    <k:has_Email rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >thiagonunes@gmail.com</k:has_Email>
+    <k:has_Email rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >slash_thiago@yahoo.com.br</k:has_Email>
+    <k:has_Email rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >thiagorinu@gmail.com</k:has_Email>
+      
+    <k:executes rdf:resource="#diagram_domain_model"/>  		  
+  </k:Person>
+  
+  <k:Person rdf:ID="manoel">  
+    <k:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >thiago</k:hasName>
+    
+    <k:hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Campos</k:hasAddress>
+    <k:hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Amaro Silveira</k:hasAddress>
+    <k:hasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Rua Domingos Andretti n° 35</k:hasAddress>
+    
+    <k:hasTelephone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >2227225121</k:hasTelephone>
+    <k:hasTelephone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >2227235334</k:hasTelephone>
+    <k:hasTelephone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >2227350817</k:hasTelephone>
+    
+    <k:has_Email rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >thiagonunes@gmail.com</k:has_Email>
+    <k:has_Email rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >slash_thiago@yahoo.com.br</k:has_Email>
+    <k:has_Email rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >thiagorinu@gmail.com</k:has_Email>      
+      		  
+  </k:Person>

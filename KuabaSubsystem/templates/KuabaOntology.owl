@@ -1,0 +1,1163 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE Ontology [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     ontologyIRI="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl">
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="vCard" IRI="http://www.w3.org/2001/vcard-rdf/3.0#"/>
+    <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="p1" IRI="http://www.owl-ontologies.com/assert.owl#"/>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <Literal datatypeIRI="&xsd;string">Design Rationale Ontology</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI=":versionInfo"/>
+        <Literal datatypeIRI="&xsd;string">TODO: </Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <Literal datatypeIRI="&xsd;string">Design Rationale Vocabulary</Literal>
+    </Annotation>
+    <Declaration>
+        <Class IRI="#Activity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Argument"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Artifact"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AtomicArtifact"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CompositeArtifact"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Decision"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ExpectedDuration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FormalModel"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Idea"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Justification"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Method"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Person"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Question"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ReasoningElement"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RelatedType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Role"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#address"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#aggregates"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#compositionOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#concludes"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#considers"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#creates"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#describes"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#executes"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasArgument"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasDecision"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasDestinationArtifact"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasExpectedDuration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasJustification"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasOriginArtifact"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#inFavorOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#involves"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isAddressedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isConcludedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isCreatedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isDefinedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isDerivedOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isDescribedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isExecutedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isExpectedDurationOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isInvolved"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isJustificationOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isMadeBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isPerformedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isPrescribedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isPresentedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isRequiredBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isSuggestedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isVersionOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#makes"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#objectsTo"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#performs"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#prescribes"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#presents"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#requires"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#resultsIn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#suggests"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#compositionFunction"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasAddress"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasAmount"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasCreationDate"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasDate"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasDescription"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasEmail"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasFinishDate"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasLocalization"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasRelationType"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasStartDate"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasTelephone"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasText"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasType"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasUnitTime"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasUrl"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#isAccepted"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#Activity"/>
+        <ObjectIntersectionOf>
+            <ObjectMinCardinality cardinality="3">
+                <ObjectProperty IRI="#involves"/>
+                <Class IRI="#ReasoningElement"/>
+            </ObjectMinCardinality>
+            <ObjectMinCardinality cardinality="1">
+                <ObjectProperty IRI="#isExecutedBy"/>
+                <Class IRI="#Person"/>
+            </ObjectMinCardinality>
+            <ObjectMinCardinality cardinality="1">
+                <ObjectProperty IRI="#requires"/>
+                <Class IRI="#Role"/>
+            </ObjectMinCardinality>
+            <DataExactCardinality cardinality="1">
+                <DataProperty IRI="#hasFinishDate"/>
+            </DataExactCardinality>
+            <DataExactCardinality cardinality="1">
+                <DataProperty IRI="#hasName"/>
+            </DataExactCardinality>
+            <DataExactCardinality cardinality="1">
+                <DataProperty IRI="#hasStartDate"/>
+            </DataExactCardinality>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Artifact"/>
+        <ObjectIntersectionOf>
+            <ObjectMinCardinality cardinality="1">
+                <ObjectProperty IRI="#isCreatedBy"/>
+                <Class IRI="#Person"/>
+            </ObjectMinCardinality>
+            <ObjectExactCardinality cardinality="1">
+                <ObjectProperty IRI="#isDescribedBy"/>
+                <Class IRI="#FormalModel"/>
+            </ObjectExactCardinality>
+            <DataExactCardinality cardinality="1">
+                <DataProperty IRI="#hasCreationDate"/>
+            </DataExactCardinality>
+            <DataExactCardinality cardinality="1">
+                <DataProperty IRI="#hasDescription"/>
+            </DataExactCardinality>
+            <DataExactCardinality cardinality="1">
+                <DataProperty IRI="#hasName"/>
+            </DataExactCardinality>
+            <DataExactCardinality cardinality="1">
+                <DataProperty IRI="#hasUrl"/>
+            </DataExactCardinality>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#CompositeArtifact"/>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="#compositionOf"/>
+            <Class IRI="#Artifact"/>
+        </ObjectMinCardinality>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#Argument"/>
+        <Class IRI="#ReasoningElement"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AtomicArtifact"/>
+        <Class IRI="#Artifact"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CompositeArtifact"/>
+        <Class IRI="#Artifact"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Decision"/>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="#isMadeBy"/>
+            <Class IRI="#Person"/>
+        </ObjectMinCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Decision"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#concludes"/>
+            <Class IRI="#Idea"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Decision"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#hasJustification"/>
+            <Class IRI="#Justification"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ExpectedDuration"/>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="#isExpectedDurationOf"/>
+            <Class IRI="#Activity"/>
+        </ObjectMinCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FormalModel"/>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="#describes"/>
+            <Class IRI="#Artifact"/>
+        </ObjectMinCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Idea"/>
+        <Class IRI="#ReasoningElement"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Idea"/>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="#address"/>
+            <Class IRI="#Question"/>
+        </ObjectMinCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Justification"/>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="#isDerivedOf"/>
+            <Class IRI="#Argument"/>
+        </ObjectMinCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Justification"/>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="#isJustificationOf"/>
+            <Class IRI="#Decision"/>
+        </ObjectMinCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Method"/>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="#aggregates"/>
+            <Class IRI="#Activity"/>
+        </ObjectMinCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Method"/>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="#prescribes"/>
+            <Class IRI="#FormalModel"/>
+        </ObjectMinCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Person"/>
+        <ObjectIntersectionOf>
+            <ObjectMinCardinality cardinality="1">
+                <ObjectProperty IRI="#executes"/>
+                <Class IRI="#Activity"/>
+            </ObjectMinCardinality>
+            <ObjectMinCardinality cardinality="1">
+                <ObjectProperty IRI="#performs"/>
+                <Class IRI="#Role"/>
+            </ObjectMinCardinality>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Question"/>
+        <Class IRI="#ReasoningElement"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Question"/>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="#isAddressedBy"/>
+            <Class IRI="#Idea"/>
+        </ObjectMinCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ReasoningElement"/>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="#isInvolved"/>
+            <Class IRI="#Activity"/>
+        </ObjectMinCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ReasoningElement"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#isPresentedBy"/>
+            <Class IRI="#Person"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RelatedType"/>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="#hasDestinationArtifact"/>
+            <Class IRI="#Artifact"/>
+        </ObjectMinCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RelatedType"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#hasOriginArtifact"/>
+            <Class IRI="#Artifact"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Role"/>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="#isPerformedBy"/>
+            <Class IRI="#Person"/>
+        </ObjectMinCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Role"/>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="#isRequiredBy"/>
+            <Class IRI="#Activity"/>
+        </ObjectMinCardinality>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#Argument"/>
+        <Class IRI="#Idea"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Argument"/>
+        <Class IRI="#Question"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#AtomicArtifact"/>
+        <Class IRI="#CompositeArtifact"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Idea"/>
+        <Class IRI="#Question"/>
+    </DisjointClasses>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#address"/>
+        <ObjectProperty IRI="#isAddressedBy"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#concludes"/>
+        <ObjectProperty IRI="#isConcludedBy"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#creates"/>
+        <ObjectProperty IRI="#isCreatedBy"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#isDescribedBy"/>
+        <ObjectProperty IRI="#describes"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#isExecutedBy"/>
+        <ObjectProperty IRI="#executes"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#isExpectedDurationOf"/>
+        <ObjectProperty IRI="#hasExpectedDuration"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#isJustificationOf"/>
+        <ObjectProperty IRI="#hasJustification"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#involves"/>
+        <ObjectProperty IRI="#isInvolved"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#makes"/>
+        <ObjectProperty IRI="#isMadeBy"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#performs"/>
+        <ObjectProperty IRI="#isPerformedBy"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#isPrescribedBy"/>
+        <ObjectProperty IRI="#prescribes"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#presents"/>
+        <ObjectProperty IRI="#isPresentedBy"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#isRequiredBy"/>
+        <ObjectProperty IRI="#requires"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#isSuggestedBy"/>
+        <ObjectProperty IRI="#suggests"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#resultsIn"/>
+        <ObjectProperty IRI="#resultsIn"/>
+    </InverseObjectProperties>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#considers"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#hasExpectedDuration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#hasJustification"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#isDefinedBy"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#isVersionOf"/>
+    </FunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#isExpectedDurationOf"/>
+    </InverseFunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#isJustificationOf"/>
+    </InverseFunctionalObjectProperty>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="#resultsIn"/>
+    </SymmetricObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#address"/>
+        <Class IRI="#Idea"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#aggregates"/>
+        <Class IRI="#Method"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#compositionOf"/>
+        <Class IRI="#CompositeArtifact"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#concludes"/>
+        <Class IRI="#Decision"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#considers"/>
+        <Class IRI="#Argument"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#creates"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#describes"/>
+        <Class IRI="#FormalModel"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#executes"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasArgument"/>
+        <Class IRI="#Idea"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasDecision"/>
+        <Class IRI="#Question"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasDestinationArtifact"/>
+        <Class IRI="#RelatedType"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasExpectedDuration"/>
+        <Class IRI="#Activity"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasJustification"/>
+        <Class IRI="#Decision"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasOriginArtifact"/>
+        <Class IRI="#RelatedType"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#inFavorOf"/>
+        <Class IRI="#Argument"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#involves"/>
+        <Class IRI="#Activity"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isAddressedBy"/>
+        <Class IRI="#Question"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isConcludedBy"/>
+        <Class IRI="#Idea"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isCreatedBy"/>
+        <Class IRI="#Artifact"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isDefinedBy"/>
+        <Class IRI="#ReasoningElement"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isDerivedOf"/>
+        <Class IRI="#Justification"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isDescribedBy"/>
+        <Class IRI="#Artifact"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isExecutedBy"/>
+        <Class IRI="#Activity"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isExpectedDurationOf"/>
+        <Class IRI="#ExpectedDuration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isInvolved"/>
+        <Class IRI="#ReasoningElement"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isJustificationOf"/>
+        <Class IRI="#Justification"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isMadeBy"/>
+        <Class IRI="#Decision"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isPerformedBy"/>
+        <Class IRI="#Role"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isPrescribedBy"/>
+        <Class IRI="#FormalModel"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isPresentedBy"/>
+        <Class IRI="#ReasoningElement"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isRequiredBy"/>
+        <Class IRI="#Role"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isSuggestedBy"/>
+        <Class IRI="#Question"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isVersionOf"/>
+        <ObjectUnionOf>
+            <Class IRI="#Argument"/>
+            <Class IRI="#AtomicArtifact"/>
+            <Class IRI="#CompositeArtifact"/>
+            <Class IRI="#Idea"/>
+            <Class IRI="#Question"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#makes"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#objectsTo"/>
+        <Class IRI="#Argument"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#performs"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#prescribes"/>
+        <Class IRI="#Method"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#presents"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#requires"/>
+        <Class IRI="#Activity"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#resultsIn"/>
+        <Class IRI="#Idea"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#suggests"/>
+        <Class IRI="#ReasoningElement"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#address"/>
+        <Class IRI="#Question"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#aggregates"/>
+        <Class IRI="#Activity"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#compositionOf"/>
+        <Class IRI="#Artifact"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#concludes"/>
+        <Class IRI="#Idea"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#considers"/>
+        <Class IRI="#Question"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#creates"/>
+        <Class IRI="#Artifact"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#describes"/>
+        <Class IRI="#Artifact"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#executes"/>
+        <Class IRI="#Activity"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasArgument"/>
+        <Class IRI="#Argument"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasDecision"/>
+        <Class IRI="#Decision"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasDestinationArtifact"/>
+        <Class IRI="#Artifact"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasExpectedDuration"/>
+        <Class IRI="#ExpectedDuration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasJustification"/>
+        <Class IRI="#Justification"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasOriginArtifact"/>
+        <Class IRI="#Artifact"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#inFavorOf"/>
+        <Class IRI="#Idea"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#involves"/>
+        <Class IRI="#ReasoningElement"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isAddressedBy"/>
+        <Class IRI="#Idea"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isConcludedBy"/>
+        <Class IRI="#Decision"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isCreatedBy"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isDefinedBy"/>
+        <Class IRI="#FormalModel"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isDerivedOf"/>
+        <Class IRI="#Argument"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isDescribedBy"/>
+        <Class IRI="#FormalModel"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isExecutedBy"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isExpectedDurationOf"/>
+        <Class IRI="#Activity"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isInvolved"/>
+        <Class IRI="#Activity"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isJustificationOf"/>
+        <Class IRI="#Decision"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isMadeBy"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isPerformedBy"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isPrescribedBy"/>
+        <Class IRI="#Method"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isPresentedBy"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isRequiredBy"/>
+        <Class IRI="#Activity"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isSuggestedBy"/>
+        <Class IRI="#ReasoningElement"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isVersionOf"/>
+        <ObjectUnionOf>
+            <Class IRI="#Argument"/>
+            <Class IRI="#AtomicArtifact"/>
+            <Class IRI="#CompositeArtifact"/>
+            <Class IRI="#Idea"/>
+            <Class IRI="#Question"/>
+        </ObjectUnionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#makes"/>
+        <Class IRI="#Decision"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#objectsTo"/>
+        <Class IRI="#Idea"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#performs"/>
+        <Class IRI="#Role"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#prescribes"/>
+        <Class IRI="#FormalModel"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#presents"/>
+        <Class IRI="#ReasoningElement"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#requires"/>
+        <Class IRI="#Role"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#resultsIn"/>
+        <Class IRI="#Artifact"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#suggests"/>
+        <Class IRI="#Question"/>
+    </ObjectPropertyRange>
+    <DisjointObjectProperties>
+        <ObjectProperty IRI="#inFavorOf"/>
+        <ObjectProperty IRI="#objectsTo"/>
+    </DisjointObjectProperties>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#hasAmount"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#hasCreationDate"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#hasDate"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#hasDescription"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#hasFinishDate"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#hasName"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#hasRelationType"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#hasStartDate"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#hasText"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#hasType"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#hasUrl"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#isAccepted"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="#compositionFunction"/>
+        <Class IRI="#CompositeArtifact"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasAddress"/>
+        <Class IRI="#Person"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasAmount"/>
+        <Class IRI="#ExpectedDuration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasCreationDate"/>
+        <ObjectUnionOf>
+            <Class IRI="#Artifact"/>
+            <Class IRI="#ReasoningElement"/>
+        </ObjectUnionOf>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasDate"/>
+        <Class IRI="#Decision"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasDescription"/>
+        <ObjectUnionOf>
+            <Class IRI="#Activity"/>
+            <Class IRI="#Artifact"/>
+            <Class IRI="#Method"/>
+        </ObjectUnionOf>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasEmail"/>
+        <Class IRI="#Person"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasFinishDate"/>
+        <Class IRI="#Activity"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasLocalization"/>
+        <Class IRI="#FormalModel"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasName"/>
+        <ObjectUnionOf>
+            <Class IRI="#Activity"/>
+            <Class IRI="#Artifact"/>
+            <Class IRI="#FormalModel"/>
+            <Class IRI="#Method"/>
+            <Class IRI="#Person"/>
+            <Class IRI="#Role"/>
+        </ObjectUnionOf>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasRelationType"/>
+        <Class IRI="#RelatedType"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasStartDate"/>
+        <Class IRI="#Activity"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasTelephone"/>
+        <Class IRI="#Person"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasText"/>
+        <ObjectUnionOf>
+            <Class IRI="#Justification"/>
+            <Class IRI="#ReasoningElement"/>
+        </ObjectUnionOf>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasType"/>
+        <Class IRI="#Question"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasUnitTime"/>
+        <Class IRI="#ExpectedDuration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasUrl"/>
+        <Class IRI="#Artifact"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#isAccepted"/>
+        <Class IRI="#Decision"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasAddress"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasAmount"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasCreationDate"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasDate"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasDescription"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasEmail"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasFinishDate"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasLocalization"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasRelationType"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasStartDate"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasTelephone"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasText"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasType"/>
+        <DataOneOf>
+            <Literal datatypeIRI="&xsd;string">AND</Literal>
+            <Literal datatypeIRI="&xsd;string">OR</Literal>
+            <Literal datatypeIRI="&xsd;string">XOR</Literal>
+        </DataOneOf>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasUnitTime"/>
+        <DataOneOf>
+            <Literal datatypeIRI="&xsd;string">ano</Literal>
+            <Literal datatypeIRI="&xsd;string">dia</Literal>
+            <Literal datatypeIRI="&xsd;string">hora</Literal>
+            <Literal datatypeIRI="&xsd;string">mes</Literal>
+            <Literal datatypeIRI="&xsd;string">minuto</Literal>
+            <Literal datatypeIRI="&xsd;string">semana</Literal>
+        </DataOneOf>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasUrl"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#isAccepted"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Activity</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Manter restrições de literals?</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Artifact</IRI>
+        <Literal datatypeIRI="&xsd;string">Abstract class</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#FormalModel</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">A relação isDefinedBy ta estranha</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ReasoningElement</IRI>
+        <Literal datatypeIRI="&xsd;string">Abstract class</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#RelatedType</IRI>
+        <Literal datatypeIRI="&xsd;string">All individuals of this class must have only one instance of artifactOrigin property and at least one instance of   
+                                      artifactDestination property 
+           </Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Role</IRI>
+        <Literal datatypeIRI="&xsd;string">This class represents the exerted role by a person during an activity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasUnitTime</IRI>
+        <Literal datatypeIRI="&xsd;string">This property is an enumeration of strings</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
+

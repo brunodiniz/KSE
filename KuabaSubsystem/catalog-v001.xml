@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1325616503307" name="duplicate:http://www.progen.kilu.de/DesignRationale/DesignEx1.owl" uri="test/br/ucam/kuabaSubsystem/testBase/templatesTestBase%20-%20Cópia%20(2).xml"/>
+        <uri id="Automatically generated entry, Timestamp=1325616503307" name="duplicate:http://www.progen.kilu.de/DesignRationale/DesignEx1.owl" uri="test/br/ucam/kuabaSubsystem/testBase/templatesTestBase%20-%20Cópia%20(3).xml"/>
+        <uri id="Automatically generated entry, Timestamp=1325616503307" name="duplicate:http://www.progen.kilu.de/DesignRationale/DesignEx1.owl" uri="test/br/ucam/kuabaSubsystem/testBase/templatesTestBase.xml"/>
+        <uri id="Automatically generated entry, Timestamp=1325616503307" name="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl" uri="templates/KuabaOntology.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1325616503307" name="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntology.owl" uri="kuabaOntology/KuabaOntology.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1325616503307" name="duplicate:http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyInstances.owl" uri="temp.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1325616503307" name="duplicate:http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyInstances.owl" uri="testeeeeee.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1325616503307" name="duplicate:http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyTemplates.owl" uri="templates/formalModelsTemplate.xml"/>
+        <uri id="Automatically generated entry, Timestamp=1325616503307" name="duplicate:http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyTemplates.owl" uri="templates/formalModelsTemplate_old.xml"/>
+        <uri id="Automatically generated entry, Timestamp=1325616503307" name="duplicate:http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyTemplates.owl" uri="templates/KuabaOntologyTemplates.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1325616503307" name="http://www.tecweb.inf.puc-rio.br/DesignRationale/templatesTestBase.owl" uri="test/br/ucam/kuabaSubsystem/testBase/templatesTestBase%20-%20Cópia.xml"/>
+        <uri id="Automatically generated entry, Timestamp=1325616503307" name="shadowed:http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyInstances.owl" uri="test/br/ucam/kuabaSubsystem/testBase/testKuabaKnowlegeBase.xml"/>
+        <uri id="Automatically generated entry, Timestamp=1325616503307" name="shadowed:http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyInstances.owl" uri="test/br/ucam/kuabaSubsystem/testBase/testOwlApiKuabaKnowlegeBase.xml"/>
+    </group>
+</catalog>

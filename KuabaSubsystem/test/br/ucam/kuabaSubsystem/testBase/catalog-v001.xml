@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="User Entered Import Resolution" name="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl" uri="file:/C:/Users/Bruno/Documents/My%20Dropbox/TCC%20-%20Processador%20de%20Rationale/Arquivos%20OWL/KuabaOntology.owl"/>
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1328537731357" name="duplicate:http://www.progen.kilu.de/DesignRationale/DesignEx1.owl" uri="templatesTestBase%20-%20Cópia%20(2).xml"/>
+        <uri id="Automatically generated entry, Timestamp=1328537731357" name="duplicate:http://www.progen.kilu.de/DesignRationale/DesignEx1.owl" uri="templatesTestBase%20-%20Cópia%20(3).xml"/>
+        <uri id="Automatically generated entry, Timestamp=1328537731357" name="duplicate:http://www.progen.kilu.de/DesignRationale/DesignEx1.owl" uri="templatesTestBase.xml"/>
+        <uri id="Automatically generated entry, Timestamp=1328537731357" name="duplicate:http://www.progen.kilu.de/DesignRationale/DesignEx1.owl" uri="templatesTestBase2.xml"/>
+        <uri id="Automatically generated entry, Timestamp=1328537731357" name="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyGeneratedTemplate.owl" uri="testKuabaKnowlegeBase.xml"/>
+        <uri id="Automatically generated entry, Timestamp=1328537731357" name="http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntologyInstances.owl" uri="testOwlApiKuabaKnowlegeBase.xml"/>
+        <uri id="Automatically generated entry, Timestamp=1328537731357" name="http://www.tecweb.inf.puc-rio.br/DesignRationale/templatesTestBase.owl" uri="templatesTestBase%20-%20Cópia.xml"/>
+    </group>
+</catalog>

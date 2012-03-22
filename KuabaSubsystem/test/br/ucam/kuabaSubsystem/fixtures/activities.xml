@@ -1,0 +1,40 @@
+  
+  <k:Activity rdf:ID="diagram domain model">  
+  	<k:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >this Activity focus on domain model design</k:hasDescription>    
+    
+    <k:hasFinishDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"
+    >2008-06-21T20:22:03</k:hasFinishDate>
+    
+    <k:hasStartDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"
+    >2008-06-14T08:30:00</k:hasStartDate>
+    
+    <k:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Domain model design</k:hasName>
+    
+    <k:isExecutedBy rdf:resource="#pedro"/>
+    
+    <k:hasExpectedDuration rdf:resource="#two_weeks"/>
+    
+    <k:involves rdf:resource="#class"/>
+    <k:involves rdf:resource="#athlete"/>
+    <k:involves rdf:resource="#how_model_athlete"/>
+    <k:involves rdf:resource="#what_elements"/>
+    <k:involves rdf:resource="#model_athlete_as_class"/>
+    
+    <k:requires rdf:resource="#developer"/>          
+  </k:Activity>
+  
+  <k:Activity rdf:ID="design_domain_model">  
+  	<k:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >designing domain model</k:hasDescription>    
+    
+    <k:hasFinishDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"
+    >2008-06-21T20:22:03</k:hasFinishDate>
+    
+    <k:hasStartDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"
+    >2008-06-14T08:30:00</k:hasStartDate>
+    
+    <k:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Design Domain model</k:hasName>              
+  </k:Activity>

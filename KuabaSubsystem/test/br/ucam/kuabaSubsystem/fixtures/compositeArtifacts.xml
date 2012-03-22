@@ -1,0 +1,13 @@
+
+  <k:CompositeArtifact rdf:ID="use_case_diagram">
+    <k:compositionFunction >include</k:compositionFunction>
+    
+    <k:compositionOf rdf:resource="#cd_class"/>
+  </k:CompositeArtifact>
+  
+  <k:CompositeArtifact rdf:ID="class_diagram">
+    <k:compositionFunction >include</k:compositionFunction>
+    
+    <k:compositionOf rdf:resource="#cd_class"/>
+  </k:CompositeArtifact>
+  

@@ -1,0 +1,6 @@
+
+  <k:Role rdf:ID="developer">
+  	<k:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >developer</k:hasName>
+  </k:Role>
+  

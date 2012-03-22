@@ -1,0 +1,47 @@
+<k:Decision rdf:ID="model_cd_as_class">
+	<k:hasDate
+		rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2008-06-21T20:22:03
+	</k:hasDate>
+
+	<k:isAccepted
+		rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">
+		false
+	</k:isAccepted>
+</k:Decision>
+
+<k:Decision rdf:ID="model_cd_as_attribute">
+	<k:hasDate
+		rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2008-06-21T20:22:03
+	</k:hasDate>
+
+	<k:isAccepted
+		rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">
+		true
+	</k:isAccepted>
+
+	<k:concludes rdf:resource="#attribute" />
+</k:Decision>
+
+<k:Decision rdf:ID="person_is_a_model_element">
+	<k:hasDate
+		rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2008-06-21T20:22:03
+	</k:hasDate>
+
+	<k:isAccepted
+		rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">
+		true
+	</k:isAccepted>
+
+	<k:concludes rdf:resource="#person" />
+</k:Decision>
+
+<k:Decision rdf:ID="model_person_as_class">
+	<k:hasDate
+		rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2008-06-21T20:22:03
+	</k:hasDate>
+
+	<k:isAccepted
+		rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</k:isAccepted>
+
+	<k:concludes rdf:resource="#class" />
+</k:Decision>
