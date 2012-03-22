@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.7.0
+Created-By: 1.2 (Sun Microsystems Inc.) 
+Main-Class: org.argouml.application.Main
+Class-Path: antlr-2.7.7.jar argouml-mdr.jar argouml-model.jar argouml.
+ jar commons-logging-1.0.2.jar ext/anarres-cpp-no-dependencies-1.2.3.j
+ ar ext/antlr-2.7.7.jar ext/antlr-runtime-3.1.1.jar ext/argo_cpp.jar e
+ xt/argo_idl.jar ext/argo_java.jar ext/argo_php.jar ext/argouml-csharp
+ .jar ext/argouml-diagrams-sequence.jar ext/argouml-i18n-de.jar ext/ar
+ gouml-i18n-en_GB.jar ext/argouml-i18n-es.jar ext/argouml-i18n-fr.jar 
+ ext/argouml-i18n-it.jar ext/argouml-i18n-nb.jar ext/argouml-i18n-pt.j
+ ar ext/argouml-i18n-pt_BR.jar ext/argouml-i18n-ru.jar ext/argouml-i18
+ n-zh.jar ext/argouml-sql.jar gef-0.13.jar java-interfaces.jar jmi.jar
+  jmiutils.jar log4j-1.2.6.jar mdrapi.jar mof.jar nbmdr.jar ocl-argo-1
+ .1.jar openide-util.jar swidgets-0.1.4.jar toolbar-1.4.1-20071227.jar

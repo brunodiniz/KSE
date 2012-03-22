@@ -1,0 +1,499 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="owlapi:ontology18493224809791#"
+     xml:base="owlapi:ontology18493224809791"
+     xmlns:ontology184932248097913="owlapi:ontology18493224809791#0"
+     xmlns:ontology184932248097912="owlapi:ontology18493224809791#8"
+     xmlns:ontology184932248097915="owlapi:ontology18493224809791#463"
+     xmlns:ontology184932248097914="owlapi:ontology18493224809791#692394"
+     xmlns:ontology184932248097917="owlapi:ontology18493224809791#308"
+     xmlns:ontology184932248097916="owlapi:ontology18493224809791#97"
+     xmlns:ontology184932248097919="owlapi:ontology18493224809791#2096227"
+     xmlns:ontology184932248097918="owlapi:ontology18493224809791#51"
+     xmlns:ontology1849322480979112="owlapi:ontology18493224809791#55"
+     xmlns:ontology1849322480979111="owlapi:ontology18493224809791#3"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:ontology1849322480979110="owlapi:ontology18493224809791#0997"
+     xmlns:KuabaOntology="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:ontology18493224809791="owlapi:ontology18493224809791#7576"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="owlapi:ontology18493224809791">
+        <owl:imports rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- owlapi:ontology18493224809791#0997f96e-f1bd-46a7-9d89-37f987797bec -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#0997f96e-f1bd-46a7-9d89-37f987797bec">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Argument"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-03-19T15:23:47</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">musica as cls</KuabaOntology:hasText>
+        <KuabaOntology:inFavorOf rdf:resource="owlapi:ontology18493224809791#308fc3fd-7ffd-4ba5-8f5d-40dbe2a43366"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#0a0be310-a582-452f-9477-54f261181a08 -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#0a0be310-a582-452f-9477-54f261181a08">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Decision"/>
+        <KuabaOntology:isAccepted rdf:datatype="http://www.w3.org/2001/XMLSchema#string">true</KuabaOntology:isAccepted>
+        <KuabaOntology:concludes rdf:resource="owlapi:ontology18493224809791#e1c4ae64-0cd6-4ffe-98ce-a677bb5f94db"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#0c22bc0b-6b42-4536-a571-d76e304b5a0e -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#0c22bc0b-6b42-4536-a571-d76e304b5a0e">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Idea"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-03-16T10:26:17</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Class</KuabaOntology:hasText>
+        <KuabaOntology:hasArgument rdf:resource="owlapi:ontology18493224809791#3de693e4-f82d-4219-bb1b-5350c91fa4a2"/>
+        <KuabaOntology:address rdf:resource="owlapi:ontology18493224809791#463c097e-48fe-4e0d-afb4-8fdb98758663"/>
+        <KuabaOntology:hasArgument rdf:resource="owlapi:ontology18493224809791#55c3c249-c5db-4347-bfdc-da086d5dfbb4"/>
+        <KuabaOntology:isDefinedBy rdf:resource="owlapi:ontology18493224809791#UmlClass"/>
+        <KuabaOntology:hasArgument rdf:resource="owlapi:ontology18493224809791#_220951"/>
+        <KuabaOntology:address rdf:resource="owlapi:ontology18493224809791#_220954"/>
+        <KuabaOntology:hasArgument rdf:resource="owlapi:ontology18493224809791#_220957"/>
+        <KuabaOntology:hasArgument rdf:resource="owlapi:ontology18493224809791#_220961"/>
+        <KuabaOntology:address rdf:resource="owlapi:ontology18493224809791#a77edd35-ef71-439e-b59e-5f00ddd92ac1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#2096227c-7cf4-4b31-93de-0acf5d17cbe8 -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#2096227c-7cf4-4b31-93de-0acf5d17cbe8">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Decision"/>
+        <KuabaOntology:isAccepted rdf:datatype="http://www.w3.org/2001/XMLSchema#string">true</KuabaOntology:isAccepted>
+        <KuabaOntology:concludes rdf:resource="owlapi:ontology18493224809791#e1c4ae64-0cd6-4ffe-98ce-a677bb5f94db"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#308fc3fd-7ffd-4ba5-8f5d-40dbe2a43366 -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#308fc3fd-7ffd-4ba5-8f5d-40dbe2a43366">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Idea"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-03-19T15:23:47</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Class</KuabaOntology:hasText>
+        <KuabaOntology:hasArgument rdf:resource="owlapi:ontology18493224809791#0997f96e-f1bd-46a7-9d89-37f987797bec"/>
+        <KuabaOntology:hasArgument rdf:resource="owlapi:ontology18493224809791#692394d2-9b44-4f8f-945e-9fa77d838d51"/>
+        <KuabaOntology:address rdf:resource="owlapi:ontology18493224809791#97d04bf2-b895-4a27-8c26-4946dc0606c3"/>
+        <KuabaOntology:address rdf:resource="owlapi:ontology18493224809791#a96a8112-c3f9-44b4-968e-1c9ababe9a2c"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#3de693e4-f82d-4219-bb1b-5350c91fa4a2 -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#3de693e4-f82d-4219-bb1b-5350c91fa4a2">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Argument"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-03-19T15:23:47</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cd tem musica</KuabaOntology:hasText>
+        <KuabaOntology:inFavorOf rdf:resource="owlapi:ontology18493224809791#0c22bc0b-6b42-4536-a571-d76e304b5a0e"/>
+        <KuabaOntology:considers rdf:resource="owlapi:ontology18493224809791#463c097e-48fe-4e0d-afb4-8fdb98758663"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#463c097e-48fe-4e0d-afb4-8fdb98758663 -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#463c097e-48fe-4e0d-afb4-8fdb98758663">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Question"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-03-19T15:23:47</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">participant?</KuabaOntology:hasText>
+        <KuabaOntology:isAddressedBy rdf:resource="owlapi:ontology18493224809791#0c22bc0b-6b42-4536-a571-d76e304b5a0e"/>
+        <KuabaOntology:isSuggestedBy rdf:resource="owlapi:ontology18493224809791#d2fa33b8-0063-47b3-99c2-76c6f5bc4a07"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#51ebf398-b8e3-4f7a-875b-44857d05ed5d -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#51ebf398-b8e3-4f7a-875b-44857d05ed5d">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Decision"/>
+        <KuabaOntology:isAccepted rdf:datatype="http://www.w3.org/2001/XMLSchema#string">true</KuabaOntology:isAccepted>
+        <KuabaOntology:concludes rdf:resource="owlapi:ontology18493224809791#8fc1a2be-58f4-4b9a-ba84-6e94e042467b_0000000000000C04"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#55c3c249-c5db-4347-bfdc-da086d5dfbb4 -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#55c3c249-c5db-4347-bfdc-da086d5dfbb4">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Argument"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-03-19T15:23:47</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">super cdzasso</KuabaOntology:hasText>
+        <KuabaOntology:inFavorOf rdf:resource="owlapi:ontology18493224809791#0c22bc0b-6b42-4536-a571-d76e304b5a0e"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#692394d2-9b44-4f8f-945e-9fa77d838d51 -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#692394d2-9b44-4f8f-945e-9fa77d838d51">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Argument"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-03-19T15:23:47</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">musica eh do cd</KuabaOntology:hasText>
+        <KuabaOntology:inFavorOf rdf:resource="owlapi:ontology18493224809791#308fc3fd-7ffd-4ba5-8f5d-40dbe2a43366"/>
+        <KuabaOntology:considers rdf:resource="owlapi:ontology18493224809791#97d04bf2-b895-4a27-8c26-4946dc0606c3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#7576adb0-4a04-4243-905b-8d8b38d39f8d_0000000000000C03 -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#7576adb0-4a04-4243-905b-8d8b38d39f8d_0000000000000C03">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Idea"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-03-16T10:26:57</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Album</KuabaOntology:hasText>
+        <KuabaOntology:isConcludedBy rdf:resource="owlapi:ontology18493224809791#c4057352-53d6-4cd9-8057-fe389a314d8b"/>
+        <KuabaOntology:suggests rdf:resource="owlapi:ontology18493224809791#f5c37681-7955-4bef-94cd-35c258041d92"/>
+        <KuabaOntology:address rdf:resource="owlapi:ontology18493224809791#root_question"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#8f3f1d0a-96aa-42b1-b0aa-8fd691827aad -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#8f3f1d0a-96aa-42b1-b0aa-8fd691827aad">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Idea"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></KuabaOntology:hasText>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-03-19T15:23:47</KuabaOntology:hasCreationDate>
+        <KuabaOntology:suggests rdf:resource="owlapi:ontology18493224809791#a0e24b44-4330-47b2-aba6-93bf0d8e1871"/>
+        <KuabaOntology:address rdf:resource="owlapi:ontology18493224809791#root_question"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#8fc1a2be-58f4-4b9a-ba84-6e94e042467b_0000000000000C04 -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#8fc1a2be-58f4-4b9a-ba84-6e94e042467b_0000000000000C04">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Idea"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-03-16T10:26:39</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">musica</KuabaOntology:hasText>
+        <KuabaOntology:isConcludedBy rdf:resource="owlapi:ontology18493224809791#51ebf398-b8e3-4f7a-875b-44857d05ed5d"/>
+        <KuabaOntology:suggests rdf:resource="owlapi:ontology18493224809791#a96a8112-c3f9-44b4-968e-1c9ababe9a2c"/>
+        <KuabaOntology:address rdf:resource="owlapi:ontology18493224809791#root_question"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#97d04bf2-b895-4a27-8c26-4946dc0606c3 -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#97d04bf2-b895-4a27-8c26-4946dc0606c3">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Question"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-03-19T15:23:47</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">participant?</KuabaOntology:hasText>
+        <KuabaOntology:isAddressedBy rdf:resource="owlapi:ontology18493224809791#308fc3fd-7ffd-4ba5-8f5d-40dbe2a43366"/>
+        <KuabaOntology:isSuggestedBy rdf:resource="owlapi:ontology18493224809791#b2d42d76-4d07-431f-9f9f-39e4880768c0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#UmlClass -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#UmlClass">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#FormalModel"/>
+        <KuabaOntology:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Unified Modeling Language</KuabaOntology:hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#_0000000000000B07_220949 -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#_0000000000000B07_220949">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Idea"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-03-16T10:26:17</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CD</KuabaOntology:hasText>
+        <KuabaOntology:suggests rdf:resource="owlapi:ontology18493224809791#a77edd35-ef71-439e-b59e-5f00ddd92ac1"/>
+        <KuabaOntology:address rdf:resource="owlapi:ontology18493224809791#root_question"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#_220951 -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#_220951">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Argument"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-03-16T10:26:23</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cd bacana</KuabaOntology:hasText>
+        <KuabaOntology:inFavorOf rdf:resource="owlapi:ontology18493224809791#0c22bc0b-6b42-4536-a571-d76e304b5a0e"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#_220954 -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#_220954">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Question"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-03-16T10:26:40</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">owner?</KuabaOntology:hasText>
+        <KuabaOntology:hasDecision rdf:resource="owlapi:ontology18493224809791#2096227c-7cf4-4b31-93de-0acf5d17cbe8"/>
+        <KuabaOntology:isSuggestedBy rdf:resource="owlapi:ontology18493224809791#b03c82dd-881a-4818-b1fd-289a2849ceae"/>
+        <KuabaOntology:isAddressedBy rdf:resource="owlapi:ontology18493224809791#e1c4ae64-0cd6-4ffe-98ce-a677bb5f94db"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#_220956 -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#_220956">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Argument"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-03-16T10:26:47</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">musica as att</KuabaOntology:hasText>
+        <KuabaOntology:inFavorOf rdf:resource="owlapi:ontology18493224809791#b03c82dd-881a-4818-b1fd-289a2849ceae"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#_220957 -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#_220957">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Argument"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-03-16T10:26:52</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">own</KuabaOntology:hasText>
+        <KuabaOntology:inFavorOf rdf:resource="owlapi:ontology18493224809791#0c22bc0b-6b42-4536-a571-d76e304b5a0e"/>
+        <KuabaOntology:considers rdf:resource="owlapi:ontology18493224809791#_220954"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#_220961 -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#_220961">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Argument"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-03-16T10:27:04</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">album ftw</KuabaOntology:hasText>
+        <KuabaOntology:objectsTo rdf:resource="owlapi:ontology18493224809791#0c22bc0b-6b42-4536-a571-d76e304b5a0e"/>
+        <KuabaOntology:inFavorOf rdf:resource="owlapi:ontology18493224809791#e1c4ae64-0cd6-4ffe-98ce-a677bb5f94db"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#a0e24b44-4330-47b2-aba6-93bf0d8e1871 -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#a0e24b44-4330-47b2-aba6-93bf0d8e1871">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Question"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-03-19T15:23:47</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">How to Model ?</KuabaOntology:hasText>
+        <KuabaOntology:isSuggestedBy rdf:resource="owlapi:ontology18493224809791#8f3f1d0a-96aa-42b1-b0aa-8fd691827aad"/>
+        <KuabaOntology:isAddressedBy rdf:resource="owlapi:ontology18493224809791#b7fde671-0e70-43e5-97ba-2e11c585fdc3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#a77edd35-ef71-439e-b59e-5f00ddd92ac1 -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#a77edd35-ef71-439e-b59e-5f00ddd92ac1">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Question"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-03-16T10:26:17</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">How to Model CD?</KuabaOntology:hasText>
+        <KuabaOntology:isAddressedBy rdf:resource="owlapi:ontology18493224809791#0c22bc0b-6b42-4536-a571-d76e304b5a0e"/>
+        <KuabaOntology:isSuggestedBy rdf:resource="owlapi:ontology18493224809791#_0000000000000B07_220949"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#a96a8112-c3f9-44b4-968e-1c9ababe9a2c -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#a96a8112-c3f9-44b4-968e-1c9ababe9a2c">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Question"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-03-16T10:26:39</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">How to Model musica?</KuabaOntology:hasText>
+        <KuabaOntology:isAddressedBy rdf:resource="owlapi:ontology18493224809791#308fc3fd-7ffd-4ba5-8f5d-40dbe2a43366"/>
+        <KuabaOntology:isSuggestedBy rdf:resource="owlapi:ontology18493224809791#8fc1a2be-58f4-4b9a-ba84-6e94e042467b_0000000000000C04"/>
+        <KuabaOntology:isAddressedBy rdf:resource="owlapi:ontology18493224809791#b03c82dd-881a-4818-b1fd-289a2849ceae"/>
+        <KuabaOntology:hasDecision rdf:resource="owlapi:ontology18493224809791#ccd5ec71-97a3-4a47-8441-74cf8565cf64"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#b03c82dd-881a-4818-b1fd-289a2849ceae -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#b03c82dd-881a-4818-b1fd-289a2849ceae">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Idea"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-03-16T10:26:39</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Attribute</KuabaOntology:hasText>
+        <KuabaOntology:isDefinedBy rdf:resource="owlapi:ontology18493224809791#UmlClass"/>
+        <KuabaOntology:suggests rdf:resource="owlapi:ontology18493224809791#_220954"/>
+        <KuabaOntology:hasArgument rdf:resource="owlapi:ontology18493224809791#_220956"/>
+        <KuabaOntology:address rdf:resource="owlapi:ontology18493224809791#a96a8112-c3f9-44b4-968e-1c9ababe9a2c"/>
+        <KuabaOntology:isConcludedBy rdf:resource="owlapi:ontology18493224809791#ccd5ec71-97a3-4a47-8441-74cf8565cf64"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#b2d42d76-4d07-431f-9f9f-39e4880768c0 -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#b2d42d76-4d07-431f-9f9f-39e4880768c0">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Idea"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-03-19T15:23:47</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AssociationEnd</KuabaOntology:hasText>
+        <KuabaOntology:suggests rdf:resource="owlapi:ontology18493224809791#97d04bf2-b895-4a27-8c26-4946dc0606c3"/>
+        <KuabaOntology:address rdf:resource="owlapi:ontology18493224809791#c4c637e8-e1a5-40b9-9cd5-b1a8a9d84257"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#b7fde671-0e70-43e5-97ba-2e11c585fdc3 -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#b7fde671-0e70-43e5-97ba-2e11c585fdc3">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Idea"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-03-19T15:23:47</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Association</KuabaOntology:hasText>
+        <KuabaOntology:address rdf:resource="owlapi:ontology18493224809791#a0e24b44-4330-47b2-aba6-93bf0d8e1871"/>
+        <KuabaOntology:suggests rdf:resource="owlapi:ontology18493224809791#c4c637e8-e1a5-40b9-9cd5-b1a8a9d84257"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#c4057352-53d6-4cd9-8057-fe389a314d8b -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#c4057352-53d6-4cd9-8057-fe389a314d8b">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Decision"/>
+        <KuabaOntology:isAccepted rdf:datatype="http://www.w3.org/2001/XMLSchema#string">true</KuabaOntology:isAccepted>
+        <KuabaOntology:concludes rdf:resource="owlapi:ontology18493224809791#7576adb0-4a04-4243-905b-8d8b38d39f8d_0000000000000C03"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#c4c637e8-e1a5-40b9-9cd5-b1a8a9d84257 -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#c4c637e8-e1a5-40b9-9cd5-b1a8a9d84257">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Question"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-03-19T15:23:47</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">connection?</KuabaOntology:hasText>
+        <KuabaOntology:isAddressedBy rdf:resource="owlapi:ontology18493224809791#b2d42d76-4d07-431f-9f9f-39e4880768c0"/>
+        <KuabaOntology:isSuggestedBy rdf:resource="owlapi:ontology18493224809791#b7fde671-0e70-43e5-97ba-2e11c585fdc3"/>
+        <KuabaOntology:isAddressedBy rdf:resource="owlapi:ontology18493224809791#d2fa33b8-0063-47b3-99c2-76c6f5bc4a07"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#ccd5ec71-97a3-4a47-8441-74cf8565cf64 -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#ccd5ec71-97a3-4a47-8441-74cf8565cf64">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Decision"/>
+        <KuabaOntology:isAccepted rdf:datatype="http://www.w3.org/2001/XMLSchema#string">true</KuabaOntology:isAccepted>
+        <KuabaOntology:concludes rdf:resource="owlapi:ontology18493224809791#b03c82dd-881a-4818-b1fd-289a2849ceae"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#d2fa33b8-0063-47b3-99c2-76c6f5bc4a07 -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#d2fa33b8-0063-47b3-99c2-76c6f5bc4a07">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Idea"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-03-19T15:23:47</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AssociationEnd</KuabaOntology:hasText>
+        <KuabaOntology:suggests rdf:resource="owlapi:ontology18493224809791#463c097e-48fe-4e0d-afb4-8fdb98758663"/>
+        <KuabaOntology:address rdf:resource="owlapi:ontology18493224809791#c4c637e8-e1a5-40b9-9cd5-b1a8a9d84257"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#e1c4ae64-0cd6-4ffe-98ce-a677bb5f94db -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#e1c4ae64-0cd6-4ffe-98ce-a677bb5f94db">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Idea"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-03-16T10:26:57</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Class</KuabaOntology:hasText>
+        <KuabaOntology:isConcludedBy rdf:resource="owlapi:ontology18493224809791#0a0be310-a582-452f-9477-54f261181a08"/>
+        <KuabaOntology:isConcludedBy rdf:resource="owlapi:ontology18493224809791#2096227c-7cf4-4b31-93de-0acf5d17cbe8"/>
+        <KuabaOntology:isDefinedBy rdf:resource="owlapi:ontology18493224809791#UmlClass"/>
+        <KuabaOntology:address rdf:resource="owlapi:ontology18493224809791#_220954"/>
+        <KuabaOntology:hasArgument rdf:resource="owlapi:ontology18493224809791#_220961"/>
+        <KuabaOntology:address rdf:resource="owlapi:ontology18493224809791#f5c37681-7955-4bef-94cd-35c258041d92"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#f5c37681-7955-4bef-94cd-35c258041d92 -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#f5c37681-7955-4bef-94cd-35c258041d92">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Question"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-03-16T10:26:57</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">How to Model Album?</KuabaOntology:hasText>
+        <KuabaOntology:hasDecision rdf:resource="owlapi:ontology18493224809791#0a0be310-a582-452f-9477-54f261181a08"/>
+        <KuabaOntology:isSuggestedBy rdf:resource="owlapi:ontology18493224809791#7576adb0-4a04-4243-905b-8d8b38d39f8d_0000000000000C03"/>
+        <KuabaOntology:isAddressedBy rdf:resource="owlapi:ontology18493224809791#e1c4ae64-0cd6-4ffe-98ce-a677bb5f94db"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- owlapi:ontology18493224809791#root_question -->
+
+    <owl:NamedIndividual rdf:about="owlapi:ontology18493224809791#root_question">
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#Question"/>
+        <rdf:type rdf:resource="http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl#ReasoningElement"/>
+        <KuabaOntology:hasCreationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2012-03-16T10:11:23</KuabaOntology:hasCreationDate>
+        <KuabaOntology:hasType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OR</KuabaOntology:hasType>
+        <KuabaOntology:hasText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">What are the Model Elements?</KuabaOntology:hasText>
+        <KuabaOntology:hasDecision rdf:resource="owlapi:ontology18493224809791#51ebf398-b8e3-4f7a-875b-44857d05ed5d"/>
+        <KuabaOntology:isAddressedBy rdf:resource="owlapi:ontology18493224809791#7576adb0-4a04-4243-905b-8d8b38d39f8d_0000000000000C03"/>
+        <KuabaOntology:isAddressedBy rdf:resource="owlapi:ontology18493224809791#8f3f1d0a-96aa-42b1-b0aa-8fd691827aad"/>
+        <KuabaOntology:isAddressedBy rdf:resource="owlapi:ontology18493224809791#8fc1a2be-58f4-4b9a-ba84-6e94e042467b_0000000000000C04"/>
+        <KuabaOntology:isDefinedBy rdf:resource="owlapi:ontology18493224809791#UmlClass"/>
+        <KuabaOntology:isAddressedBy rdf:resource="owlapi:ontology18493224809791#_0000000000000B07_220949"/>
+        <KuabaOntology:hasDecision rdf:resource="owlapi:ontology18493224809791#c4057352-53d6-4cd9-8057-fe389a314d8b"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.4.1806) http://owlapi.sourceforge.net -->
+
