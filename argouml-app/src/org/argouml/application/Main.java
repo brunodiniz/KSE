@@ -96,7 +96,6 @@ import org.argouml.util.logging.SimpleTimer;
 import org.tigris.gef.util.Util;
 import br.ucam.kuabaSubsystem.core.KuabaSubsystem;
 import br.ucam.kuabaSubsystem.core.PropertiesConfigurator;
-import br.ucam.kuabaSubsystem.repositories.OwlApiFileGateway;
 
 
 

@@ -62,8 +62,6 @@ import org.tigris.gef.presentation.Fig;
 
 import br.ucam.kuabaSubsystem.core.FormalModels;
 
-//import br.ucam.kuabaSubsystem.core.FormalModels;
-
 /**
  * The ProjectImpl is a data structure that represents the designer's
  * current project. It manages the list of diagrams and UML models.

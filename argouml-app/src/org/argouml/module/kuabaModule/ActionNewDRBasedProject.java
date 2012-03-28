@@ -12,32 +12,24 @@ import br.ucam.kuabaSubsystem.repositories.KuabaRepository;
 import br.ucam.kuabaSubsystem.repositories.RepositoryLoadException;
 import br.ucam.kuabaSubsystem.util.KuabaHelper;
 import java.awt.event.ActionEvent;
-
 import java.io.File;
-import java.net.URISyntaxException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.jmi.reflect.RefObject;
 import javax.swing.AbstractAction;
-import javax.swing.Action;
-
 import org.argouml.application.Main;
-import org.argouml.application.helpers.ResourceLoaderWrapper;
 import org.argouml.cognitive.Designer;
-import org.argouml.i18n.Translator;
 import org.argouml.kernel.Project;
 import org.argouml.kernel.ProjectManager;
 import org.argouml.model.Model;
-import org.argouml.persistence.PersistenceManager;
 import org.argouml.ui.ProjectBrowser;
 import org.argouml.ui.targetmanager.TargetManager;
 import org.argouml.uml.diagram.ArgoDiagram;
-import org.argouml.uml.diagram.static_structure.ui.FigClass;
+import org.argouml.uml.diagram.static_structure.ui.ClassDiagramRenderer;
 import org.argouml.util.ArgoFrame;
-import org.argouml.util.ItemUID;
-import org.omg.uml.foundation.core.UmlClass;
 import org.tigris.gef.presentation.Fig;
 
 /**
@@ -75,7 +67,7 @@ public class ActionNewDRBasedProject extends AbstractAction {
             KuabaRepository result = druWiz.getUnionResult();
             KuabaSubsystem.gateway.save(result, new File("designRationale/tempDrUnion.xml"));
             
-            //ações do comando new
+            //"new" action (creating a new empty project)
             Model.getPump().flushModelEvents();
             Model.getPump().stopPumpingEvents();
             Model.getPump().flushModelEvents();
@@ -97,10 +89,12 @@ public class ActionNewDRBasedProject extends AbstractAction {
             ArgoDiagram diag = p.getDiagramList().get(0);
             TargetManager.getInstance().setTarget(diag);
             Designer.enableCritiquing();
-//            Model.getPump().startPumpingEvents();
+            Model.getPump().startPumpingEvents();
             
             
-            //ações para criação do modelo
+            //begin of the creation of the class diagram
+            KuabaSubsystem.eventPump.stopPumpingEvents();
+            
             try {
                 result = KuabaSubsystem.gateway.load("designRationale/tempDrUnion.xml");
             } catch (RepositoryLoadException ex) {
@@ -109,30 +103,31 @@ public class ActionNewDRBasedProject extends AbstractAction {
             }
             Question root = result.getQuestion(Question.ROOT_QUESTION_ID);
             
-//            Model.getFacade().g
+            ClassDiagramRenderer renderer = new ClassDiagramRenderer();
+            
             Object ns = diag.getNamespace();
             if (ns != null) {
                 int count = 0;
                 List<Idea> acceptedDomainIdeas = result.getAcceptedIdeas(root);
+                
+                Map<Idea, Object> diagramElementsMap = new HashMap<Idea, Object>();
+                
+                //creating classes on the diagram
                 for (Idea i: acceptedDomainIdeas) {
                     Idea designIdea = KuabaHelper.getAcceptedDesignIdea(i, "Class");
                     if(designIdea != null) {
-                        count++;
+                        
                         Object peer = Model.getCoreFactory().buildClass(i.getHasText(),ns);
-                        Fig f = new FigClass(peer,80*count,20,15,15);
                         
-//                        modelRepository.getDomainIdeasWhereIdLike();
-                        
-//                        RefObject ref = (RefObject)f.getOwner();
-//                        System.out.println("UUID = "+Model.getFacade().getUUID(ref));
+                        Fig f = renderer.getFigNodeFor(diag.getGraphModel(), diag.getLayer(), peer, null);
+                        f.setLocation(140*(count%3)+60, (int)(120*((count/3)+1)));
+                        count++;
+                        diagramElementsMap.put(designIdea, peer);
 
-                        
-                        p.getDiagramList().get(0).add(f);
-//                        Model.getCoreHelper().setName(peer, "Teste");
-//                        TargetManager.getInstance().setTarget(peer);
-                        
                         i.setId(UUID.randomUUID().toString()+"_"+Model.getFacade().getUUID(peer).split(":")[3]);
+                        diag.add(f);              
                         
+                        //adding the classes' attributes
                         for (Idea i2: acceptedDomainIdeas) {
                             Idea designIdea2 = KuabaHelper.getAcceptedDesignIdea(i2, "Attribute");
                             if(designIdea2 != null && designIdea2.getSuggests().iterator().next().getIsAddressedBy().iterator().next().equals(designIdea)) {
@@ -148,45 +143,28 @@ public class ActionNewDRBasedProject extends AbstractAction {
                         }
                     }
                 }
+                
+                //creating associations on the diagram
+                for (Idea i: acceptedDomainIdeas) {
+                    Idea designIdea = KuabaHelper.getAcceptedDesignIdea(i, "Association");
+                    if(designIdea != null) {
+                        Object[] associationEnds = designIdea.listSuggests().next().getIsAddressedBy().toArray();
+                        Idea associationParticipant1 = ((Idea) associationEnds[0]).listSuggests().next().listIsAddressedBy().next();
+                        Idea associationParticipant2 = ((Idea) associationEnds[1]).listSuggests().next().listIsAddressedBy().next();
+                        Object association = Model.getCoreFactory().buildAssociation(diagramElementsMap.get(associationParticipant1), diagramElementsMap.get(associationParticipant2));                       
+                        i.setId(UUID.randomUUID().toString()+"_"+Model.getFacade().getUUID(association).split(":")[3]);
+                        Fig newEdge = renderer.getFigEdgeFor(diag.getGraphModel(), diag.getLayer(), association, null);
+
+                        diag.add(newEdge);
+                        
+                        Model.getCoreHelper().setName(association, i.getHasText());
+                    }
+                }
             }
-            Model.getPump().startPumpingEvents();
             KuabaSubsystem.gateway.save(result, new File("designRationale/tempDrUnion.xml"));
             Main.initKuabaSubsystem(true, "designRationale/tempDrUnion.xml");
-//            Main.initKuabaSubsystem(true, null);
         }
-          
-        
-
-
-//        if (Model.getFacade().isAClassifier(target)) {
-//            Object ns = Model.getFacade().getNamespace(classifier);
-            
-
-            
-//        }
-        
-        //for future use
-//        Model.getPump().flushModelEvents();
-//        Model.getPump().stopPumpingEvents();
-//        Model.getPump().flushModelEvents();
-//        Project p = ProjectManager.getManager().getCurrentProject();
-//
-//        if (getValue("non-interactive") == null) {
-//            if (!ProjectBrowser.getInstance().askConfirmationAndSave()) {
-//                return;
-//            }
-//        }
-//
-//        ProjectBrowser.getInstance().clearDialogs();
-//        Designer.disableCritiquing();
-//        Designer.clearCritiquing();
-//        // clean the history
-//        TargetManager.getInstance().cleanHistory();
-//        p.remove();
-//        p = ProjectManager.getManager().makeEmptyProject();
-//        TargetManager.getInstance().setTarget(p.getDiagramList().get(0));
-//        Designer.enableCritiquing();
-//        Model.getPump().startPumpingEvents();
+        KuabaSubsystem.eventPump.startPumpingEvents();
     }
-    
+      
 }

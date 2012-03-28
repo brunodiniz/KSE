@@ -33,7 +33,6 @@ import org.argouml.taskmgmt.ProgressMonitor;
 import org.argouml.util.ArgoFrame;
 import org.tigris.gef.undo.UndoManager;
 
-import br.ucam.kuabaSubsystem.core.KuabaSubsystem;
 
 /**
  * The specialized SwingWorker used for saving projects

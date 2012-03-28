@@ -28,6 +28,7 @@ import org.argouml.uml.diagram.ui.ActionFindDesignRationale;
 import br.ucam.kuabaSubsystem.observers.KuabaEventPump;
 import br.ucam.kuabaSubsystem.observers.uml.ModelElementObserver;
 import br.ucam.kuabaSubsystem.util.MofHelper;
+import java.util.*;
 
 
 
@@ -37,7 +38,7 @@ import br.ucam.kuabaSubsystem.util.MofHelper;
  *
  * @author Thiago
  */
-public class ArgoUMLEventPumpAdapter implements KuabaEventPump {
+public class ArgoUMLEventPumpAdapter implements KuabaEventPump, PropertyChangeListener {
 	
 	private ModelEventPump eventPump;
 	private List<RefObject> visitedRefObjects = new ArrayList<RefObject>();
@@ -45,6 +46,8 @@ public class ArgoUMLEventPumpAdapter implements KuabaEventPump {
 	private Map<Object, List<PropertyChangeListener>> observersMap = 
 	    new HashMap<Object, List<PropertyChangeListener>>();
 	
+        private boolean stopped = false;
+        
 	/**
 	 * @param argoModel
 	 */
@@ -124,6 +127,42 @@ public class ArgoUMLEventPumpAdapter implements KuabaEventPump {
 	    if(listener != null)
 	        addModelElementObserver(listener, object);
 	}
+
+    public void startPumpingEvents() {
+//        Set keySet = observersMap.keySet();
+//        
+//        for (Object element : keySet) {
+//            List<PropertyChangeListener> list = observersMap.get(element);
+//            for (PropertyChangeListener pcl : list) {
+//                this.eventPump.addModelEventListener(pcl, element);
+//            }
+////            this.eventPump.addModelEventListener(this, element);
+//        }
+        stopped = false;
+    }
+
+    public void stopPumpingEvents() {
+//        Set keySet = observersMap.keySet();
+//        
+//        for (Object element : keySet) {
+//            List<PropertyChangeListener> list = observersMap.get(element);
+//            for (PropertyChangeListener pcl : list) {
+//                this.eventPump.removeModelEventListener(pcl, element);
+//            }
+////            this.eventPump.removeModelEventListener(this, element);
+//        }
+        stopped = true;
+    }
+
+    public void propertyChange(PropertyChangeEvent evt) {
+        if(stopped) return;
+        Object element = evt.getSource();
+        
+        List<PropertyChangeListener> list = observersMap.get(element);
+        for (PropertyChangeListener pcl : list) {
+            pcl.propertyChange(evt);
+        }
+    }
 	
 	
 	class ClassNameAddedListenerAdapter implements PropertyChangeListener{
@@ -160,12 +199,7 @@ public class ArgoUMLEventPumpAdapter implements KuabaEventPump {
        // modelElementListener = new ObserverAdapter(modelElementListener);
         if (this.observersMap.containsKey(element)) {
             Collection<PropertyChangeListener> listeners = this.observersMap.get(element);
-            for (PropertyChangeListener propertyChangeListener : listeners) {
-                if(propertyChangeListener.toString().equals(
-                        modelElementListener.toString())){
-                    return;
-                }
-            }
+            if(listeners.contains(modelElementListener)) return;
             this.observersMap.get(element).add(modelElementListener);
         }else{
             List<PropertyChangeListener> observers = new ArrayList<PropertyChangeListener>();
@@ -174,7 +208,8 @@ public class ArgoUMLEventPumpAdapter implements KuabaEventPump {
       
         }
         
-        this.eventPump.addModelEventListener(modelElementListener, element);
+//        this.eventPump.addModelEventListener(modelElementListener, element);
+        this.eventPump.addModelEventListener(this, element);
     }
 
     public PropertyChangeListener getObserver(Object element){
@@ -187,11 +222,12 @@ public class ArgoUMLEventPumpAdapter implements KuabaEventPump {
     }
     
     public void removeObservers(Object element) {
-        List<PropertyChangeListener> observers = this.observersMap.get(element);
-        for (PropertyChangeListener observer : observers) {
-            this.eventPump.removeModelEventListener(observer, element);
-        }
-        
+//        List<PropertyChangeListener> observers = this.observersMap.get(element);
+//        for (PropertyChangeListener observer : observers) {
+//            this.eventPump.removeModelEventListener(observer, element);
+            this.eventPump.removeModelEventListener(this, element);
+//        }
+        this.observersMap.remove(element);
     }   
     
 	
