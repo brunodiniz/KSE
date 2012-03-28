@@ -22,4 +22,6 @@ public interface KuabaEventPump {
 		//	PropertyChangeListener listener, Object element);
 	public PropertyChangeListener getObserver(Object element);
 	public void flush();
+        public void startPumpingEvents();
+        public void stopPumpingEvents();
 }
