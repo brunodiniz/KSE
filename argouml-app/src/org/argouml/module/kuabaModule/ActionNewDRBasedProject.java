@@ -101,70 +101,87 @@ public class ActionNewDRBasedProject extends AbstractAction {
                 Logger.getLogger(ActionNewDRBasedProject.class.getName()).log(Level.SEVERE, "Ontology file missing - Aborting");
                 return;
             }
-            Question root = result.getQuestion(Question.ROOT_QUESTION_ID);
             
-            ClassDiagramRenderer renderer = new ClassDiagramRenderer();
+            buildClassDiagram(diag, result);
             
-            Object ns = diag.getNamespace();
-            if (ns != null) {
-                int count = 0;
-                List<Idea> acceptedDomainIdeas = result.getAcceptedIdeas(root);
-                
-                Map<Idea, Object> diagramElementsMap = new HashMap<Idea, Object>();
-                
-                //creating classes on the diagram
-                for (Idea i: acceptedDomainIdeas) {
-                    Idea designIdea = KuabaHelper.getAcceptedDesignIdea(i, "Class");
-                    if(designIdea != null) {
-                        
-                        Object peer = Model.getCoreFactory().buildClass(i.getHasText(),ns);
-                        
-                        Fig f = renderer.getFigNodeFor(diag.getGraphModel(), diag.getLayer(), peer, null);
-                        f.setLocation(140*(count%3)+60, (int)(120*((count/3)+1)));
-                        count++;
-                        diagramElementsMap.put(designIdea, peer);
-
-                        i.setId(UUID.randomUUID().toString()+"_"+Model.getFacade().getUUID(peer).split(":")[3]);
-                        diag.add(f);              
-                        
-                        //adding the classes' attributes
-                        for (Idea i2: acceptedDomainIdeas) {
-                            Idea designIdea2 = KuabaHelper.getAcceptedDesignIdea(i2, "Attribute");
-                            if(designIdea2 != null && designIdea2.getSuggests().iterator().next().getIsAddressedBy().iterator().next().equals(designIdea)) {
-                                Project project = ProjectManager.getManager().getCurrentProject();
-                                Object attrType = project.getDefaultAttributeType();
-                                Object attr =
-                                    Model.getCoreFactory().buildAttribute2(
-                                        peer,
-                                        attrType);
-                                Model.getCoreHelper().setName(attr, i2.getHasText());
-                                i2.setId(UUID.randomUUID().toString()+"_"+Model.getFacade().getUUID(attr).split(":")[3]);
-                            }
-                        }
-                    }
-                }
-                
-                //creating associations on the diagram
-                for (Idea i: acceptedDomainIdeas) {
-                    Idea designIdea = KuabaHelper.getAcceptedDesignIdea(i, "Association");
-                    if(designIdea != null) {
-                        Object[] associationEnds = designIdea.listSuggests().next().getIsAddressedBy().toArray();
-                        Idea associationParticipant1 = ((Idea) associationEnds[0]).listSuggests().next().listIsAddressedBy().next();
-                        Idea associationParticipant2 = ((Idea) associationEnds[1]).listSuggests().next().listIsAddressedBy().next();
-                        Object association = Model.getCoreFactory().buildAssociation(diagramElementsMap.get(associationParticipant1), diagramElementsMap.get(associationParticipant2));                       
-                        i.setId(UUID.randomUUID().toString()+"_"+Model.getFacade().getUUID(association).split(":")[3]);
-                        Fig newEdge = renderer.getFigEdgeFor(diag.getGraphModel(), diag.getLayer(), association, null);
-
-                        diag.add(newEdge);
-                        
-                        Model.getCoreHelper().setName(association, i.getHasText());
-                    }
-                }
-            }
             KuabaSubsystem.gateway.save(result, new File("designRationale/tempDrUnion.xml"));
             Main.initKuabaSubsystem(true, "designRationale/tempDrUnion.xml");
         }
+        
         KuabaSubsystem.eventPump.startPumpingEvents();
+    }
+    
+    public void buildClassDiagram(ArgoDiagram diag, KuabaRepository unionResult) {
+        
+        Question root = unionResult.getQuestion(Question.ROOT_QUESTION_ID);
+            
+        ClassDiagramRenderer renderer = new ClassDiagramRenderer();
+
+        Object ns = diag.getNamespace();
+        if (ns != null) {
+            int count = 0;
+            List<Idea> acceptedDomainIdeas = unionResult.getAcceptedIdeas(root);
+
+            Map<Idea, Object> diagramElementsMap = new HashMap<Idea, Object>();
+
+            //creating classes on the diagram
+            for (Idea i: acceptedDomainIdeas) {
+                Idea designIdea = KuabaHelper.getAcceptedDesignIdea(i, "Class");
+                if(designIdea != null) {
+
+                    Object peer = Model.getCoreFactory().buildClass(i.getHasText(),ns);
+
+                    Fig f = renderer.getFigNodeFor(diag.getGraphModel(), diag.getLayer(), peer, null);
+                    f.setLocation(140*(count%3)+60, (int)(120*((count/3)+1)));
+                    count++;
+                    diagramElementsMap.put(designIdea, peer);
+
+                    i.setId(UUID.randomUUID().toString()+"_"+Model.getFacade().getUUID(peer).split(":")[3]);
+                    diag.add(f);              
+
+                    //adding the classes' attributes and operations
+                    for (Idea i2: acceptedDomainIdeas) {
+                        Idea designIdea2 = KuabaHelper.getAcceptedDesignIdea(i2, "Attribute");
+                        if(designIdea2 != null && designIdea2.listSuggests().next().listIsAddressedBy().next().equals(designIdea)) {
+                            Project project = ProjectManager.getManager().getCurrentProject();
+                            Object attrType = project.getDefaultAttributeType();
+                            Object attr =
+                                Model.getCoreFactory().buildAttribute2(
+                                    peer,
+                                    attrType);
+                            Model.getCoreHelper().setName(attr, i2.getHasText());
+                            i2.setId(UUID.randomUUID().toString()+"_"+Model.getFacade().getUUID(attr).split(":")[3]);
+                        } else {
+                            designIdea2 = KuabaHelper.getAcceptedDesignIdea(i2, "Operation");
+                            if(designIdea2 != null && designIdea2.listSuggests().next().listIsAddressedBy().next().equals(designIdea)) {
+                                Project project = ProjectManager.getManager().getCurrentProject();
+                                Object returnType = project.getDefaultReturnType();
+                                Object oper = Model.getCoreFactory().buildOperation(peer, returnType);
+                                Model.getCoreHelper().setName(oper, i2.getHasText());
+                                i2.setId(UUID.randomUUID().toString()+"_"+Model.getFacade().getUUID(oper).split(":")[3]);
+                            }   
+                        }
+                    }
+                }
+            }
+
+            //creating associations on the diagram
+            for (Idea i: acceptedDomainIdeas) {
+                Idea designIdea = KuabaHelper.getAcceptedDesignIdea(i, "Association");
+                if(designIdea != null) {
+                    Object[] associationEnds = designIdea.listSuggests().next().getIsAddressedBy().toArray();
+                    Idea associationParticipant1 = ((Idea) associationEnds[0]).listSuggests().next().listIsAddressedBy().next();
+                    Idea associationParticipant2 = ((Idea) associationEnds[1]).listSuggests().next().listIsAddressedBy().next();
+                    Object association = Model.getCoreFactory().buildAssociation(diagramElementsMap.get(associationParticipant1), diagramElementsMap.get(associationParticipant2));                       
+                    i.setId(UUID.randomUUID().toString()+"_"+Model.getFacade().getUUID(association).split(":")[3]);
+                    Fig newEdge = renderer.getFigEdgeFor(diag.getGraphModel(), diag.getLayer(), association, null);
+
+                    diag.add(newEdge);
+
+                    Model.getCoreHelper().setName(association, i.getHasText());
+                }
+            }
+        }
     }
       
 }
