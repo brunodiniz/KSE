@@ -57,6 +57,7 @@ import br.ucam.kuabaSubsystem.kuabaModel.Idea;
 import br.ucam.kuabaSubsystem.kuabaModel.Justification;
 import br.ucam.kuabaSubsystem.kuabaModel.Question;
 import br.ucam.kuabaSubsystem.repositories.KuabaRepository;
+import org.argouml.module.kuabaModule.ui.DRViewPanel;
 
 public class ActionFindDesignRationale extends UndoableAction {
     private RefObject value;
@@ -118,7 +119,7 @@ public class ActionFindDesignRationale extends UndoableAction {
 //                // TODO Auto-generated catch block
 //                JOptionPane.showMessageDialog(null, e.getStackTrace());
 //        }
-        KuabaGraph kg = new KuabaGraph(domainIdea.getRepository());
+        DRViewPanel drView = new DRViewPanel();
 //        UIMapViewFrame map = null;              
 //        try{
 //                map = new UIMapViewFrame(v);
@@ -127,7 +128,8 @@ public class ActionFindDesignRationale extends UndoableAction {
                 JFrame frame = new JFrame();
                 frame.setSize(700,590);
                 frame.setLocationRelativeTo(null);
-                frame.add(kg.generateSubGraph(domainIdea, true, true));
+                frame.add(drView);
+                drView.showIdeaDRView(domainIdea);
                 frame.setVisible(true);
 //                map.setVisible(true);
 //        }catch (Exception e) {

@@ -46,6 +46,7 @@ import com.compendium.ui.UIMapViewFrame;
 import br.ucam.kuabaSubsystem.core.KuabaSubsystem;
 import br.ucam.kuabaSubsystem.graph.KuabaGraph;
 import br.ucam.kuabaSubsystem.kuabaModel.Question;
+import org.argouml.module.kuabaModule.ui.DRViewPanel;
 
 public class ActionShowCompleteDesignRationale extends UndoableAction {
     
@@ -80,7 +81,7 @@ public class ActionShowCompleteDesignRationale extends UndoableAction {
 //                // TODO Auto-generated catch block
 //                JOptionPane.showMessageDialog(null, e.getStackTrace());
 //        }
-        KuabaGraph kg = new KuabaGraph(rootQuestion.getRepository());
+        DRViewPanel drView = new DRViewPanel();
 //        UIMapViewFrame map = null;              
 //        try{
 //                map = new UIMapViewFrame(v);
@@ -89,7 +90,8 @@ public class ActionShowCompleteDesignRationale extends UndoableAction {
                 JFrame frame = new JFrame();
                 frame.setSize(700,590);
                 frame.setLocationRelativeTo(null);
-                frame.add(kg.generateFullGraph(false, true, false, true));
+                frame.add(drView);
+                drView.showFullDRView(rootQuestion.getRepository());
                 frame.setVisible(true);
 //                map.setVisible(true);
 //        }catch (Exception e) {

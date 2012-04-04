@@ -29,6 +29,9 @@ import br.ucam.kuabaSubsystem.observers.KuabaEventPump;
 import br.ucam.kuabaSubsystem.observers.uml.ModelElementObserver;
 import br.ucam.kuabaSubsystem.util.MofHelper;
 import java.util.*;
+import javax.jmi.model.Association;
+import javax.swing.JOptionPane;
+import org.argouml.util.ArgoFrame;
 
 
 
@@ -47,6 +50,7 @@ public class ArgoUMLEventPumpAdapter implements KuabaEventPump, PropertyChangeLi
 	    new HashMap<Object, List<PropertyChangeListener>>();
 	
         private boolean stopped = false;
+        private Object lastSource = this;
         
 	/**
 	 * @param argoModel
@@ -156,6 +160,23 @@ public class ArgoUMLEventPumpAdapter implements KuabaEventPump, PropertyChangeLi
 
     public void propertyChange(PropertyChangeEvent evt) {
         if(stopped) return;
+
+        if(evt.getPropertyName().equals("ownedElement")){
+                RefObject refObject = (RefObject) evt.getNewValue();
+                //To compare the current source with the last source avoids spamming multiple "Enter the name of the created element:" boxes, since ArgoUML generate multiple (sometimes identical) events for each created element
+                String oldName = Model.getFacade().getName(refObject);
+                if(oldName == null) oldName = "";
+                if(oldName.equals("") && !refObject.equals(lastSource) && !refObject.refMetaObject().refGetValue("name").equals("Class")) {
+//                    Model.getPump().stopPumpingEvents();
+                    String newName = JOptionPane.showInputDialog(ArgoFrame.getInstance(),"Enter the name of the created element:");
+                    if(!newName.equals(""))
+                        Model.getCoreHelper().setName(refObject, newName);
+                    else
+                        lastSource = refObject;
+//                    Model.getPump().startPumpingEvents();
+                }
+        }
+        
         Object element = evt.getSource();
         
         List<PropertyChangeListener> list = observersMap.get(element);
