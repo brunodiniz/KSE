@@ -81,7 +81,7 @@ public class DRViewPanel extends javax.swing.JPanel {
         JInternalFrame graph;
         
         if(jToggleButton1.isSelected())
-            graph = kg.generateIdeasGraph(false, false, !jToggleButton2.isSelected());
+            graph = kg.generateIdeaOnlyGraph(false, false, !jToggleButton2.isSelected());
         else {
             if(subGraphMode)
                 graph = kg.generateSubGraph(rootIdea, true, !jToggleButton2.isSelected());

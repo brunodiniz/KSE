@@ -30,7 +30,9 @@ import br.ucam.kuabaSubsystem.observers.uml.ModelElementObserver;
 import br.ucam.kuabaSubsystem.util.MofHelper;
 import java.util.*;
 import javax.jmi.model.Association;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import org.argouml.module.kuabaModule.ui.ElementNameInputDialog;
 import org.argouml.util.ArgoFrame;
 
 
@@ -166,9 +168,11 @@ public class ArgoUMLEventPumpAdapter implements KuabaEventPump, PropertyChangeLi
                 //To compare the current source with the last source avoids spamming multiple "Enter the name of the created element:" boxes, since ArgoUML generate multiple (sometimes identical) events for each created element
                 String oldName = Model.getFacade().getName(refObject);
                 if(oldName == null) oldName = "";
-                if(oldName.equals("") && !refObject.equals(lastSource) && !refObject.refMetaObject().refGetValue("name").equals("Class")) {
+                if(oldName.equals("") && !refObject.equals(lastSource) && !refObject.refMetaObject().refGetValue("name").equals("Class") && !refObject.refMetaObject().refGetValue("name").equals("Interface")) {
 //                    Model.getPump().stopPumpingEvents();
-                    String newName = JOptionPane.showInputDialog(ArgoFrame.getInstance(),"Enter the name of the created element:");
+                    ElementNameInputDialog ened = new ElementNameInputDialog();
+                    ened.setVisible(true); //its a modal dialog by default, so it will only continue after the name is set
+                    String newName = ened.getEnteredName();              
                     if(!newName.equals(""))
                         Model.getCoreHelper().setName(refObject, newName);
                     else
