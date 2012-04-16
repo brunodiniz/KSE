@@ -78,7 +78,7 @@ public class DRUnionDecisionSetUpPanel extends javax.swing.JPanel {
         JInternalFrame graph;
         
         if(jToggleButton1.isSelected())
-            graph = kg.generateIdeasGraph(true, true, !jToggleButton2.isSelected());
+            graph = kg.generateIdeaOnlyGraph(true, true, !jToggleButton2.isSelected());
         else
             graph = kg.generateFullGraph(true, false, true, !jToggleButton2.isSelected());
         

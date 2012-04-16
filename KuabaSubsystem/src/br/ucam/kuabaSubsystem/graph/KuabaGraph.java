@@ -110,7 +110,7 @@ public class KuabaGraph {
         return generateGraph(decisionMaking, showOnlyAcceptedIdeas, false, preserveDecisions, showArguments);
     }
     
-    public JInternalFrame generateIdeasGraph(boolean decisionMaking, boolean preserveDecisions, boolean showArguments) {   
+    public JInternalFrame generateIdeaOnlyGraph(boolean decisionMaking, boolean preserveDecisions, boolean showArguments) {   
         return generateGraph(decisionMaking, false, true, preserveDecisions, showArguments);
     }
     
@@ -133,15 +133,16 @@ public class KuabaGraph {
 //            if (decisionMaking) graph.getViewPane().addMouseListener(new DecisionMakerPopup(graph));
             if (decisionMaking) {
                 DecisionMakerPopup popup = new DecisionMakerPopup(graph);
-//                graph.getViewPane().addMouseListener(popup);
+                graph.getViewPane().addMouseListener(popup);
                 
-                Vector<NodeSummary> vect = view.getMemberNodes();
+//                Vector<NodeSummary> vect = view.getMemberNodes();
+//                
+//                for (int x = 0; x<vect.size(); x++) {
+//                    UINode uinode = graph.getViewPane().getViewPaneUI().getUINode(vect.get(x).getId()); 
+//                    if(uinode.getType() == ICoreConstants.POSITION)
+//                        uinode.addMouseListener(popup);
+//                } 
                 
-                for (int x = 0; x<vect.size(); x++) {
-                    UINode uinode = graph.getViewPane().getViewPaneUI().getUINode(vect.get(x).getId()); 
-                    if(uinode.getType() == ICoreConstants.POSITION)
-                        uinode.addMouseListener(popup);
-                } 
             }
             
             graph.setClosable(false);
@@ -506,9 +507,59 @@ public class KuabaGraph {
     
 
 
+    //generic function to change the type of the "is addressed by" links that are associated to the selected nodes, the type must be specified on ICoreConstants
+    private void changeSelectedNodes(String linkType) {
+            Enumeration nodeEnum = graph.getViewPane().getSelectedNodes();
 
+            while (nodeEnum.hasMoreElements()) {
+                NodeSummary n = ((UINode) nodeEnum.nextElement()).getNode();
 
-    //classes do popup
+                //considering only Ideas
+                if (n.getType()!=ICoreConstants.POSITION) continue;
+
+                Vector<Link> linksForNode = graph.getView().getLinksForNode(n.getId());
+                
+                for(int x = 0; x<linksForNode.size(); x++) {
+                    Link l = linksForNode.get(x);
+
+                    if (l.getId().contains(KuabaGraph.IS_ADDRESSED_BY_ID_COMPONENT)) try {
+                        if (linkType.equals(ICoreConstants.EXPANDS_ON_LINK))
+                            if (showOnlyIdeas && l.getLabel().equals(""))
+                                l.setType(ICoreConstants.ABOUT_LINK);
+                            else
+                                l.setType(ICoreConstants.EXPANDS_ON_LINK);
+                        else
+                            l.setType(linkType);
+                    } catch (Exception ex) {
+                        Logger.getLogger(PopupAcceptSelectionAction.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+    }
+    
+    //generic function to change the type of the selected "is addressed by" links, the type must be specified on ICoreConstants
+    private void changeSelectedLinks(String linkType) {
+            Enumeration linkEnum = graph.getViewPane().getSelectedLinks();
+
+            while (linkEnum.hasMoreElements()) {
+                Link l = ((UILink) linkEnum.nextElement()).getLink();
+                
+                if (l.getId().contains(KuabaGraph.IS_ADDRESSED_BY_ID_COMPONENT)) try {
+                    if (linkType.equals(ICoreConstants.EXPANDS_ON_LINK))
+                        if (showOnlyIdeas && l.getLabel().equals(""))
+                            l.setType(ICoreConstants.ABOUT_LINK);
+                        else
+                            l.setType(ICoreConstants.EXPANDS_ON_LINK);
+                    else
+                        l.setType(linkType);
+                } catch (Exception ex) {
+                    Logger.getLogger(PopupAcceptSelectionAction.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+    }
+    
+
+    //popup classes
 
     class PopupAcceptSelectionAction extends AbstractAction {
 
@@ -519,50 +570,52 @@ public class KuabaGraph {
             this.map = map;
         }
 
-        private void acceptIdea(NodeSummary idea) {
-            Vector<Link> linksForNode = map.getView().getLinksForNode(idea.getId());
-
-                for(int x = 0; x<linksForNode.size(); x++) {
-                    Link l = linksForNode.get(x);
-
-                    if (l.getId().contains(KuabaGraph.IS_ADDRESSED_BY_ID_COMPONENT)) try {
-                        l.setType(ICoreConstants.SUPPORTS_LINK);
-                        acceptQuestion(l.getFrom());
-
-                    } catch (Exception ex) {
-                        Logger.getLogger(PopupAcceptSelectionAction.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-        }
-
-        private void acceptQuestion(NodeSummary question) {
-            if(question.getLabel().contains(Question.DOMAIN_QUESTION_TEXT_PREFIX)) {
-
-    //            String domainIdeaText = question.getLabel().substring(Question.DOMAIN_QUESTION_TEXT_PREFIX.length());
-    //            domainIdeaText = domainIdeaText.substring(0, domainIdeaText.length()-1);
-
-                Vector<Link> questionLinks = map.getView().getLinksForNode(question.getId());
-                for(int y = 0; y<questionLinks.size(); y++) {
-                    Link lnk = questionLinks.get(y);
-
-                    if (lnk.getLabel().equals(KuabaGraph.SUGGESTS_LABEL) && question.getLabel().contains(lnk.getFrom().getLabel()))
-                        acceptIdea(lnk.getFrom());
-                }
-            }
-        }
+//        private void acceptIdea(NodeSummary idea) {
+//            Vector<Link> linksForNode = map.getView().getLinksForNode(idea.getId());
+//
+//                for(int x = 0; x<linksForNode.size(); x++) {
+//                    Link l = linksForNode.get(x);
+//
+//                    if (l.getId().contains(KuabaGraph.IS_ADDRESSED_BY_ID_COMPONENT)) try {
+//                        l.setType(ICoreConstants.SUPPORTS_LINK);
+//                        acceptQuestion(l.getFrom());
+//
+//                    } catch (Exception ex) {
+//                        Logger.getLogger(PopupAcceptSelectionAction.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
+//                }
+//        }
+//
+//        private void acceptQuestion(NodeSummary question) {
+//            if(question.getLabel().contains(Question.DOMAIN_QUESTION_TEXT_PREFIX)) {
+//
+//                Vector<Link> questionLinks = map.getView().getLinksForNode(question.getId());
+//                for(int y = 0; y<questionLinks.size(); y++) {
+//                    Link lnk = questionLinks.get(y);
+//
+//                    if (lnk.getLabel().equals(KuabaGraph.SUGGESTS_LABEL) && question.getLabel().contains(lnk.getFrom().getLabel()))
+//                        acceptIdea(lnk.getFrom());
+//                }
+//            }
+//        }
 
         public void actionPerformed(ActionEvent e) {
 
-            Enumeration nodeEnum = map.getViewPane().getSelectedNodes();
-
-            while (nodeEnum.hasMoreElements()) {
-                NodeSummary n = ((UINode) nodeEnum.nextElement()).getNode();
-
-                //considering only Ideas
-                if (n.getType()!=ICoreConstants.POSITION) continue;
-                acceptIdea(n);
-
-            }
+            //old propagation implementation
+//            Enumeration nodeEnum = map.getViewPane().getSelectedNodes();
+//
+//            while (nodeEnum.hasMoreElements()) {
+//                NodeSummary n = ((UINode) nodeEnum.nextElement()).getNode();
+//
+//                //considering only Ideas
+//                if (n.getType()!=ICoreConstants.POSITION) continue;
+//                acceptIdea(n);
+//
+//            }
+            
+            //implementation without propagation
+//            changeSelectedNodes(ICoreConstants.SUPPORTS_LINK);
+            changeSelectedLinks(ICoreConstants.SUPPORTS_LINK);             
 
             map.getViewPane().setSelectedLink(null, ICoreConstants.DESELECTALL);
             map.getViewPane().setSelectedNode(null, ICoreConstants.DESELECTALL);
@@ -582,26 +635,8 @@ public class KuabaGraph {
 
         public void actionPerformed(ActionEvent e) {
 
-            Enumeration nodeEnum = map.getViewPane().getSelectedNodes();
-
-            while (nodeEnum.hasMoreElements()) {
-                NodeSummary n = ((UINode) nodeEnum.nextElement()).getNode();
-
-                //considering only Ideas
-                if (n.getType()!=ICoreConstants.POSITION) continue;
-
-                Vector<Link> linksForNode = map.getView().getLinksForNode(n.getId());
-
-                for(int x = 0; x<linksForNode.size(); x++) {
-                    Link l = linksForNode.get(x);
-
-                    if (l.getId().contains(KuabaGraph.IS_ADDRESSED_BY_ID_COMPONENT)) try {
-                        l.setType(ICoreConstants.OBJECTS_TO_LINK);
-                    } catch (Exception ex) {
-                        Logger.getLogger(PopupAcceptSelectionAction.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            }
+//            changeSelectedNodes(ICoreConstants.OBJECTS_TO_LINK);
+            changeSelectedLinks(ICoreConstants.OBJECTS_TO_LINK);
 
             map.getViewPane().setSelectedLink(null, ICoreConstants.DESELECTALL);
             map.getViewPane().setSelectedNode(null, ICoreConstants.DESELECTALL);
@@ -620,29 +655,8 @@ public class KuabaGraph {
 
         public void actionPerformed(ActionEvent e) {
 
-            Enumeration nodeEnum = map.getViewPane().getSelectedNodes();
-
-            while (nodeEnum.hasMoreElements()) {
-                NodeSummary n = ((UINode) nodeEnum.nextElement()).getNode();
-
-                //considering only Ideas
-                if (n.getType()!=ICoreConstants.POSITION) continue;
-
-                Vector<Link> linksForNode = map.getView().getLinksForNode(n.getId());
-
-                for(int x = 0; x<linksForNode.size(); x++) {
-                    Link l = linksForNode.get(x);
-
-                    if (l.getId().contains(KuabaGraph.IS_ADDRESSED_BY_ID_COMPONENT)) try {
-                        if (showOnlyIdeas)
-                            l.setType(ICoreConstants.ABOUT_LINK);
-                        else
-                            l.setType(ICoreConstants.EXPANDS_ON_LINK);
-                    } catch (Exception ex) {
-                        Logger.getLogger(PopupAcceptSelectionAction.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            }
+//            changeSelectedNodes(ICoreConstants.EXPANDS_ON_LINK);
+            changeSelectedLinks(ICoreConstants.EXPANDS_ON_LINK);
 
             map.getViewPane().setSelectedLink(null, ICoreConstants.DESELECTALL);
             map.getViewPane().setSelectedNode(null, ICoreConstants.DESELECTALL);
@@ -684,7 +698,8 @@ public class KuabaGraph {
         }
 
         private void maybeShowPopup(MouseEvent e) {
-            if (e.isPopupTrigger() && map.getViewPane().getNumberOfSelectedNodes() > 0) {
+//            if (e.isPopupTrigger() && map.getViewPane().getNumberOfSelectedNodes() > 0) {
+            if (e.isPopupTrigger() && map.getViewPane().getNumberOfSelectedLinks() > 0) {
                 popup.show(e.getComponent(),
                            e.getX(), e.getY());
             }
