@@ -22,6 +22,7 @@ import javax.swing.event.ListDataListener;
 public class DRUnionRepositoryChooserPanelDescriptor extends DRUnionWizardPanelDescriptor implements ListDataListener, PropertyChangeListener {
     
     public static final String IDENTIFIER = "REPOSITORY_CHOOSER_PANEL";
+    private static final int MIN_REPOSITORY_SELECTION = 1;
     
     public DRUnionRepositoryChooserPanelDescriptor() {
         super(IDENTIFIER, new DRUnionRepositoryChooserPanel());
@@ -32,7 +33,7 @@ public class DRUnionRepositoryChooserPanelDescriptor extends DRUnionWizardPanelD
     
     @Override
     public Object getNextPanelDescriptor() {
-        if(((DRUnionRepositoryChooserPanel) getPanelComponent()).getRepositoryListModel().size() < 2) return null; 
+        if(((DRUnionRepositoryChooserPanel) getPanelComponent()).getRepositoryListModel().size() < MIN_REPOSITORY_SELECTION) return null; 
         return DRUnionEquivalenceSetUpPanelDescriptor.IDENTIFIER;
     }
     
@@ -84,7 +85,7 @@ public class DRUnionRepositoryChooserPanelDescriptor extends DRUnionWizardPanelD
     
     private void updateNextFinishButton() {
         DRUnionRepositoryChooserPanel panel = (DRUnionRepositoryChooserPanel) getPanelComponent();
-        if (panel.getRepositoryListModel().size() >= 2 && panel.getBaseRepository() != null) 
+        if (panel.getRepositoryListModel().size() >= MIN_REPOSITORY_SELECTION && panel.getBaseRepository() != null) 
             getWizard().setNextFinishButtonEnabled(true);
         else
             getWizard().setNextFinishButtonEnabled(false);

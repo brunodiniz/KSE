@@ -133,6 +133,13 @@ public class KuabaProcessor {
         }
         
         if(previous!=null && !previous.equals(base)) previous.dispose();
+        //if just the base was passed, then return a copy of the base without decisions
+        if(base != null && result == null) {
+            result = base.copy();
+            for(Decision d : result.getAllDecisions()) {
+            d.remove();
+            }
+        }
         return result;
     }
     

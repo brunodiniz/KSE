@@ -143,8 +143,8 @@ public class DRUnionRepositoryChooserPanel extends javax.swing.JPanel {
                     repo = KuabaSubsystem.gateway.load("designRationale/"+fName+".xml");
                 
                 if (!repositoryListModel.contains(repo)) {
-                    repositoryListModel.addElement(repo);
                     if (base == null) setBase(repo);
+                    repositoryListModel.addElement(repo);
                 } else
                     JOptionPane.showMessageDialog(this, "There is already a repository with the same base URL on the list.");
             } catch (RepositoryLoadException ex) {
@@ -163,8 +163,8 @@ public class DRUnionRepositoryChooserPanel extends javax.swing.JPanel {
             try {
                 repo = KuabaSubsystem.gateway.load(result);
                 if (!repositoryListModel.contains(repo)) {
-                    repositoryListModel.addElement(repo);
                     if (base == null) setBase(repo);
+                    repositoryListModel.addElement(repo);
                 } else
                     JOptionPane.showMessageDialog(this, "There is already a repository with the same base URL on the list.");
             } catch (RepositoryLoadException ex) {
