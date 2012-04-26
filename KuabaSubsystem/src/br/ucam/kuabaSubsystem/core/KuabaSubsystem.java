@@ -103,9 +103,10 @@ public class KuabaSubsystem {
 		return instance;
 	}
         
-        public static boolean saveDRSession(File argoProjectFile) {
-//            File drFile = new File(argoProjectFile.getAbsolutePath()+".owl");
-            File drFile = new File("designRationale/"+argoProjectFile.getName()+".xml");
+        public static boolean saveDRSession(File designToolProjectFile) {
+            String noExtPath = designToolProjectFile.getAbsolutePath().substring(0, designToolProjectFile.getAbsolutePath().lastIndexOf('.'));
+            File drFile = new File(noExtPath+".xml");
+//            File drFile = new File("designRationale/"+argoProjectFile.getName()+".xml");
             return facade.saveSession(facade.modelRepository(), drFile);
 //            return gateway.save(facade.modelRepository(), drFile);
         }

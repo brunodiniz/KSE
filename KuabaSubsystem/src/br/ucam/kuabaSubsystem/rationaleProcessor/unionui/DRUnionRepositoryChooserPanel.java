@@ -13,11 +13,12 @@ package br.ucam.kuabaSubsystem.rationaleProcessor.unionui;
 import br.ucam.kuabaSubsystem.core.KuabaSubsystem;
 import br.ucam.kuabaSubsystem.repositories.KuabaRepository;
 import br.ucam.kuabaSubsystem.repositories.RepositoryLoadException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 /**
@@ -28,15 +29,19 @@ public class DRUnionRepositoryChooserPanel extends javax.swing.JPanel {
 
     public static final String BASE_PROPERTY = "BASE_PROPERTY";
     
-    private DefaultListModel<KuabaRepository> repositoryListModel;
+    private DefaultListModel<String> repositoryListModel;
+    private Map<String, KuabaRepository> repositoryMap;
     private KuabaRepository base;
+    private String baseText;
     
     /** Creates new form DRUnionRepositoryChooserPanel */
     public DRUnionRepositoryChooserPanel() {
         initComponents();
-        repositoryListModel = new DefaultListModel<KuabaRepository>();
+        repositoryListModel = new DefaultListModel<String>();
+        repositoryMap = new HashMap<String, KuabaRepository>();
         repositoryJList.setModel(repositoryListModel);
         base = null;
+        baseText = null;
     }
 
     /** This method is called from within the constructor to
@@ -137,14 +142,16 @@ public class DRUnionRepositoryChooserPanel extends javax.swing.JPanel {
             KuabaRepository repo;
             try {
                 String fName = jfc.getSelectedFile().getName();
-                if(fName.endsWith(".xml") || fName.endsWith(".owl")) //verificando se é um arquivo owl ou zargo - precisa melhorar, pois utiliza a localização da KSE
+                if(fName.endsWith(".xml") || fName.endsWith(".owl"))
                     repo = KuabaSubsystem.gateway.load(jfc.getSelectedFile().getAbsolutePath());
                 else
-                    repo = KuabaSubsystem.gateway.load("designRationale/"+fName+".xml");
+                    repo = KuabaSubsystem.gateway.load(jfc.getSelectedFile().getAbsolutePath().substring(0, jfc.getSelectedFile().getAbsolutePath().lastIndexOf('.')) +".xml");
                 
                 if (!repositoryListModel.contains(repo)) {
-                    if (base == null) setBase(repo);
-                    repositoryListModel.addElement(repo);
+                    String noExtFName = fName.substring(0, fName.lastIndexOf('.'));
+                    if (base == null) setBase(repo,noExtFName);
+                    repositoryMap.put(noExtFName, repo);
+                    repositoryListModel.addElement(noExtFName);
                 } else
                     JOptionPane.showMessageDialog(this, "There is already a repository with the same base URL on the list.");
             } catch (RepositoryLoadException ex) {
@@ -163,8 +170,9 @@ public class DRUnionRepositoryChooserPanel extends javax.swing.JPanel {
             try {
                 repo = KuabaSubsystem.gateway.load(result);
                 if (!repositoryListModel.contains(repo)) {
-                    if (base == null) setBase(repo);
-                    repositoryListModel.addElement(repo);
+                    if (base == null) setBase(repo,result);
+                    repositoryMap.put(result, repo);
+                    repositoryListModel.addElement(result);
                 } else
                     JOptionPane.showMessageDialog(this, "There is already a repository with the same base URL on the list.");
             } catch (RepositoryLoadException ex) {
@@ -180,10 +188,11 @@ public class DRUnionRepositoryChooserPanel extends javax.swing.JPanel {
         int[] selectedIndices = repositoryJList.getSelectedIndices();
         
         for (int x = 0; x<selectedIndices.length;x++) {
-            if(repositoryListModel.get(selectedIndices[x]-x).equals(base)) 
-                setBase(null);
+            if(base!=null && repositoryListModel.get(selectedIndices[x]-x).equals(baseText)) 
+                setBase(null, null);
             //remove must be after set base as null to trigger the event correctly
-            repositoryListModel.remove(selectedIndices[x]-x).dispose();
+            String tbr = repositoryListModel.remove(selectedIndices[x]-x);
+            repositoryMap.remove(tbr).dispose();
         }  
     }//GEN-LAST:event_RemoveButtonActionPerformed
 
@@ -193,7 +202,8 @@ public class DRUnionRepositoryChooserPanel extends javax.swing.JPanel {
         
         if (selection >= 0) {
             KuabaRepository old = base;
-            setBase(repositoryListModel.get(selection));
+            String newBaseText = repositoryListModel.get(selection);
+            setBase(repositoryMap.get(newBaseText),newBaseText);
             firePropertyChange(BASE_PROPERTY, old, base);
         }
     }//GEN-LAST:event_setBaseButtonActionPerformed
@@ -209,22 +219,27 @@ public class DRUnionRepositoryChooserPanel extends javax.swing.JPanel {
     private javax.swing.JButton setBaseButton;
     // End of variables declaration//GEN-END:variables
 
-    public DefaultListModel<KuabaRepository> getRepositoryListModel() {
+    protected DefaultListModel<String> getRepositoryListModel() {
         return repositoryListModel;
+    }
+
+    protected Map<String, KuabaRepository> getRepositoryMap() {
+        return repositoryMap;
     }
     
     public KuabaRepository getBaseRepository() {
         return base;
     }
     
-    private void setBase(KuabaRepository newBase) {
+    private void setBase(KuabaRepository newBase, String newBaseText) {
         base = newBase;
-        if (base != null) {
-            baseLabel.setText("Current Base: "+base.getUrl());
+        if (base == null) {
+            baseText = "Nothing";
         }
         else {
-            baseLabel.setText("Current Base: Nothing");
+            baseText = newBaseText;
         }
+        baseLabel.setText("Current Base: "+baseText);
     }
 
 }

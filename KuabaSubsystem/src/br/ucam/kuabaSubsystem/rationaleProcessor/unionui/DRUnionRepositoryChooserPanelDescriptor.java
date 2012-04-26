@@ -7,10 +7,7 @@ package br.ucam.kuabaSubsystem.rationaleProcessor.unionui;
 import br.ucam.kuabaSubsystem.repositories.KuabaRepository;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import javax.swing.DefaultListModel;
 import javax.swing.event.ListDataEvent;
 import javax.swing.event.ListDataListener;
@@ -44,22 +41,24 @@ public class DRUnionRepositoryChooserPanelDescriptor extends DRUnionWizardPanelD
     
     @Override
     public void aboutToDisplayPanel() {
-        Set<KuabaRepository> set = getWizardModel().getRepositorySet();
-        if(set != null) {
-            DefaultListModel<KuabaRepository> listModel = ((DRUnionRepositoryChooserPanel) getPanelComponent()).getRepositoryListModel();
-            listModel.removeAllElements();
-            for (KuabaRepository kr : set) {
-                listModel.addElement(kr);
-            }
-        }
+//        Set<KuabaRepository> set = getWizardModel().getRepositorySet();
+//        if(set != null) {
+//            Map<String, KuabaRepository> repoMap = ((DRUnionRepositoryChooserPanel) getPanelComponent()).getRepositoryMap();
+//            DefaultListModel<String> listModel = ((DRUnionRepositoryChooserPanel) getPanelComponent()).getRepositoryListModel();
+//            listModel.removeAllElements();
+//            for (KuabaRepository kr : set) {
+//                listModel.addElement(kr);
+//            }
+//        }
     }
     
     @Override
     public void aboutToHidePanel() {
-        DefaultListModel<KuabaRepository> listModel = ((DRUnionRepositoryChooserPanel) getPanelComponent()).getRepositoryListModel();
+        Map<String, KuabaRepository> repoMap = ((DRUnionRepositoryChooserPanel) getPanelComponent()).getRepositoryMap();
         Set<KuabaRepository> set = new HashSet<KuabaRepository>();
-        for (int x=0; x<listModel.size(); x++) {
-            set.add(listModel.get(x));
+        Set<String> keys = repoMap.keySet();
+        for (String key : keys) {
+            set.add(repoMap.get(key));
         }
         
         getWizardModel().setRepositorySet(((DRUnionRepositoryChooserPanel) getPanelComponent()).getBaseRepository(),set);
