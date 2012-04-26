@@ -1148,7 +1148,14 @@ public final class ProjectBrowser
                 // update all panes
                 TargetManager.getInstance().setTarget(p.getInitialTarget());
                 // update the kuaba subsystem
-                Main.initKuabaSubsystem(true, null);
+                URI projectUri = ProjectManager.getManager().getCurrentProject().getURI();
+                if (projectUri != null) {
+                    String path = (new File(projectUri)).getAbsolutePath();
+                    String noExtPath = path.substring(0, path.lastIndexOf('.'));
+                    Main.initKuabaSubsystem(true, noExtPath+".xml");
+                } else {
+                    Main.initKuabaSubsystem(true, null);
+                }
             }
             // TODO: Do we want to use the Project here instead of just its name?
             ArgoEventPump.fireEvent(new ArgoStatusEvent(
