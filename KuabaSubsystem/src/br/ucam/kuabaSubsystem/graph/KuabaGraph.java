@@ -4,6 +4,7 @@
  */
 package br.ucam.kuabaSubsystem.graph;
 
+import br.ucam.kuabaSubsystem.graph.util.KuabaGraphUtil;
 import br.ucam.kuabaSubsystem.kuabaModel.Argument;
 import br.ucam.kuabaSubsystem.kuabaModel.Decision;
 import br.ucam.kuabaSubsystem.kuabaModel.Idea;
@@ -24,18 +25,13 @@ import com.compendium.core.datamodel.services.ServiceManager;
 import com.compendium.ui.UILink;
 import com.compendium.ui.UIMapViewFrame;
 import com.compendium.ui.UINode;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.net.UnknownHostException;
 import java.sql.SQLException;
-import java.util.Collection;
-import java.util.Date;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-import java.util.Vector;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.AbstractAction;
@@ -59,6 +55,10 @@ public class KuabaGraph {
     protected static final String IS_ADDRESSED_BY_ID_COMPONENT = ":is_addressed_by:";
     protected static final String SUGGESTS_ID_COMPONENT = ":suggests:";
     protected static final String ARGUMENT_ID_COMPONENT = ":has_argument:";
+    
+    //GAP for tree mount
+    private static final int Y_GAP = 180;
+    private static final int X_GAP = 200;
     
     //
     private KuabaRepository source;
@@ -198,16 +198,18 @@ public class KuabaGraph {
         }
 
         Collection<Idea> addressedBy = question.getIsAddressedBy();
-        int count = -200;
+        int ideasNum = addressedBy.size();
+        int count = Math.round(x-((ideasNum-1)*200)/2);
         for (Idea idea : addressedBy){ 
                 Decision d = KuabaHelper.getDecision(question, idea);
                 String txt = question.getHasText(); 
                 if(txt.contains(Question.DOMAIN_QUESTION_TEXT_PREFIX) && showOnlyAcceptedIdeas){
                         if(d != null){
-                                count += 200;
+                                
                                 NodeSummary ideaNS = new NodeSummary();
                                 
-                                ideaNS = mountIdeaView(idea, x+ count + x, y+200, showOnlyAcceptedIdeas, showArguments);
+                                ideaNS = mountIdeaView(idea, count, y+Y_GAP, showOnlyAcceptedIdeas, showArguments);
+                                count += 200;
                                 
                                 if(d.getIsAccepted())
                                         try {
@@ -245,12 +247,13 @@ public class KuabaGraph {
                         }
                 }			
                 else{
-                        count += 200;
+                        
                         NodeSummary ideaNS = new NodeSummary();
                         if (showOnlyIdeas)
-                            ideaNS = mountIdeaOnlyView(idea, x+ count, y+200, showArguments);
+                            ideaNS = mountIdeaOnlyView(idea, count, y+Y_GAP, showArguments);
                         else
-                            ideaNS = mountIdeaView(idea, x+ count, y+200, showOnlyAcceptedIdeas, showArguments);
+                            ideaNS = mountIdeaView(idea, count, y+Y_GAP, showOnlyAcceptedIdeas, showArguments);
+                        count += 200;
                         if(d != null){					
                                 if(d.getIsAccepted())
                                         try {
@@ -345,11 +348,11 @@ public class KuabaGraph {
         }
 
         Collection<Question> suggests = idea.getSuggests();
-        int count = -(suggests.size() * 100);
+        int questionsNum = suggests.size();
+        int count = Math.round(x-((questionsNum-1) * 100)/2);
         for (Question question : suggests) {
-                count +=100;
                 Link l = new Link(ICoreConstants.RELATED_TO_LINK,
-                                node, mountQuestionView(question, x+count, y+ 200, showOnlyAcceptedIdeas,false, showArguments), SUGGESTS_LABEL, 
+                                node, mountQuestionView(question, count, y+ Y_GAP, showOnlyAcceptedIdeas,false, showArguments), SUGGESTS_LABEL, 
                                 ICoreConstants.ARROW_TO);
                 l.setId(idea.getId() + SUGGESTS_ID_COMPONENT + question.getId());
                 l.initialize(session, model);
@@ -359,6 +362,7 @@ public class KuabaGraph {
                 } catch (Exception ex) {
                         Logger.getLogger(KuabaGraph.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                count +=100;
         }
 
         return node;
@@ -454,6 +458,80 @@ public class KuabaGraph {
 
         return node;
     }
+    /*
+    private void organizeView(int startX, int startY) {
+        Question rootQuestion = source.getQuestion(Question.ROOT_QUESTION_ID);
+        Map<ReasoningElement, Integer> stageMap = KuabaGraphUtil.getReasoningElementStageMap(rootQuestion);
+        
+        Queue<ReasoningElement> q = new LinkedList<ReasoningElement>();
+        q.add(rootQuestion);
+        ReasoningElement currentFather = null;
+        int cont = 0;
+        HashMap<ReasoningElement, Integer> childNumMap = new HashMap<ReasoningElement, Integer>();
+        HashMap<ReasoningElement, ReasoningElement> fatherMap = new HashMap<ReasoningElement, ReasoningElement>();
+        childNumMap.put(rootQuestion, 1);
+        
+        while (!q.isEmpty()) {
+            ReasoningElement re = q.poll();
+            int x;
+            if(currentFather != null) {
+                if(!currentFather.equals(fatherMap.get(re))) {
+                    cont = 0;
+                    currentFather = fatherMap.get(re);
+                }
+                else
+                    cont++;
+
+                x=Math.round(view.getNodePosition(fatherMap.get(re).getId()).getXPos() -((childNumMap.get(fatherMap.get(re)) -1) * X_GAP)/2)+(cont*X_GAP); 
+            } else {
+                currentFather = re;
+                x=startX;
+            }
+            
+            int y=startY+((stageMap.get(re) -1)*Y_GAP);
+            
+            try {
+                view.setNodePosition(re.getId(), new Point(x, y));
+            } catch (NoSuchElementException ex) {
+                Logger.getLogger(KuabaGraph.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(KuabaGraph.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ModelSessionException ex) {
+                Logger.getLogger(KuabaGraph.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            if (re instanceof Question) {
+                Question question = (Question) re;
+                int elemNum = 0;
+                
+                for (Idea idea : question.getIsAddressedBy()){
+                    if (stageMap.get(idea) > stageMap.get(question)) {
+                        q.add(idea);
+                        fatherMap.put(idea, re);
+                        elemNum++;
+                        childNumMap.put(idea, elemNum);
+                    }
+                }
+                
+                childNumMap.put(re, elemNum);
+            }
+            else if (re instanceof Idea) {
+                Idea idea = (Idea) re;
+                int elemNum = 0;
+                
+                for (Question question : idea.getSuggests()){
+                    if (stageMap.get(question) > stageMap.get(idea)) {
+                        q.add(question);
+                        fatherMap.put(question, re);
+                        elemNum++;
+                        childNumMap.put(question, elemNum);
+                    }
+                }
+                
+                childNumMap.put(re, elemNum);
+            }
+        }
+    }*/
     
     private void refreshDecisions() {
         Enumeration<Link> linkEnum = view.getLinks();
