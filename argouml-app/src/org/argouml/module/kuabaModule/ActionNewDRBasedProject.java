@@ -13,10 +13,7 @@ import br.ucam.kuabaSubsystem.repositories.RepositoryLoadException;
 import br.ucam.kuabaSubsystem.util.KuabaHelper;
 import java.awt.event.ActionEvent;
 import java.io.File;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.AbstractAction;
@@ -28,8 +25,10 @@ import org.argouml.model.Model;
 import org.argouml.ui.ProjectBrowser;
 import org.argouml.ui.targetmanager.TargetManager;
 import org.argouml.uml.diagram.ArgoDiagram;
-import org.argouml.uml.diagram.static_structure.ui.ClassDiagramRenderer;
+import org.argouml.uml.diagram.static_structure.ClassDiagramGraphModel;
 import org.argouml.util.ArgoFrame;
+import org.tigris.gef.graph.GraphEdgeRenderer;
+import org.tigris.gef.graph.GraphNodeRenderer;
 import org.tigris.gef.presentation.Fig;
 
 /**
@@ -115,7 +114,8 @@ public class ActionNewDRBasedProject extends AbstractAction {
         
         Question root = unionResult.getQuestion(Question.ROOT_QUESTION_ID);
             
-        ClassDiagramRenderer renderer = new ClassDiagramRenderer();
+        GraphEdgeRenderer edgeRend = diag.getLayer().getGraphEdgeRenderer();
+        GraphNodeRenderer nodeRend = diag.getLayer().getGraphNodeRenderer();
 
         Object ns = diag.getNamespace();
         if (ns != null) {
@@ -131,12 +131,13 @@ public class ActionNewDRBasedProject extends AbstractAction {
 
                     Object peer = Model.getCoreFactory().buildClass(i.getHasText(),ns);
 
-                    Fig f = renderer.getFigNodeFor(diag.getGraphModel(), diag.getLayer(), peer, null);
+                    Fig f = nodeRend.getFigNodeFor(diag.getGraphModel(), diag.getLayer(), peer, Collections.EMPTY_MAP);
                     f.setLocation(140*(count%3)+60, (int)(120*((count/3)+1)));
                     count++;
                     diagramElementsMap.put(designIdea, peer);
 
                     i.setId(UUID.randomUUID().toString()+"_"+Model.getFacade().getUUID(peer).split(":")[3]);
+                    ((ClassDiagramGraphModel) diag.getGraphModel()).addNode(peer);
                     diag.add(f);              
 
                     //adding the classes' attributes and operations
@@ -174,7 +175,7 @@ public class ActionNewDRBasedProject extends AbstractAction {
                     Idea associationParticipant2 = ((Idea) associationEnds[1]).listSuggests().next().listIsAddressedBy().next();
                     Object association = Model.getCoreFactory().buildAssociation(diagramElementsMap.get(associationParticipant1), diagramElementsMap.get(associationParticipant2));                       
                     i.setId(UUID.randomUUID().toString()+"_"+Model.getFacade().getUUID(association).split(":")[3]);
-                    Fig newEdge = renderer.getFigEdgeFor(diag.getGraphModel(), diag.getLayer(), association, null);
+                    Fig newEdge = edgeRend.getFigEdgeFor(diag.getGraphModel(), diag.getLayer(), association, Collections.EMPTY_MAP);
 
                     diag.add(newEdge);
 
@@ -183,5 +184,5 @@ public class ActionNewDRBasedProject extends AbstractAction {
             }
         }
     }
-      
+    
 }

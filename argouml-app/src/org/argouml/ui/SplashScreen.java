@@ -53,7 +53,7 @@ public class SplashScreen extends JWindow implements IStatusBar {
      * The constructor.
      */
     public SplashScreen() {
-        this("Loading ArgoUML...", "Splash");
+        this("Loading KSE...", "Splash");
     }
 
     /**

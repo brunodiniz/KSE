@@ -248,7 +248,7 @@ public final class ProjectBrowser
      * TheInstance is filled.
      */
     private ProjectBrowser() {
-        this("ArgoUML", null, true, null);
+        this("KSE", null, true, null);
     }
 
     /**
@@ -412,7 +412,7 @@ public final class ProjectBrowser
      */
     public static ProjectBrowser makeInstance(SplashScreen splash,
             boolean mainApplication, JPanel leftBottomPane) {
-        return new ProjectBrowser("ArgoUML", splash, 
+        return new ProjectBrowser("KSE", splash, 
                 mainApplication, leftBottomPane);
     }
 
