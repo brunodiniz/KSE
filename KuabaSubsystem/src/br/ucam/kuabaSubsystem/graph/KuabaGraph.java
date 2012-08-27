@@ -58,7 +58,8 @@ public class KuabaGraph {
     
     //GAP for tree mount
     private static final int Y_GAP = 180;
-    private static final int X_GAP = 200;
+    private static final int X_START_GAP = 200;
+    private static final int X_GAP = 100;
     
     //
     private KuabaRepository source;
@@ -125,7 +126,9 @@ public class KuabaGraph {
         initializeGraph();
         
         try{
-            mountQuestionView(source.getQuestion(Question.ROOT_QUESTION_ID), 1000, 0, showOnlyAcceptedIdeas, showOnlyIdeas, showArguments);
+            Question root = source.getQuestion(Question.ROOT_QUESTION_ID);
+            int domainIdeasNum = root.getIsAddressedBy().size();
+            mountQuestionView(root, domainIdeasNum*110, 0, showOnlyAcceptedIdeas, showOnlyIdeas, showArguments);
             
             graph = new UIMapViewFrame(view);
             graph.setTitle(source.getUrl());
@@ -160,7 +163,7 @@ public class KuabaGraph {
         initializeGraph();
         
         try{
-            mountIdeaView(idea, 1000, 0, showOnlyAcceptedIdeas, showArguments);
+            mountIdeaView(idea, 300, 0, showOnlyAcceptedIdeas, showArguments);
             
             graph = new UIMapViewFrame(view);
             graph.setTitle(idea.getHasText());
@@ -196,10 +199,16 @@ public class KuabaGraph {
         } catch (Exception ex) {
                 Logger.getLogger(KuabaGraph.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        int xGap;
+        if(question.getId().equals(Question.ROOT_QUESTION_ID))
+            xGap = X_START_GAP;
+        else
+            xGap = X_GAP;
 
         Collection<Idea> addressedBy = question.getIsAddressedBy();
         int ideasNum = addressedBy.size();
-        int count = Math.round(x-((ideasNum-1)*200)/2);
+        int count = Math.round(x-((ideasNum-1)*xGap)/2);
         for (Idea idea : addressedBy){ 
                 Decision d = KuabaHelper.getDecision(question, idea);
                 String txt = question.getHasText(); 
@@ -209,7 +218,7 @@ public class KuabaGraph {
                                 NodeSummary ideaNS = new NodeSummary();
                                 
                                 ideaNS = mountIdeaView(idea, count, y+Y_GAP, showOnlyAcceptedIdeas, showArguments);
-                                count += 200;
+                                count += xGap;
                                 
                                 if(d.getIsAccepted())
                                         try {
@@ -253,7 +262,7 @@ public class KuabaGraph {
                             ideaNS = mountIdeaOnlyView(idea, count, y+Y_GAP, showArguments);
                         else
                             ideaNS = mountIdeaView(idea, count, y+Y_GAP, showOnlyAcceptedIdeas, showArguments);
-                        count += 200;
+                        count += xGap;
                         if(d != null){					
                                 if(d.getIsAccepted())
                                         try {
@@ -349,7 +358,7 @@ public class KuabaGraph {
 
         Collection<Question> suggests = idea.getSuggests();
         int questionsNum = suggests.size();
-        int count = Math.round(x-((questionsNum-1) * 100)/2);
+        int count = Math.round(x-((questionsNum-1) * X_GAP)/2);
         for (Question question : suggests) {
                 Link l = new Link(ICoreConstants.RELATED_TO_LINK,
                                 node, mountQuestionView(question, count, y+ Y_GAP, showOnlyAcceptedIdeas,false, showArguments), SUGGESTS_LABEL, 
@@ -362,7 +371,7 @@ public class KuabaGraph {
                 } catch (Exception ex) {
                         Logger.getLogger(KuabaGraph.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                count +=100;
+                count +=X_GAP;
         }
 
         return node;
@@ -420,14 +429,14 @@ public class KuabaGraph {
         }
 
         Collection<Question> suggests = idea.getSuggests();
-        int count = -(suggests.size() * 100);
+        int count = -(suggests.size() * X_GAP);
         for (Question question : suggests) {
-                count +=100;
+                count +=X_GAP;
                 Collection<Idea> isAddressedBy = question.getIsAddressedBy();
                 
                 for (Idea addressedIdea : isAddressedBy) {
                     Link l = new Link(ICoreConstants.ABOUT_LINK,
-                                    node, mountIdeaOnlyView(addressedIdea, x+count, y+ 200, showArguments), "", 
+                                    node, mountIdeaOnlyView(addressedIdea, x+count, y+ Y_GAP, showArguments), "", 
                                     ICoreConstants.ARROW_TO);
                     l.setId(question.getId() + IS_ADDRESSED_BY_ID_COMPONENT +addressedIdea.getId());
                     l.initialize(session, model);
@@ -452,7 +461,7 @@ public class KuabaGraph {
                     } catch (Exception ex) {
                             Logger.getLogger(KuabaGraph.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    count+=100;
+                    count+=X_GAP;
                 }
         }
 
