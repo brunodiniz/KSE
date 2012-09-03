@@ -59,37 +59,38 @@ public class ActionNewDRBasedProject extends AbstractAction {
      */
     public void actionPerformed(ActionEvent e) {
         
+        //"new" action (creating a new empty project)
+        Model.getPump().flushModelEvents();
+        Model.getPump().stopPumpingEvents();
+        Model.getPump().flushModelEvents();
+        Project p = ProjectManager.getManager().getCurrentProject();
+
+        if (getValue("non-interactive") == null) {
+            if (!ProjectBrowser.getInstance().askConfirmationAndSave()) {
+                return;
+            }
+        }
+
+        ProjectBrowser.getInstance().clearDialogs();
+        Designer.disableCritiquing();
+        Designer.clearCritiquing();
+        // clean the history
+        TargetManager.getInstance().cleanHistory();
+        p.remove();
+        p = ProjectManager.getManager().makeEmptyProject();
+        ArgoDiagram diag = p.getDiagramList().get(0);
+        TargetManager.getInstance().setTarget(diag);
+        Designer.enableCritiquing();
+        Model.getPump().startPumpingEvents();
+        // end of the "new" action
+        
+        //starting the wizard
         DRUnionWizard druWiz = new DRUnionWizard(ArgoFrame.getInstance());
         int ret = druWiz.showModalDialog();
         
         if (ret == DRUnionWizard.FINISH_RETURN_CODE) {
             KuabaRepository result = druWiz.getUnionResult();
             KuabaSubsystem.gateway.save(result, new File("designRationale/tempDrUnion.xml"));
-            
-            //"new" action (creating a new empty project)
-            Model.getPump().flushModelEvents();
-            Model.getPump().stopPumpingEvents();
-            Model.getPump().flushModelEvents();
-            Project p = ProjectManager.getManager().getCurrentProject();
-
-            if (getValue("non-interactive") == null) {
-                if (!ProjectBrowser.getInstance().askConfirmationAndSave()) {
-                    return;
-                }
-            }
-
-            ProjectBrowser.getInstance().clearDialogs();
-            Designer.disableCritiquing();
-            Designer.clearCritiquing();
-            // clean the history
-            TargetManager.getInstance().cleanHistory();
-            p.remove();
-            p = ProjectManager.getManager().makeEmptyProject();
-            ArgoDiagram diag = p.getDiagramList().get(0);
-            TargetManager.getInstance().setTarget(diag);
-            Designer.enableCritiquing();
-            Model.getPump().startPumpingEvents();
-            
             
             //begin of the creation of the class diagram
             KuabaSubsystem.eventPump.stopPumpingEvents();
