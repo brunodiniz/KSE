@@ -8,6 +8,7 @@ import br.ucam.kuabaSubsystem.rationaleProcessor.EquivalenceRuleManager;
 import br.ucam.kuabaSubsystem.rationaleProcessor.KuabaProcessor;
 import br.ucam.kuabaSubsystem.repositories.KuabaRepository;
 import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.SortedMap;
@@ -39,8 +40,11 @@ public class DRUnionDecisionSetUpPanelDescriptor extends DRUnionWizardPanelDescr
     }
 
     @Override
-    public void aboutToDisplayPanel() {     
-        ((DRUnionDecisionSetUpPanel) this.getPanelComponent()).setPreferredSize(new Dimension(800, 550));
+    public void aboutToDisplayPanel() {
+        Dimension tela = Toolkit.getDefaultToolkit().getScreenSize();
+        DRUnionDecisionSetUpPanel panel = (DRUnionDecisionSetUpPanel) this.getPanelComponent();
+        panel.setPreferredSize(new Dimension(((int)tela.getWidth())-35, ((int)tela.getHeight())-125));
+        this.getWizard().getDialog().setLocation(0, 0);
         this.getWizard().getDialog().pack();
     }
 

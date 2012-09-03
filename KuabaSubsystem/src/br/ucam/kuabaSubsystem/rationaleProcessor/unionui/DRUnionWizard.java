@@ -412,7 +412,7 @@ public class DRUnionWizard extends WindowAdapter implements PropertyChangeListen
         this.setCurrentPanel(DRUnionRepositoryChooserPanelDescriptor.IDENTIFIER);
 
         wizardDialog.setTitle("Design Rationale Integration Wizard");
-        wizardDialog.setResizable(false);
+        wizardDialog.setResizable(true);
     }
     
     private static Object getImage(String name) {
