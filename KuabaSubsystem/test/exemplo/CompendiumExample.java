@@ -81,7 +81,7 @@ public class CompendiumExample extends FunctionalTestCase {
                         KuabaGraph kg = new KuabaGraph(repo);
 			JFrame frame = new JFrame();
 			frame.setSize(600,600);
-			frame.add(kg.generateFullGraph(false, true, false, true));
+			frame.add(kg.generateFullGraph(false, true, false, true, false));
 			frame.setVisible(true);
 //			map.setVisible(true);
 		}catch (Exception e) {

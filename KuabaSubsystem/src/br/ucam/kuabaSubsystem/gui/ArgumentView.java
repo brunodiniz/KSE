@@ -10,6 +10,9 @@ import br.ucam.kuabaSubsystem.controller.ArgumentController;
 import br.ucam.kuabaSubsystem.controller.ArgumentViewController;
 import br.ucam.kuabaSubsystem.controller.InFavorArgumentController;
 import br.ucam.kuabaSubsystem.controller.ObjectsToArgumentController;
+import br.ucam.kuabaSubsystem.kuabaModel.Argument;
+import java.awt.event.ActionEvent;
+import javax.swing.AbstractAction;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 
@@ -19,6 +22,7 @@ import javax.swing.JPanel;
  */
 public class ArgumentView extends JDialog {
     private ArgumentViewController controller;
+    private String lastElement = "";
     /** Creates new form ArgumentView */
     public ArgumentView(ArgumentViewController controller) {
         initComponents();
@@ -133,7 +137,13 @@ public class ArgumentView extends JDialog {
         });
 
         argumentTextArea.setColumns(20);
-        argumentTextArea.setEditable(false);
+        argumentTextArea.setEditable(true);
+        argumentTextArea.setEnabled(false);
+        argumentTextArea.getActionMap().put(argumentTextArea.getInputMap().get(javax.swing.KeyStroke.getKeyStroke("ENTER")), new AbstractAction() {
+            public void actionPerformed(ActionEvent evt) {
+                argumentTextUpdate(evt);
+            }
+        });
         argumentTextArea.setRows(5);
         jScrollPane1.setViewportView(argumentTextArea);
 
@@ -206,18 +216,35 @@ public class ArgumentView extends JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void argumentTextUpdate(ActionEvent evt) {       
+        Argument arg =null;
+        
+        for (Argument a : this.controller.getInFavoridea()[0].getHasArgument()) {
+            if (a.getHasText().equals(lastElement)) arg = a;
+        }
+        
+        if (arg != null) {
+            arg.setHasText(argumentTextArea.getText());
+        }
+        this.refresh();
+    }
+    
     private void inFavorTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inFavorTableMouseClicked
         int row = this.inFavorTable.getSelectedRow();
         String item = this.controller.getInFavorElement(row, 0);
+        lastElement = item;
         this.argumentTextArea.setText("");
         this.argumentTextArea.setText(item);
+        this.argumentTextArea.setEnabled(true);
     }//GEN-LAST:event_inFavorTableMouseClicked
 
     private void ObjectsToTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ObjectsToTableMouseClicked
         int row = this.ObjectsToTable.getSelectedRow();
         String item = this.controller.getObjectsToElement(row, 0);
+        lastElement = item;
         this.argumentTextArea.setText("");
         this.argumentTextArea.setText(item);
+        this.argumentTextArea.setEnabled(true);
     }//GEN-LAST:event_ObjectsToTableMouseClicked
 
     private void newInFavorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newInFavorButtonActionPerformed
@@ -243,6 +270,9 @@ public class ArgumentView extends JDialog {
         this.ObjectsToTable.setModel(this.controller.getObjectsToTableModel());
         this.controller.insertInFavorArguments();
         this.controller.insertObjectsToArguments();
+        this.argumentTextArea.setText("");
+        this.argumentTextArea.setEnabled(false);
+        lastElement = "";
     }
     /**
      * @param args the command line arguments

@@ -299,7 +299,7 @@ public class ProcessorTest extends FunctionalTestCase implements ActionListener,
                 JFrame frame = new JFrame();
                 frame.setSize(700,590);
                 frame.setLocationRelativeTo(null);
-                frame.add(kg.generateFullGraph(true, false, true, true));
+                frame.add(kg.generateFullGraph(true, false, true, true, false));
                 frame.setVisible(true);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //                map.setVisible(true);
@@ -336,7 +336,7 @@ public class ProcessorTest extends FunctionalTestCase implements ActionListener,
                 JFrame frame = new JFrame();
                 frame.setSize(700,590);
                 frame.setLocationRelativeTo(null);
-                frame.add(kg.generateFullGraph(true, false, true, true));
+                frame.add(kg.generateFullGraph(true, false, true, true, false));
                 frame.setVisible(true);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             

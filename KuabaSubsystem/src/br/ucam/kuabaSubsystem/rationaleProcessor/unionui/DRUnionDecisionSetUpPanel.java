@@ -13,8 +13,13 @@ package br.ucam.kuabaSubsystem.rationaleProcessor.unionui;
 import br.ucam.kuabaSubsystem.graph.KuabaGraph;
 import br.ucam.kuabaSubsystem.repositories.KuabaRepository;
 import java.awt.BorderLayout;
+import java.awt.Dialog;
 import java.awt.Dimension;
+import javax.swing.JComponent;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -23,12 +28,20 @@ import javax.swing.JInternalFrame;
 public class DRUnionDecisionSetUpPanel extends javax.swing.JPanel {
 
     private KuabaGraph kg = null;
-    private JInternalFrame drGraph = null;
+    private JComponent drGraph = null;
+    private JDialog legendDialog = new JDialog();
     
     
     /** Creates new form DRUnionDecisionSetUpPanel */
     public DRUnionDecisionSetUpPanel() {
         initComponents();
+        legendDialog.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        legendDialog.add(KuabaGraph.generateGraphLegend());
+        legendDialog.setLocationRelativeTo(this);
+        legendDialog.setResizable(false);
+        legendDialog.setTitle("Legend");
+        legendDialog.setSize(410, 380);
+        legendDialog.setModalExclusionType(Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
     }
 
     /** This method is called from within the constructor to
@@ -46,6 +59,10 @@ public class DRUnionDecisionSetUpPanel extends javax.swing.JPanel {
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         jToggleButton2 = new javax.swing.JToggleButton();
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        jToggleButton3 = new javax.swing.JToggleButton();
+        filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        jButton1 = new javax.swing.JButton();
+        filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
 
         setLayout(new java.awt.BorderLayout());
 
@@ -70,17 +87,35 @@ public class DRUnionDecisionSetUpPanel extends javax.swing.JPanel {
         jPanel1.add(jToggleButton2);
         jPanel1.add(filler3);
 
+        jToggleButton3.setText(org.openide.util.NbBundle.getMessage(DRUnionDecisionSetUpPanel.class, "DRUnionDecisionSetUpPanel.jToggleButton3.text")); // NOI18N
+        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jToggleButton3);
+        jPanel1.add(filler5);
+
+        jButton1.setText(org.openide.util.NbBundle.getMessage(DRUnionDecisionSetUpPanel.class, "DRUnionDecisionSetUpPanel.jButton1.text")); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1);
+        jPanel1.add(filler4);
+
         add(jPanel1, java.awt.BorderLayout.PAGE_START);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         
-        JInternalFrame graph;
+        JComponent graph;
         
         if(jToggleButton1.isSelected())
-            graph = kg.generateIdeaOnlyGraph(true, true, !jToggleButton2.isSelected());
+            graph = kg.generateIdeaOnlyGraph(true, true, !jToggleButton2.isSelected(), jToggleButton3.isSelected());
         else
-            graph = kg.generateFullGraph(true, false, true, !jToggleButton2.isSelected());
+            graph = kg.generateFullGraph(true, false, true, !jToggleButton2.isSelected(), jToggleButton3.isSelected());
         
         setDrGraph(graph);
         
@@ -92,27 +127,43 @@ public class DRUnionDecisionSetUpPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        legendDialog.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
+        
+        jToggleButton1ActionPerformed(evt);
+        
+    }//GEN-LAST:event_jToggleButton3ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
+    private javax.swing.Box.Filler filler4;
+    private javax.swing.Box.Filler filler5;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JToggleButton jToggleButton3;
     // End of variables declaration//GEN-END:variables
 
     public void showDecisionMakingGraph(KuabaRepository source) {
         kg = new KuabaGraph(source);
-        setDrGraph(kg.generateFullGraph(true,false,false,true));
+        setDrGraph(kg.generateFullGraph(true,false,false,true,false));
     }
     
-    private void setDrGraph(JInternalFrame newView) {
+    private void setDrGraph(JComponent newView) {
         if(drGraph != null)
             this.remove(drGraph);
         
         drGraph = newView;
         
         this.add(drGraph, BorderLayout.CENTER);
+        this.getParent().setVisible(false);
+        this.getParent().setVisible(true);
     }
     
     public void applyDecisions() {
