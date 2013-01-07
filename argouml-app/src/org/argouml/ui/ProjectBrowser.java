@@ -1429,7 +1429,7 @@ public final class ProjectBrowser
             project.preSave();
             persister.save(project, file);
             project.postSave();
-            
+
             KuabaSubsystem.saveDRSession(file);
 
             ArgoEventPump.fireEvent(new ArgoStatusEvent(

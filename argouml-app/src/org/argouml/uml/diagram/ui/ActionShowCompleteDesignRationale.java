@@ -24,29 +24,12 @@
 
 package org.argouml.uml.diagram.ui;
 
-import java.awt.event.ActionEvent;
-import java.net.UnknownHostException;
-import java.sql.SQLException;
-import java.util.Date;
-
-import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
-import javax.swing.JOptionPane;
-
-import org.argouml.ui.UndoableAction;
-
-import com.compendium.core.ICoreConstants;
-import com.compendium.core.datamodel.Link;
-import com.compendium.core.datamodel.ModelSessionException;
-import com.compendium.core.datamodel.NodeSummary;
-import com.compendium.core.datamodel.PCSession;
-import com.compendium.core.datamodel.View;
-import com.compendium.ui.UIMapViewFrame;
-
 import br.ucam.kuabaSubsystem.core.KuabaSubsystem;
-import br.ucam.kuabaSubsystem.graph.KuabaGraph;
 import br.ucam.kuabaSubsystem.kuabaModel.Question;
+import java.awt.event.ActionEvent;
+import javax.swing.JFrame;
 import org.argouml.module.kuabaModule.ui.DRViewPanel;
+import org.argouml.ui.UndoableAction;
 
 public class ActionShowCompleteDesignRationale extends UndoableAction {
     

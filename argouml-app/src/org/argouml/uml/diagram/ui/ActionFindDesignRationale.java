@@ -24,40 +24,16 @@
 
 package org.argouml.uml.diagram.ui;
 
+import br.ucam.kuabaSubsystem.core.KuabaSubsystem;
+import br.ucam.kuabaSubsystem.kuabaModel.Idea;
+import br.ucam.kuabaSubsystem.repositories.KuabaRepository;
 import java.awt.event.ActionEvent;
-import java.net.UnknownHostException;
-import java.sql.SQLException;
-import java.util.Date;
 import java.util.List;
-
 import javax.jmi.reflect.RefObject;
 import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
-import javax.swing.JOptionPane;
-
-import org.apache.log4j.MDC;
 import org.argouml.model.Model;
-import org.argouml.ui.UndoableAction;
-
-import com.compendium.core.ICoreConstants;
-import com.compendium.core.datamodel.Link;
-import com.compendium.core.datamodel.ModelSessionException;
-import com.compendium.core.datamodel.NodeSummary;
-import com.compendium.core.datamodel.PCSession;
-import com.compendium.core.datamodel.View;
-import com.compendium.ui.UIMapViewFrame;
-
-import br.ucam.kuabaSubsystem.controller.ArgumentViewController;
-import br.ucam.kuabaSubsystem.controller.JustificationViewController;
-import br.ucam.kuabaSubsystem.core.KuabaSubsystem;
-import br.ucam.kuabaSubsystem.graph.KuabaGraph;
-import br.ucam.kuabaSubsystem.gui.JustificationView;
-import br.ucam.kuabaSubsystem.kuabaModel.Decision;
-import br.ucam.kuabaSubsystem.kuabaModel.Idea;
-import br.ucam.kuabaSubsystem.kuabaModel.Justification;
-import br.ucam.kuabaSubsystem.kuabaModel.Question;
-import br.ucam.kuabaSubsystem.repositories.KuabaRepository;
 import org.argouml.module.kuabaModule.ui.DRViewPanel;
+import org.argouml.ui.UndoableAction;
 
 public class ActionFindDesignRationale extends UndoableAction {
     private RefObject value;

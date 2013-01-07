@@ -58,7 +58,7 @@ public class ActionNewDRBasedProject extends AbstractAction {
      * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
      */
     public void actionPerformed(ActionEvent e) {
-        
+
         //"new" action (creating a new empty project)
         Model.getPump().flushModelEvents();
         Model.getPump().stopPumpingEvents();
