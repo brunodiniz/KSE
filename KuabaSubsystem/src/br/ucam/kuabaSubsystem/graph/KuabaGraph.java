@@ -64,6 +64,7 @@ public class KuabaGraph {
     protected static final String SUGGESTS_STYLE = "Suggests";
     protected static final String OBJECTS_TO_STYLE = "ObjectsTo";
     protected static final String IN_FAVOR_OF_STYLE = "InFavorOf";
+    protected static final String TREE_BOX_STYLE = "TreeBox";
     
     //GAP for tree mount
     private static final int Y_GAP = 180;
@@ -82,6 +83,7 @@ public class KuabaGraph {
     private mxGraphComponent graphComp = null;
     
     private Set<Double> collisionControlSet= new HashSet<Double>();
+    private double longestTreeEndPos = 0; // used to ensure that the edge routing do not make edges crossing larger trees
 
     
     public KuabaGraph(KuabaRepository source) {
@@ -227,7 +229,7 @@ public class KuabaGraph {
                     return node;
 
                 if (question.getId().equals(Question.ROOT_QUESTION_ID)) {
-                    desc = (mxCell) graph.insertVertex(parent, null, null, count, y+Y_GAP, 80, 30,"fillColor=#EEEEEE");
+                    desc = (mxCell) graph.insertVertex(parent, null, idea.getHasText(), count, y+Y_GAP, 80, 30,TREE_BOX_STYLE+";noLabel=1");
                 }
 
                 mxCell ideaNS;
@@ -431,8 +433,8 @@ public class KuabaGraph {
         }
     }
     
-    //identify the pendent links control points and set them
-    private void setPendentLinkControlPoints(mxCell edge, boolean isHorizontal) {
+    //identify the pendent links control points, and do the edge routing
+    protected void setPendentLinkControlPoints(mxCell edge, boolean isHorizontal) {
         if (!edge.isEdge()) {
             return;
         }
@@ -444,20 +446,12 @@ public class KuabaGraph {
         List<mxPoint> pl = new LinkedList<mxPoint>();
         
         if (isHorizontal) {
-            double srcWidthX = graph.getView().getState(src).getX() + src.getGeometry().getWidth();
-            double tgtWidthX = graph.getView().getState(tgt).getX() + tgt.getGeometry().getWidth();
+
+            ctrlY = graph.getView().getState(src).getCenterY();
+            ctrlY2 = graph.getView().getState(tgt).getCenterY();
+
+            ctrlX = CONTROL_POINTS_OFFSET + longestTreeEndPos; 
             
-            if (srcWidthX > tgtWidthX) {
-                ctrlX = srcWidthX + CONTROL_POINTS_OFFSET;
-                ctrlY = graph.getView().getState(src).getCenterY();
-                ctrlY2 = graph.getView().getState(tgt).getCenterY();   
-            } else {
-                ctrlX = tgtWidthX + CONTROL_POINTS_OFFSET;
-                ctrlY = graph.getView().getState(tgt).getCenterY();
-                ctrlY2 = graph.getView().getState(src).getCenterY();
-            }
-            
-//            if(collisionControlPoint!=-1 && Math.abs(ctrlX-collisionControlPoint)<=(CONTROL_POINTS_OFFSET/2)) {
             while(collisionControlSet.contains(ctrlX)) {
                 ctrlX+=CONTROL_POINTS_OFFSET/2;
             }
@@ -475,20 +469,12 @@ public class KuabaGraph {
             }
         } 
         else {
-            double srcHeightY = graph.getView().getState(src).getY() + src.getGeometry().getHeight();
-            double tgtHeightY = graph.getView().getState(tgt).getY() + tgt.getGeometry().getHeight();
             
-            if (srcHeightY > tgtHeightY) {
-                ctrlY = srcHeightY + CONTROL_POINTS_OFFSET;
-                ctrlX = graph.getView().getState(src).getCenterX();
-                ctrlX2 = graph.getView().getState(tgt).getCenterX();
-            } else {
-                ctrlY = tgtHeightY + CONTROL_POINTS_OFFSET;
-                ctrlX = graph.getView().getState(tgt).getCenterX();
-                ctrlX2 = graph.getView().getState(src).getCenterX();
-            }
+            ctrlX = graph.getView().getState(src).getCenterX();
+            ctrlX2 = graph.getView().getState(tgt).getCenterX();
             
-//            if(collisionControlPoint!=-1 && Math.abs(ctrlY-collisionControlPoint)<=(CONTROL_POINTS_OFFSET/2)) {
+            ctrlY = CONTROL_POINTS_OFFSET + longestTreeEndPos;
+            
             while(collisionControlSet.contains(ctrlY)) {
                 ctrlY+=CONTROL_POINTS_OFFSET/2;
             }
@@ -607,7 +593,7 @@ public class KuabaGraph {
     
     public static void main(String[] args) {
         
-        boolean isHorizontal = true;
+        boolean isHorizontal = false;
         
         KuabaRepository repo = TemplateGenerator.generate(OwlApiFileGateway.getInstance(), null);
         KuabaGraph kg = new KuabaGraph(repo);
@@ -717,6 +703,35 @@ public class KuabaGraph {
         style.put(mxConstants.STYLE_DASHED, true); 
         style.put(mxConstants.STYLE_VERTICAL_ALIGN,mxConstants.ALIGN_BOTTOM); 
         stylesheet.putCellStyle(IN_FAVOR_OF_STYLE, style);
+        
+        style = new HashMap<String, Object>();
+        style.put(mxConstants.STYLE_OPACITY, 100);
+        style.put(mxConstants.STYLE_SPACING, "12"); 
+        style.put(mxConstants.STYLE_FILLCOLOR, "#EEEEEE");
+        style.put(mxConstants.STYLE_FONTSIZE, 13);
+//        style.put(mxConstants.STYLE_, 13);
+        style.put(mxConstants.STYLE_VERTICAL_ALIGN,mxConstants.ALIGN_TOP); 
+        stylesheet.putCellStyle(TREE_BOX_STYLE, style);
+    }
+    
+    private double getLongestTreeEndPos(mxCell parent, boolean isHorizontal) {
+        double resp = 0;
+        
+        for (int x = 0; x<parent.getChildCount();x++) {
+            mxICell child = parent.getChildAt(x);
+            if (child.getStyle().contains(TREE_BOX_STYLE)) {
+                double v;
+                if (isHorizontal) {
+                    v = graph.getView().getState(child).getX() + child.getGeometry().getWidth();
+                }
+                else {
+                    v = graph.getView().getState(child).getY() + child.getGeometry().getHeight();
+                }
+                if (v > resp) resp = v;
+            }
+        }
+        
+        return resp;
     }
     
     private mxGraphComponent mountFullGraph(boolean showOnlyAcceptedIdeas, boolean showOnlyIdeas, boolean showArguments, boolean isHorizontal) {
@@ -737,7 +752,7 @@ public class KuabaGraph {
         graph.setCellsBendable(false);
         graph.setAutoSizeCells(true);
 //        graph.setResetEdgesOnMove(true);
-//        graph.addListener("moveCells", new teste());
+        graph.addListener(null, new KuabaGraphController(this, isHorizontal));
         applyStylesheet(graph);
         
         mxCell parent = (mxCell) graph.getDefaultParent();
@@ -784,6 +799,7 @@ public class KuabaGraph {
         graph.getModel().beginUpdate();
         try
         {
+            longestTreeEndPos = getLongestTreeEndPos(parent, isHorizontal); //used when routing the pendent links
             mountPendentLinks(showOnlyIdeas, isHorizontal);
             mountArguments();
         }
@@ -798,13 +814,5 @@ public class KuabaGraph {
 
         return graphComponent;
     }
-    
-//    class teste implements mxEventSource.mxIEventListener {
-//
-//        public void invoke(Object sender, mxEventObject evt) {
-//            System.out.println("obj = "+ sender);
-//            System.out.println("evt = "+ evt.getName());
-//        }
-//        
-//    }
+   
 }

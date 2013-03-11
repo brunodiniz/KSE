@@ -39,7 +39,7 @@ public class DecisionMakerPopup extends MouseAdapter {
         menuItem = new JMenuItem("Reject Selection");
         menuItem.setAction(new DecisionMakerPopup.PopupRejectSelectionAction());
         popup.add(menuItem);
-        menuItem = new JMenuItem("Clear Decisions");
+        menuItem = new JMenuItem("Clear Decision");
         menuItem.setAction(new DecisionMakerPopup.PopupClearDecisionsAction());
         popup.add(menuItem);
     }
