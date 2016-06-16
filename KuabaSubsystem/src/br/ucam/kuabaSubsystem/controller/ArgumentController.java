@@ -40,8 +40,7 @@ public abstract class ArgumentController extends AbstractController {
     protected HashMap<Idea, Question> inFavorIdeaHash = null;
     protected HashMap<Idea, Question> againstIdeaHash = null;
     
-    public ArgumentController(Idea[] inFavoridea,
-			Idea objectsToIdea[], Question consideredQuestion) {				
+    public ArgumentController(Idea[] inFavoridea,Idea objectsToIdea[], Question consideredQuestion) {				
 		this(inFavoridea, objectsToIdea);
 		this.consideredQuestion = consideredQuestion;
         
@@ -54,11 +53,9 @@ public abstract class ArgumentController extends AbstractController {
     }
     public ArgumentController(Idea[] inFavoridea, Idea[] objectsToIdea){
     	this.inFavoridea = inFavoridea;
-		this.objectsToIdea = objectsToIdea;		
-		this.inFavorTableModel.setColumnIdentifiers(
-        		new String[]{"In Favor Arguments"});
-        this.objectsToTableModel.setColumnIdentifiers(
-        		new String[]{"Objects To Arguments"});
+        this.objectsToIdea = objectsToIdea;		
+	this.inFavorTableModel.setColumnIdentifiers(new String[]{"In Favor Arguments"});
+        this.objectsToTableModel.setColumnIdentifiers(new String[]{"Objects To Arguments"});
     }
 
     

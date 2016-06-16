@@ -6,12 +6,12 @@
 package br.ucam.kuabaSubsystem.controller;
 
 import java.util.List;
-
-import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 import br.ucam.kuabaSubsystem.kuabaModel.Argument;
 import br.ucam.kuabaSubsystem.kuabaModel.Justification;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
 
 /**
  *
@@ -78,5 +78,13 @@ public abstract class JustificationController extends AbstractController{
                 row, column);
         return element;
     }
-    public abstract JFrame render();
+    
+    public JDialog render() {
+        JDialog jv  = this.getView();
+        ViewRenderer.addDialogToRender(jv);
+        return jv;
+        
+    }
+    
+    public abstract JDialog getView();
 }

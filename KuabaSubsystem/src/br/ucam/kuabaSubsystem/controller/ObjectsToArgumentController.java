@@ -11,19 +11,27 @@ import br.ucam.kuabaSubsystem.kuabaModel.ReasoningElement;
 
 public class ObjectsToArgumentController extends ArgumentController {
 
+        private String text;
 	
-	public ObjectsToArgumentController(Idea[] inFavoridea, Idea[] objectsToIdea, 
-			Question considereQuestion) {
+	public ObjectsToArgumentController(Idea[] inFavoridea, Idea[] objectsToIdea,Question considereQuestion) {
 		super(inFavoridea, objectsToIdea, considereQuestion);
 	}
 	public ObjectsToArgumentController(Idea[] inFavoridea, Idea[] objectsToIdea){
 		super(inFavoridea, objectsToIdea);
 	}
+        
+        public ObjectsToArgumentController(Idea[] inFavoridea, Idea[] objectsToIdea,String text,Question consideredQuestion){
+		super(inFavoridea, objectsToIdea,consideredQuestion);
+                this.text=text;
+	}
+        
 	@Override
 	public JDialog getView() {
 		NewArgument newArgumentView = new NewArgument(this);
 		newArgumentView.setTitle("New Objects To Arguments View");
 		ReasoningElement domainIdea = null;
+                
+          
 		if(this.objectsToIdea[0].getAddress().isEmpty())
 			throw new RuntimeException("Theres an inconsistence on kuaba structure! " +
 					"The design Idea " + this.objectsToIdea[0].getHasText() +
@@ -35,9 +43,12 @@ public class ObjectsToArgumentController extends ArgumentController {
 					" must be suggested by at least one Idea.");
 		domainIdea = (ReasoningElement)howModel.listIsSuggestedBy().next();
 		
-		newArgumentView.setIdeaText("Why not model " + domainIdea.getHasText() +
-				" as " + this.objectsToIdea[0].getHasText() + "?");
+                if(this.text!=null)
+                    newArgumentView.setIdeaText(this.text);
+		else
+                    newArgumentView.setIdeaText("Why not model " + domainIdea.getHasText() +" as " + this.objectsToIdea[0].getHasText() + "?");
 		newArgumentView.setArgumentListLabel("Arguments");
+                
 		return newArgumentView;
 		
 	}

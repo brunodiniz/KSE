@@ -10,6 +10,10 @@ public class KuabaSession {
 	
 	private Map<String, Idea> mofIdIdeaIdMap = new HashMap<String, Idea>();
 	private SessionUnitOfWork unitOfWork = new SessionUnitOfWork();	
+        
+        
+        
+        
 	public void putIdea(String elementId, Idea idea){
 		this.mofIdIdeaIdMap.put(elementId, idea);
 	}
@@ -17,6 +21,10 @@ public class KuabaSession {
 		
 		return this.mofIdIdeaIdMap.get(elementId);
 	}
+        
+        public boolean hasIdea(String elementId){
+            return this.mofIdIdeaIdMap.containsKey(elementId);
+        }
 	
 	public Idea removeEntry(String elementId){
 		return this.mofIdIdeaIdMap.remove(elementId);

@@ -16,6 +16,16 @@ public interface KuabaModelFactory {
 	 */
 	public Idea createIdea(String id);
 	
+        
+        
+	/**
+	 * This method creates a new Solution object. Attempts that the id must be unique
+	 * in the current individuals file.
+	 *  
+	 * @param id: the ID to the new created Solution object.
+	 * @return a new Solution object that contains the ID passed on the id parameter. 
+	 */
+	public Solution createSolution(String id);
 	
 	/**-------------Operations related to {@link Question} classes-----------*/
 	

@@ -19,6 +19,7 @@ import br.ucam.kuabaSubsystem.kuabaModel.Person;
 import br.ucam.kuabaSubsystem.kuabaModel.Question;
 import br.ucam.kuabaSubsystem.kuabaModel.RelatedType;
 import br.ucam.kuabaSubsystem.kuabaModel.Role;
+import br.ucam.kuabaSubsystem.kuabaModel.Solution;
 import java.util.Collection;
 
 public interface KuabaRepository {
@@ -279,8 +280,24 @@ public interface KuabaRepository {
 	 */
 	public List<Method> getAllMethodInstances();
         
+        /**---------- Operations related to {@link Solution} classes---------------------*/
+        /**
+	 * Finds a Solution object by id.
+	 * @param id the id of the Solution.
+	 * @return the Solution object.
+	 */
+	public Solution getSolution(String id);
+	
+	/**
+	 * 
+	 * @return a list containing all Method instances.
+	 */
+	public List<Solution> getAllSolutionInstances();
         
-        /**----------Misc Operations---------------------*/
+        
+        
+        /**----------Misc Operations--------------------
+     * @param propertyName-*/
         
         
         

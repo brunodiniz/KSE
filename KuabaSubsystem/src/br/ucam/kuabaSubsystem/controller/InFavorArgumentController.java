@@ -14,8 +14,7 @@ import br.ucam.kuabaSubsystem.util.KuabaHelper;
 
 public class InFavorArgumentController extends ArgumentController {
 	private String text;
-	public InFavorArgumentController(Idea[] inFavoridea, Idea[] objectsToIdea,
-			String text, Question consideredQuestion) {
+	public InFavorArgumentController(Idea[] inFavoridea, Idea[] objectsToIdea,String text, Question consideredQuestion) {
 		super(inFavoridea, objectsToIdea, consideredQuestion);
 		this.text = text;
 	}
@@ -23,8 +22,7 @@ public class InFavorArgumentController extends ArgumentController {
 		super(inFavoridea, objectsToIdea);
 	}	
 
-	public InFavorArgumentController(HashMap<Idea, Question> inFavorIdeaHash,
-			HashMap<Idea, Question> againstIdeaHash, String text) {
+	public InFavorArgumentController(HashMap<Idea, Question> inFavorIdeaHash,HashMap<Idea, Question> againstIdeaHash, String text) {
 		super(inFavorIdeaHash, againstIdeaHash);
 		this.text = text;
 	}

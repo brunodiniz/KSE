@@ -16,6 +16,7 @@ import br.ucam.kuabaSubsystem.kuabaModel.Argument;
 import br.ucam.kuabaSubsystem.kuabaModel.Decision;
 import br.ucam.kuabaSubsystem.kuabaModel.Idea;
 import br.ucam.kuabaSubsystem.kuabaModel.Justification;
+import javax.swing.JDialog;
 
 
 
@@ -30,6 +31,7 @@ public class NewJustificationController extends JustificationController {
 		this.decision = d;
 		
 	}
+        
     public Justification create(String text){
     	System.out.println("Text: " + text);
     	this.justification = this.modelFactory.createJustification(
@@ -44,12 +46,7 @@ public class NewJustificationController extends JustificationController {
         return this.justification;
     }
     
-    @Override
-    public JFrame render() {
-        NewJustification view = new NewJustification(this);
-        view.setVisible(true);
-        return view;
-    }
+    
 
 	@Override
 	public List<Argument> findInFavorArguments() {
@@ -76,5 +73,12 @@ public class NewJustificationController extends JustificationController {
 		
 		return objectsToList;
 	}
+
+    @Override
+    public JDialog getView() {
+        /*InFavorJustificationView jv = new InFavorJustificationView(this);
+        return jv;*/
+        return null;
+    }
 
 }

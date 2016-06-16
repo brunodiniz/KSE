@@ -16,8 +16,12 @@ import br.ucam.kuabaSubsystem.observers.uml.core.ModelObserver;
 import br.ucam.kuabaSubsystem.repositories.OwlApiFileGateway;
 import br.ucam.kuabaSubsystem.repositories.RepositoryGateway;
 import br.ucam.kuabaSubsystem.kuabaFacades.XMIIdResolver;
+import br.ucam.kuabaSubsystem.kuabaModel.Idea;
 import br.ucam.kuabaSubsystem.repositories.KuabaRepository;
 
+
+
+//OS ATRIBUTOS SAO ESTATICOS E SAO MANIPULADOS AO REDOR DO CODIGO
 
 public class KuabaSubsystem {
         public static final String ONTOLOGY_URL = "http://www.progen.kilu.de/DesignRationale/KuabaOntology.owl";
@@ -45,6 +49,8 @@ public class KuabaSubsystem {
 	public static KuabaSubsystem instance = new KuabaSubsystem();
 	public static KuabaEventPump eventPump;	
 //        private static KuabaRepository currentRepo;
+
+    
 	
 	private KuabaSubsystem() {
 		// TODO Auto-generated constructor stub

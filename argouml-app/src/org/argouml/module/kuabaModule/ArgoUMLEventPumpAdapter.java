@@ -1,7 +1,5 @@
 package org.argouml.module.kuabaModule;
 
-
-
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
@@ -14,11 +12,6 @@ import javax.jmi.model.MofClass;
 import javax.jmi.model.Reference;
 import javax.jmi.reflect.RefObject;
 import javax.swing.Action;
-
-
-
-
-
 
 import org.argouml.model.Model;
 import org.argouml.model.ModelEventPump;
@@ -34,10 +27,6 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import org.argouml.module.kuabaModule.ui.ElementNameInputDialog;
 import org.argouml.util.ArgoFrame;
-
-
-
-
  
 /**
  *
@@ -180,7 +169,6 @@ public class ArgoUMLEventPumpAdapter implements KuabaEventPump, PropertyChangeLi
 //                    Model.getPump().startPumpingEvents();
                 }
         }
-        
         Object element = evt.getSource();
         
         List<PropertyChangeListener> list = observersMap.get(element);
@@ -212,7 +200,6 @@ public class ArgoUMLEventPumpAdapter implements KuabaEventPump, PropertyChangeLi
 		}
 		
 	}
-
     
     public void flush() {
         this.eventPump.flushModelEvents();
@@ -253,7 +240,5 @@ public class ArgoUMLEventPumpAdapter implements KuabaEventPump, PropertyChangeLi
             this.eventPump.removeModelEventListener(this, element);
 //        }
         this.observersMap.remove(element);
-    }   
-    
-	
+    }	
 }

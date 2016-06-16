@@ -32,15 +32,22 @@ public class EventFilter implements PropertyChangeListener {
 			Collection<PropertyChangeEvent> lastEvts = evtHash.values();
 			for (PropertyChangeEvent lastEvt : lastEvts)
 				if(areEquals(arg0, lastEvt))
-					return;			
+					return;
+                                //Else inserido para tratar quando se modifica um nó de uma associacao
+                                //nao estava disparando evendo addAssociaation
+                                else
+                                {
+                                    this.observer.propertyChange(arg0);
+                                    this.putEventOnLastEventsHash(arg0);
+                                    return ;
+                                }
 		}
 		this.observer.propertyChange(arg0);
 		this.putEventOnLastEventsHash(arg0);
 	}
 	
 	public void putEventOnLastEventsHash(PropertyChangeEvent evt){
-		HashMap<Integer, PropertyChangeEvent> evtHash = 
-			this.lastEventsHash.get(evt.getPropertyName()); 
+		HashMap<Integer, PropertyChangeEvent> evtHash = this.lastEventsHash.get(evt.getPropertyName()); 
 		if(evtHash == null){
 			evtHash = new HashMap<Integer, PropertyChangeEvent>();
 			this.lastEventsHash.put(evt.getPropertyName(), evtHash);

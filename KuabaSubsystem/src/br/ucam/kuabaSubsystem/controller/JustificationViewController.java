@@ -13,6 +13,7 @@ import br.ucam.kuabaSubsystem.gui.JustificationView;
 import br.ucam.kuabaSubsystem.kuabaModel.Argument;
 import br.ucam.kuabaSubsystem.kuabaModel.Decision;
 import br.ucam.kuabaSubsystem.kuabaModel.Justification;
+import javax.swing.JDialog;
 
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
@@ -35,11 +36,11 @@ public class JustificationViewController extends JustificationController {
         this.justification = justification;
     }    
     
-    public JFrame render(){
+    /*public JFrame render(){
         JustificationView view = new JustificationView(this);
         view.setVisible(true);
         return view;
-    }
+    }*/
 
 	@Override
 	public List<Argument> findInFavorArguments() {		
@@ -50,5 +51,10 @@ public class JustificationViewController extends JustificationController {
 	public List<Argument> findObjectsToArgument() {		
 		return new ArrayList<Argument>(this.justification.getIsDerivedOf());
 	}
+
+    @Override
+    public JDialog getView() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

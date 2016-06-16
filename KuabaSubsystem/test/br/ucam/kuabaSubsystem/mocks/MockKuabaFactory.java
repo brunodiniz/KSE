@@ -21,6 +21,7 @@ import br.ucam.kuabaSubsystem.kuabaModel.Person;
 import br.ucam.kuabaSubsystem.kuabaModel.Question;
 import br.ucam.kuabaSubsystem.kuabaModel.RelatedType;
 import br.ucam.kuabaSubsystem.kuabaModel.Role;
+import br.ucam.kuabaSubsystem.kuabaModel.Solution;
 
 public class MockKuabaFactory implements KuabaModelFactory {
 
@@ -294,6 +295,10 @@ public class MockKuabaFactory implements KuabaModelFactory {
 
     public KuabaRepository getKuabaRepository() {
         return null;
+    }
+
+    public Solution createSolution(String id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

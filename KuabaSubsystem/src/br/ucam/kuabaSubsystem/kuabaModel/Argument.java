@@ -53,6 +53,7 @@ public interface Argument extends ReasoningElement {
 
     // Property http://www.tecweb.inf.puc-rio.br/DesignRationale/KuabaOntology.owl#objectsTo
 
+    //Retorna os argumentos contra uma ideia
     Collection<Idea> getObjectsTo();
 
 //    RDFProperty getObjectsToProperty();
@@ -61,8 +62,10 @@ public interface Argument extends ReasoningElement {
 
     Iterator<Idea> listObjectsTo();
 
+    
     void addObjectsTo(Idea newObjectsTo);
 
+    
     void removeObjectsTo(Idea oldObjectsTo);
 
     void setObjectsTo(Collection<Idea> newObjectsTo);

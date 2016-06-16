@@ -169,6 +169,20 @@ public class DefaultIdea extends DefaultReasoningElement implements Idea {
         setObjectPropertyValues("resultsIn", newResultsIn);
     }
 
+    
+    public Collection<Solution> getSolutions() {
+        return getObjectPropertyValues("solutions");
+    }
+
+    public void addSolutions(Solution sol) {
+        addObjectPropertyValue("solutions", sol);    }
+
+    public boolean hasSolutions() {
+        return hasProperty("solutions");
+    }
+
+    
+    
 
 //	@Override
 //	public NodeSummary getView(View view, int x, int y) {

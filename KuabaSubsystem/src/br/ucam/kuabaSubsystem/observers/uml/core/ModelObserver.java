@@ -158,7 +158,7 @@ public class ModelObserver extends ModelElementObserver{
 	}*/
 
 	@Override
-	protected PropertyChangeListener applyFilter(RefObject subject) {		
+	public PropertyChangeListener applyFilter(RefObject subject) {		
 		return new EventFilter(this);
 	}
 

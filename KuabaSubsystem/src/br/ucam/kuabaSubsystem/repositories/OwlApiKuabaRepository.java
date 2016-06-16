@@ -20,6 +20,7 @@ import br.ucam.kuabaSubsystem.kuabaModel.KuabaListener;
 import br.ucam.kuabaSubsystem.kuabaModel.KuabaModelFactory;
 import br.ucam.kuabaSubsystem.kuabaModel.Method;
 import br.ucam.kuabaSubsystem.kuabaModel.Person;
+import br.ucam.kuabaSubsystem.kuabaModel.Solution;
 import br.ucam.kuabaSubsystem.kuabaModel.Question;
 import br.ucam.kuabaSubsystem.kuabaModel.RelatedType;
 import br.ucam.kuabaSubsystem.kuabaModel.Role;
@@ -521,6 +522,15 @@ public class OwlApiKuabaRepository implements KuabaListener, KuabaRepository {
     public List<Method> getAllMethodInstances() {
         return getAllKuabaElements(Method.class);
     }
+    
+    public Solution getSolution(String id){
+        return getKuabaElement(id, Solution.class);
+    }
+    
+    public List<Solution> getAllSolutionInstances(){
+        return getAllKuabaElements(Solution.class);
+    }
+    
 
     public Collection<String> getDataPropertyValues(String propertyName, String individualId) {
         Collection<String> result = new ArrayList<String>();

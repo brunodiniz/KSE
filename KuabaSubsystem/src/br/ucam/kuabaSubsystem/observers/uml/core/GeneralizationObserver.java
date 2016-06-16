@@ -10,6 +10,7 @@ import javax.jmi.reflect.RefObject;
 import br.ucam.kuabaSubsystem.controller.ArgumentController;
 import br.ucam.kuabaSubsystem.controller.InFavorArgumentController;
 import br.ucam.kuabaSubsystem.core.KuabaSubsystem;
+import br.ucam.kuabaSubsystem.kuabaModel.Decision;
 import br.ucam.kuabaSubsystem.kuabaModel.Idea;
 import br.ucam.kuabaSubsystem.kuabaModel.Question;
 import br.ucam.kuabaSubsystem.observers.EventFilter;
@@ -27,11 +28,74 @@ public class GeneralizationObserver extends ModelElementObserver{
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {		
-		super.propertyChange(evt);		
+		//super.propertyChange(evt);
+                
+                //Se for evento do tipo name, devo criar (ou aceitar numa ideia recusada) a ideia de dominio
+                if(evt.getPropertyName().equals("name")){
+                    Idea domainIdea = KuabaHelper.getDomainIdea((String)evt.getNewValue());
+                    
+                    if(domainIdea==null){
+                        RefObject source = (RefObject)evt.getSource();
+                        domainIdea = KuabaSubsystem.facade.domainIdeaAdded((String)evt.getNewValue(), "Generalization", KuabaSubsystem.resolver.resolveXmiId(source));
+                        Idea acceptedDesign = KuabaHelper.getAcceptedDesignIdea(domainIdea, "Generalization");
+                        KuabaSubsystem.facade.obtainQuestion(acceptedDesign, "child?");
+                        ArgumentController controller = new InFavorArgumentController(new Idea[]{acceptedDesign},null);
+                        controller.render();
+                    }
+                }
+                //Se for evento do tipo "child", vou criar a relacao entre a classe filha e a ideia de dominio da generalizacao
+                else if(evt.getPropertyName().equals("child"))
+                {
+                    RefObject gener = (RefObject)evt.getSource();
+                    String txt = this.getNamePropertyValue(gener);
+                    Idea generDomain = KuabaHelper.getDomainIdea(txt);
+                    
+                    RefObject child = (RefObject)evt.getNewValue();
+                    txt = this.getNamePropertyValue(child);
+                    Idea childDomain = KuabaHelper.getDomainIdea(txt);
+                    
+                    Idea generDesign = KuabaHelper.getAcceptedDesignIdea(generDomain, "Generalization");
+                    Idea childDesign = KuabaHelper.getAcceptedDesignIdea(childDomain, "Class");
+                    
+                    Question question = generDesign.getSuggests().iterator().next();
+                    boolean exists = false;
+                    for(Decision d: question.getHasDecision()){
+                        if(d.getConcludes().equals(childDesign)&&!d.getIsAccepted()){
+                            d.setIsAccepted(true);
+                            exists=true;        
+                        }
+                    }
+                    if(!exists){
+                        question.addIsAddressedBy(childDesign);
+                        childDesign.addAddress(question);
+                        KuabaSubsystem.facade.makeDecision(question, childDesign, true);
+                    }
+                    
+                    ArgumentController controller = new InFavorArgumentController(new Idea[]{childDesign},null,
+                       "Why make "+ childDomain.getHasText()+" a generalization of "+ generDomain.getHasText(),question);
+                    controller.render();
+                }
+                //Vou desconsiderar a ideia de dominio
+                else if(evt.getPropertyName().equals("remove")){
+                    RefObject gen = (RefObject)evt.getSource();;
+                    Idea genDomain = null;
+                    for(Idea d: KuabaSubsystem.facade.modelRepository().getDomainIdeas()){
+                        String txt1 = d.getId().split("_")[0];
+                        String txt2 = gen.refMofId().split(":")[3];
+                        if(txt1.equals(txt2))
+                            genDomain = d;
+                    }
+                    KuabaSubsystem.facade.domainIdeaSubTreeCycleDecision(genDomain, false, 1);
+                    
+                    //Idea genDomain = KuabaSubsystem.getSession().unitOfWork().getConsideredIdea(gen.);
+                   // KuabaSubsystem.facade.domainIdeaSubTreeCycleDecision(genDomain, false, 1);
+                    
+                    
+                }
 	}
 	
 	@Override
-	protected PropertyChangeListener applyFilter(RefObject subject) {
+	public PropertyChangeListener applyFilter(RefObject subject) {
 		return new EventFilter(this);
 	}
 

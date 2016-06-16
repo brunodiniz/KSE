@@ -25,6 +25,7 @@ import br.ucam.kuabaSubsystem.kuabaModel.KuabaEventPump;
 import br.ucam.kuabaSubsystem.kuabaModel.KuabaListener;
 import br.ucam.kuabaSubsystem.kuabaModel.KuabaModelFactory;
 import br.ucam.kuabaSubsystem.kuabaModel.Question;
+import br.ucam.kuabaSubsystem.kuabaModel.Solution;
 import br.ucam.kuabaSubsystem.kuabaModel.impl.MyFactory;
 //import edu.stanford.smi.protegex.owl.model.OWLModel;
 //import edu.stanford.smi.protegex.owl.model.OWLNamedClass;
@@ -551,6 +552,14 @@ public class OwlRepository implements KuabaListener, KuabaRepository {
 
     public void removeIndividual(String individualId) {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public Solution getSolution(String id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public List<Solution> getAllSolutionInstances() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

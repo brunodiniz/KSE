@@ -25,7 +25,7 @@ public class InterfaceObserver extends ModelElementObserver {
 	}
 	
 	@Override
-	protected PropertyChangeListener applyFilter(RefObject subject) {
+	public PropertyChangeListener applyFilter(RefObject subject) {
 		return new NameEventFilter(subject, this);
 	}
 

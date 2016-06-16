@@ -97,5 +97,11 @@ public interface Idea extends ReasoningElement{
 
     void setResultsIn(Collection<Artifact> newResultsIn);
 
+    Collection<Solution> getSolutions();
+    void addSolutions(Solution sol);
+    boolean hasSolutions();
+    
+    
+    
 	Idea deepCopy(Map<ReasoningElement, Integer> stageMap, KuabaRepository targetRepository, Question addressedQuestion);
 }

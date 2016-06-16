@@ -225,7 +225,7 @@ public class KuabaGraph {
                 String txt = question.getHasText(); 
 
                 //termina a recursão caso seja pra mostrar apenas ideias com decisoes e não houver decisão
-                if(txt.contains(Question.DOMAIN_QUESTION_TEXT_PREFIX) && showOnlyDecidedIdeas && d==null)
+                    if(txt.contains(Question.DOMAIN_QUESTION_TEXT_PREFIX) && showOnlyDecidedIdeas && d==null)
                     return node;
 
                 if (question.getId().equals(Question.ROOT_QUESTION_ID)) {

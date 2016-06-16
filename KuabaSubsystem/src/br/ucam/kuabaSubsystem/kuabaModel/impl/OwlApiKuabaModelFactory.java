@@ -23,6 +23,7 @@ import br.ucam.kuabaSubsystem.kuabaModel.Question;
 import br.ucam.kuabaSubsystem.kuabaModel.ReasoningElement;
 import br.ucam.kuabaSubsystem.kuabaModel.RelatedType;
 import br.ucam.kuabaSubsystem.kuabaModel.Role;
+import br.ucam.kuabaSubsystem.kuabaModel.Solution;
 import br.ucam.kuabaSubsystem.repositories.KuabaRepository;
 import br.ucam.kuabaSubsystem.repositories.OwlApiFileGateway;
 import java.lang.reflect.Constructor;
@@ -111,6 +112,10 @@ public class OwlApiKuabaModelFactory implements KuabaModelFactory {
 
     public Method createMethod(String id) {
         return createElement(id, Method.class);
+    }
+    
+    public Solution createSolution(String id){
+        return createElement(id,Solution.class);
     }
     
     private <T> T createElement(String individualId, Class<T> cls) {

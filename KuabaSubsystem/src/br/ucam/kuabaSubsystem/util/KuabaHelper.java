@@ -21,13 +21,13 @@ import br.ucam.kuabaSubsystem.kuabaModel.ReasoningElement;
 import br.ucam.kuabaSubsystem.repositories.KuabaRepository;
 import br.ucam.kuabaSubsystem.graph.util.KuabaGraphUtil;
 import br.ucam.kuabaSubsystem.graph.util.ReasoningElementIterator;
+import br.ucam.kuabaSubsystem.kuabaModel.Solution;
 
 public class KuabaHelper {
 	
 	
 	
-	public static Idea getIdeaByText(Collection<Idea> ideaCollection,
-			String text){
+	public static Idea getIdeaByText(Collection<Idea> ideaCollection,String text){
 		for (Idea idea : ideaCollection) {
 			if (idea.getHasText().equals(text)) { //Case sensitive, verificar se isso é relevante
 				return idea;
@@ -81,10 +81,18 @@ public class KuabaHelper {
 		return null;
 	}
 	public static Idea getDomainIdea(Idea designIdea){
-		Collection<Question> questions = designIdea.getAddress();
+            
+                Collection<Question> questions = designIdea.getAddress();
 		for (Question question : questions) 
 			if(question.getHasText().contains(Question.DOMAIN_QUESTION_TEXT_PREFIX))
 				return (Idea)question.getIsSuggestedBy().iterator().next();
+                        /*else{
+                            //Um pequeno atalho pras associacoes no diagrama de classes da UML
+                            for(Question q : designIdea.getAddress()){
+                                if(q.getHasText().equals("Participant?"))
+                                    return KuabaHelper.getDomainIdea((Idea)q.getIsSuggestedBy().iterator().next());
+                            }
+                        }*/
 		return null;
 	}
 
@@ -104,8 +112,7 @@ public class KuabaHelper {
 	
 	@SuppressWarnings("unchecked")
 	public static Idea getAcceptedDesignIdea(Idea domainIdea, String designIdeaText){
-		Question existentHowModel =	(Question)getReasoningElementInTree(
-				domainIdea,	Question.DOMAIN_QUESTION_TEXT_PREFIX + domainIdea.getHasText() + "?");
+		Question existentHowModel =(Question)getReasoningElementInTree(domainIdea,Question.DOMAIN_QUESTION_TEXT_PREFIX + domainIdea.getHasText() + "?");
 
 		Collection<Decision> decisions = existentHowModel.getHasDecision();
 
@@ -116,31 +123,43 @@ public class KuabaHelper {
 				return decision.getConcludes();
 		return null;
 	}
+        
+        public static Idea getAcceptedDesignIdea(Idea domainIdea){
+            Question suggested = domainIdea.getSuggests().iterator().next();
+            
+            for(Decision d: suggested.getHasDecision()){
+                if(d.getIsAccepted())
+                    return d.getConcludes();
+            }
+            return null;
+        }
+        
 	
-	public static Idea getRejectedDesignIdea(Idea domainIdea,
-			String designIdeaText){
-		Question existentHowModel =	(Question)getReasoningElementInTree(
-				domainIdea,	Question.DOMAIN_QUESTION_TEXT_PREFIX + domainIdea.getHasText() + "?");
+	public static Idea getRejectedDesignIdea(Idea domainIdea,String designIdeaText){
+		Question existentHowModel =(Question)getReasoningElementInTree(domainIdea,Question.DOMAIN_QUESTION_TEXT_PREFIX + domainIdea.getHasText() + "?");
 		Collection<Decision> decisions = existentHowModel.getHasDecision();
-		for (Decision decision : decisions) 
-			if((!decision.getIsAccepted()) && 
-					(decision.getConcludes().getHasText().equals(
-							designIdeaText)))
+		for (Decision decision : decisions) {
+                    //boolean b = decision.getIsAccepted();
+                    //String s1 = decision.getConcludes().getHasText();
+			if((!decision.getIsAccepted()) && (decision.getConcludes().getHasText().equals(designIdeaText)))
 				return decision.getConcludes();
+                }
 		return null;
 	}	
 	
-	public static Idea getDomainIdea(
-			KuabaRepository repository, String mofId, String text){
+	public static Idea getDomainIdea(KuabaRepository repository, String mofId, String text){
 		if((text == null) || (text.equals("null")))
 			text = "";
-		List<Idea> domainIdeaList = 
-			repository.getDomainIdeasWhereIdLike(mofId);
+		List<Idea> domainIdeaList = repository.getDomainIdeasWhereIdLike(mofId);
 		for (Idea idea : domainIdeaList)
 			if(idea.getHasText().equals(text))
 				return idea;		
 		return null;	
 	}
+        
+        
+        
+        
 	
 	public static List<Argument> filterConsidersArguments(
 			Collection<Argument> arguments, Question consideredQuestion){		
@@ -340,4 +359,52 @@ public class KuabaHelper {
 		return false;
 	}
 
+    public static Idea upperDomainIdea(Idea idea) {
+        Question address = idea.getAddress().iterator().next();
+        String txt= address.getHasText();
+        if(address.getHasText().equals("What are the Model Elements?"))
+            return idea;
+        else
+            return KuabaHelper.upperDomainIdea((Idea)address.getIsSuggestedBy().iterator().next());
+    }
+        
+        
+        //TODO finalizar esta funcao
+        public void sweepAcceptedSubTree(Idea X,Solution A)
+        {
+            //Marcar X como um elemento da solução A
+            //A.addIdea(X);
+            //Se X sugere uma questao Q qualquer
+            if(X.hasSuggests()){
+                
+                Iterator<Question> Itq = X.getSuggests().iterator();
+                Question Q;
+                //E para cada questao Q:
+                while(Itq.hasNext())
+                {
+                    Q = Itq.next();
+                    //Q tem uma decisao D onde d conclui X 
+                    Decision D = KuabaHelper.getDecision(Q, X);
+                    //e D é aceita
+                    if(D.getIsAccepted()){
+                        //entao
+                        
+                    }
+                }
+            }
+            
+        }
+        
+        //Retorna uma ideia de deominio baseado somente no texto
+        public static Idea getDomainIdea(String domainText){
+        
+            Question q = KuabaSubsystem.facade.modelRepository().getQuestionByText("What are the Model Elements?").iterator().next();
+            for(Idea d : q.getIsAddressedBy())
+                if(d.getHasText().equals(domainText))
+                    return d;
+            return null;
+        }
+        
+        
 }
+

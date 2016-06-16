@@ -24,6 +24,7 @@ import br.ucam.kuabaSubsystem.kuabaModel.Question;
 import br.ucam.kuabaSubsystem.kuabaModel.ReasoningElement;
 import br.ucam.kuabaSubsystem.kuabaModel.RelatedType;
 import br.ucam.kuabaSubsystem.kuabaModel.Role;
+import br.ucam.kuabaSubsystem.kuabaModel.Solution;
 
 
 
@@ -1049,5 +1050,9 @@ public class MyFactory implements KuabaModelFactory {
 //    public KuabaRepository getKuabaRepository() {
 //        throw new UnsupportedOperationException("Not supported yet.");
 //    }
+
+    public Solution createSolution(String id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 }

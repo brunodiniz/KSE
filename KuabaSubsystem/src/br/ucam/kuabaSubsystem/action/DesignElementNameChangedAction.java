@@ -15,10 +15,14 @@ import br.ucam.kuabaSubsystem.kuabaModel.Question;
 import br.ucam.kuabaSubsystem.repositories.KuabaRepository;
 import br.ucam.kuabaSubsystem.util.KuabaHelper;
 
+
+//-------------------- CODIGO NAO EXECUTADO----------------------------------
+
 public class DesignElementNameChangedAction implements DesignAction {
 	
 	@Override
 	public void execute(PropertyChangeEvent event) {
+            System.out.println("FUI EXECUTADO");
 		KuabaModelFactory factory = KuabaSubsystem.facade.getKuabaFactory();
                 KuabaRepository repo = KuabaSubsystem.facade.modelRepository();
                 
