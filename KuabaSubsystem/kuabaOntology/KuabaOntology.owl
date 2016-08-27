@@ -218,20 +218,14 @@
     <Declaration>
         <ObjectProperty IRI="#suggests"/>
     </Declaration>
-	<Declaration>
-        <ObjectProperty IRI="#solutionElements"/>
-    </Declaration>
-	<Declaration>
-        <ObjectProperty IRI="#solutionJustification"/>
-    </Declaration>
-	<Declaration>
-        <ObjectProperty IRI="#solutionQuestion"/>
-    </Declaration>
-	<Declaration>
-        <DataProperty IRI="#status"/>
+		<Declaration>
+        <ObjectProperty IRI="#includes"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#compositionFunction"/>
+    </Declaration>
+	<Declaration>
+        <ObjectProperty IRI="#contains"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#hasAddress"/>
@@ -283,6 +277,9 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="#isAccepted"/>
+    </Declaration>
+	<Declaration>
+        <DataProperty IRI="#accepted"/>
     </Declaration>
     <EquivalentClasses>
         <Class IRI="#Activity"/>
@@ -765,20 +762,8 @@
         <Class IRI="#ReasoningElement"/>
     </ObjectPropertyDomain>
 	<ObjectPropertyDomain>
-        <ObjectProperty IRI="#solutionElements"/>
-        <Class IRI="#Solution"/>
-    </ObjectPropertyDomain>
-	<ObjectPropertyDomain>
-        <ObjectProperty IRI="#solutionQuestion"/>
-        <Class IRI="#Solution"/>
-    </ObjectPropertyDomain>
-	<ObjectPropertyDomain>
-        <ObjectProperty IRI="#solutionJustification"/>
-        <Class IRI="#Solution"/>
-    </ObjectPropertyDomain>
-	<ObjectPropertyDomain>
         <ObjectProperty IRI="#isCentralIdea"/>
-        <Class IRI="#Idea	"/>
+        <Class IRI="#Idea"/>
     </ObjectPropertyDomain>
 	<ObjectPropertyDomain>
         <ObjectProperty IRI="#isJustifiedFrom"/>
@@ -787,6 +772,14 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#ContainsReasoningElements"/>
         <Class IRI="#ReasoningElement"/>
+    </ObjectPropertyDomain>
+	<ObjectPropertyDomain>
+        <ObjectProperty IRI="#includes"/>
+        <Class IRI="#Solution"/>
+    </ObjectPropertyDomain>
+	<ObjectPropertyDomain>
+        <ObjectProperty IRI="#contains"/>
+        <Class IRI="#Solution"/>
     </ObjectPropertyDomain>
 	<ObjectPropertyRange>
         <ObjectProperty IRI="#address"/>
@@ -958,17 +951,13 @@
         <ObjectProperty IRI="#suggests"/>
         <Class IRI="#Question"/>
     </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#solutionElements"/>
-        <Class IRI="#Idea"/>
-    </ObjectPropertyRange>
 	<ObjectPropertyRange>
-        <ObjectProperty IRI="#solutionQuestion"/>
-        <Class IRI="#Question"/>
-    </ObjectPropertyRange>
-	<ObjectPropertyRange>
-        <ObjectProperty IRI="#solutionJustification"/>
+        <ObjectProperty IRI="#contains"/>
         <Class IRI="#Justification"/>
+    </ObjectPropertyRange>
+	<ObjectPropertyRange>
+        <ObjectProperty IRI="#includes"/>
+        <Class IRI="#Idea"/>
     </ObjectPropertyRange>
     <DisjointObjectProperties>
         <ObjectProperty IRI="#inFavorOf"/>
@@ -1099,13 +1088,11 @@
         <DataProperty IRI="#isAccepted"/>
         <Class IRI="#Decision"/>
     </DataPropertyDomain>
-    
 	<DataPropertyDomain>
-        <DataProperty IRI="#status"/>
+        <DataProperty IRI="#accepted"/>
         <Class IRI="#Solution"/>
     </DataPropertyDomain>
-    
-	<DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="#hasAddress"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -1185,11 +1172,9 @@
         <Datatype abbreviatedIRI="xsd:boolean"/>
     </DataPropertyRange>
 	<DataPropertyRange>
-        <DataProperty IRI="#status"/>
+        <DataProperty IRI="#accepted"/>
         <Datatype abbreviatedIRI="xsd:boolean"/>
     </DataPropertyRange>
-	
-	
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#Activity</IRI>

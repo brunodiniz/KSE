@@ -84,6 +84,9 @@
         <Class IRI="#Role"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Solution"/>
+    </Declaration>
+	<Declaration>
         <ObjectProperty IRI="#address"/>
     </Declaration>
     <Declaration>
@@ -99,6 +102,9 @@
         <ObjectProperty IRI="#considers"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="#ContainsReasoningElement"/>
+    </Declaration>
+	<Declaration>
         <ObjectProperty IRI="#creates"/>
     </Declaration>
     <Declaration>
@@ -135,6 +141,9 @@
         <ObjectProperty IRI="#isAddressedBy"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="#isCentralIdea"/>
+    </Declaration>
+	<Declaration>
         <ObjectProperty IRI="#isConcludedBy"/>
     </Declaration>
     <Declaration>
@@ -162,6 +171,9 @@
         <ObjectProperty IRI="#isJustificationOf"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="#isJustifiedFrom"/>
+    </Declaration>
+	<Declaration>
         <ObjectProperty IRI="#isMadeBy"/>
     </Declaration>
     <Declaration>
@@ -206,8 +218,14 @@
     <Declaration>
         <ObjectProperty IRI="#suggests"/>
     </Declaration>
+		<Declaration>
+        <ObjectProperty IRI="#includes"/>
+    </Declaration>
     <Declaration>
         <DataProperty IRI="#compositionFunction"/>
+    </Declaration>
+	<Declaration>
+        <ObjectProperty IRI="#contains"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#hasAddress"/>
@@ -259,6 +277,9 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="#isAccepted"/>
+    </Declaration>
+	<Declaration>
+        <DataProperty IRI="#accepted"/>
     </Declaration>
     <EquivalentClasses>
         <Class IRI="#Activity"/>
@@ -318,7 +339,7 @@
             <Class IRI="#Artifact"/>
         </ObjectMinCardinality>
     </EquivalentClasses>
-    <SubClassOf>
+	<SubClassOf>
         <Class IRI="#Argument"/>
         <Class IRI="#ReasoningElement"/>
     </SubClassOf>
@@ -740,7 +761,27 @@
         <ObjectProperty IRI="#suggests"/>
         <Class IRI="#ReasoningElement"/>
     </ObjectPropertyDomain>
-    <ObjectPropertyRange>
+	<ObjectPropertyDomain>
+        <ObjectProperty IRI="#isCentralIdea"/>
+        <Class IRI="#Idea"/>
+    </ObjectPropertyDomain>
+	<ObjectPropertyDomain>
+        <ObjectProperty IRI="#isJustifiedFrom"/>
+        <Class IRI="#Justification"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#ContainsReasoningElements"/>
+        <Class IRI="#ReasoningElement"/>
+    </ObjectPropertyDomain>
+	<ObjectPropertyDomain>
+        <ObjectProperty IRI="#includes"/>
+        <Class IRI="#Solution"/>
+    </ObjectPropertyDomain>
+	<ObjectPropertyDomain>
+        <ObjectProperty IRI="#contains"/>
+        <Class IRI="#Solution"/>
+    </ObjectPropertyDomain>
+	<ObjectPropertyRange>
         <ObjectProperty IRI="#address"/>
         <Class IRI="#Question"/>
     </ObjectPropertyRange>
@@ -910,6 +951,14 @@
         <ObjectProperty IRI="#suggests"/>
         <Class IRI="#Question"/>
     </ObjectPropertyRange>
+	<ObjectPropertyRange>
+        <ObjectProperty IRI="#contains"/>
+        <Class IRI="#Justification"/>
+    </ObjectPropertyRange>
+	<ObjectPropertyRange>
+        <ObjectProperty IRI="#includes"/>
+        <Class IRI="#Idea"/>
+    </ObjectPropertyRange>
     <DisjointObjectProperties>
         <ObjectProperty IRI="#inFavorOf"/>
         <ObjectProperty IRI="#objectsTo"/>
@@ -1039,6 +1088,10 @@
         <DataProperty IRI="#isAccepted"/>
         <Class IRI="#Decision"/>
     </DataPropertyDomain>
+	<DataPropertyDomain>
+        <DataProperty IRI="#accepted"/>
+        <Class IRI="#Solution"/>
+    </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="#hasAddress"/>
         <Datatype abbreviatedIRI="xsd:string"/>
@@ -1116,6 +1169,10 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#isAccepted"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+	<DataPropertyRange>
+        <DataProperty IRI="#accepted"/>
         <Datatype abbreviatedIRI="xsd:boolean"/>
     </DataPropertyRange>
     <AnnotationAssertion>

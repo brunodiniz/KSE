@@ -87,6 +87,7 @@ public class KuabaFacade {
         static List<String> actualSolutionIdeas = new ArrayList<String>();
         static List<String> refusedSolutionedIdeas = new ArrayList<String>();
         
+        static List<Question> solQuestion;
         
 	
 	private Person loggedPerson;
@@ -645,92 +646,572 @@ public class KuabaFacade {
             
                
                 //Crio o elemento solucao no meu modelo
-               List<Solution> solutions = this.createAcceptedSolutions();
-               for(Solution s : solutions){
-                    
-                    String text = "Why make the Ideas:\n";
-                    
-                    System.out.println("---- Solution ----");
-                    for(Idea d : s.getSolutionElements()){
-                        text+= d.getHasText()+"\n";
-                        System.out.println("Idea: "+d.getHasText());
-                        
+              
+                List<Solution> solutioned = this.createSolutions();
+                
+                List<Solution> toRemove = new ArrayList<Solution>();
+                for(Solution s : this.modelRepository.getAllSolutionInstances())
+                {
+                    if(!solutioned.contains(s))
+                    {
+                        for(Solution s2 : solutioned){
+                            if(s.getIncludes().containsAll(s2.getIncludes())&&s.getIncludes().size()==s2.getIncludes().size())
+                            {
+                                toRemove.add(s2);
+                                break;
+                            }
+                        }
                     }
-                    text+="part of one solution?";
-                    String justificativa = (String)JOptionPane.showInputDialog(new JFrame(), text, "");
-                    //If a string was returned, say so.
-                    if(!(justificativa==null||justificativa.equals("")))
-                        s.getSolutionJustification().iterator().next().setHasText(justificativa);
-                   
+                }
+                for(Solution s : toRemove){
+                    solutioned.remove(s);
+                    this.modelRepository.removeIndividual(s.getId());
                 }
                 
-                solutions = this.createRefusedSolutions();
                 
-                for(Solution s: solutions){
-                    
-                    String text = "Why not make the ideas:\n";
-                    System.out.println("---- not Solution ----");
-                    for(Idea d : s.getSolutionElements()){
-                       text+=d.getHasText()+"\n";
-                       System.out.println("Idea: "+d.getHasText());
+                
+                String str="";
+                int cont=1;
+                for(Solution s : solutioned){
+                    String res = (s.getAccepted()?"aceita ":"recusada ") ;
+                    str+="Solução "+ res +Integer.toString(cont)+"\nIdeias: ";
+                    for(Idea idea : s.getIncludes()){
+                        str+=idea.getHasText()+", ";
                     }
-                    text+="part of one solution?";
-                    String justificativa = (String)JOptionPane.showInputDialog(new JFrame(), text, "");
+                    str+="\n";
+                    cont++;
+                }   
+                
+                //JOptionPane.showConfirmDialog(new JFrame(), str);
+                
+                for(Solution s: solutioned){
+                    String question;
+                    question=null;
+                    question=this.getSolutionQuestion(s);
+                    
+                    Justification just = this.modelFactory.createJustification(this.getNextId());
+                    s.addContains(just);
+                    //s.setQuestion(question);
+                    String justificativa = JOptionPane.showInputDialog(new JFrame(), question, "Justificativa", JOptionPane.QUESTION_MESSAGE) ; 
                     if(!(justificativa==null||justificativa.equals("")))
-                        s.getSolutionJustification().iterator().next().setHasText(justificativa);
+                        s.getContains().iterator().next().setHasText(justificativa);
+
                 }
                 
 		return KuabaSubsystem.gateway.save(kr, destination);		
 	}
         
-        
-        public List<Solution> createRefusedSolutions(){
-            List<Solution> sol = new ArrayList<Solution>();
-            List<Idea> refused = new ArrayList<Idea>();
-            
-            for(Idea i : KuabaSubsystem.getSession().unitOfWork().getRejectedIdeas())
-                System.out.println("Refused Idea"+i.getHasText());
-            
-            
-            
-            //Obtenho todas as ideias de design centrais das ideias recusadas
-            for(Idea d : KuabaSubsystem.getSession().unitOfWork().getRejectedIdeas()){
-                for(Idea d2 : d.getSuggests().iterator().next().getIsAddressedBy())
-                    refused.add(d2);
-            }
-            //Obtenho todas as ideias de design centrais das ideias aceitas
-            for(Idea d : KuabaSubsystem.getSession().unitOfWork().getConsideredIdeas()){
-                for(Idea d2 : d.getSuggests().iterator().next().getIsAddressedBy()){
-                    for(Decision dec : d.getSuggests().iterator().next().getHasDecision()){
-                        if(dec.getConcludes().equals(d2)&&!dec.getIsAccepted())
-                            refused.add(d2);
-                    }
+        public String getSolutionQuestion(Solution sol){
+            Idea owner,assoc;
+            owner=null;
+            assoc=null;
+            boolean isOwner=false;
+            boolean isAssoc=false;
+            for(Idea idea : sol.getIncludes()){
+                if(idea.getHasText().equals("Association")){
+                    isAssoc=true;
+                    break;
                 }
-            }
-            //Agora vou criar as solucoes pra essas ideias de design recusadas
-            for(Idea d : refused){
-                if(!KuabaFacade.refusedSolutionedIdeas.contains(KuabaHelper.getDomainIdea(d).getHasText())){
-                    
-                    KuabaFacade.actualSolutionIdeas = new ArrayList<String>();
-                    Solution s = this.modelFactory.createSolution(this.getNextId());
-                    Justification just = this.modelFactory.createJustification(this.getNextId());
-                    
-                    s.addSolutionElements(KuabaHelper.getDomainIdea(d));
-                    
-                    s=this.getRefusedSolutionIdeas(d,s);
-                    s.addSolutionJustification(just);
-                    s.setStatus(false);
-                    sol.add(s);
-                    
-                    for(String str : KuabaFacade.actualSolutionIdeas){
-                        KuabaFacade.refusedSolutionedIdeas.add(str);
-                    }
-                    
+                else if(idea.getHasText().equals("Attribute")||idea.getHasText().equals("Operation")){
+                    isOwner=true;
+                    break;
                 }
             }
             
-            return sol;
+            if(isOwner)
+            {
+                List<String> atributos = new ArrayList<String>();
+                List<String> operacoes = new ArrayList<String>();
+                
+                for(Idea idea : sol.getIncludes()){
+                    if(idea.getHasText().equals("Class"))
+                        owner=KuabaHelper.getDomainIdea(idea);
+                    if(idea.getHasText().equals("Attribute")){
+                        atributos.add(KuabaHelper.getDomainIdea(idea).getHasText());
+                    }
+                    if(idea.getHasText().equals("Operation")){
+                        operacoes.add(KuabaHelper.getDomainIdea(idea).getHasText());
+                    }
+                }
+                String txt = sol.getAccepted()? " decidiu " : " desistiu de ";
+                String question ="Por quê você" +txt+ "modelar "+ owner.getHasText()+" com";
+                if(atributos.size()==1)
+                    question += " o atributo " + atributos.get(0);
+                else if(atributos.size()>1){
+                    question+=" os atributos " + atributos.get(0);
+                    int i=1;
+                    while(i<atributos.size()-1){
+                        question+=", "+atributos.get(i);
+                        i++;
+                    }
+                    question+=" e "+atributos.get(atributos.size()-1);
+                }    
+                if(atributos.size()>1&&operacoes.size()>1)
+                    question += " e ";
+                if(operacoes.size()==1){
+                    question+= " a operacao "+operacoes.get(0);
+                }
+                else if(operacoes.size()>1){
+                    question+=" as operacoes " + operacoes.get(0);
+                    int i=1;
+                    while(i<operacoes.size()-1)
+                        question+=", "+operacoes.get(i);
+                    question+=" e "+operacoes.get(operacoes.size()-1);
+                }
+                question+="?";
+                return question;
+            }
+            else if(isAssoc)
+            {
+                for(Idea idea : sol.getIncludes()){
+                    if(idea.getHasText().equals("Association")){
+                        assoc=KuabaHelper.getDomainIdea(idea);
+                        break;
+                    }
+                }
+                
+                String txt = sol.getAccepted()? " decidiu " : " desistiu de ";
+                
+                String question = "Por quê você" +txt+ "modelar a associação "+ assoc.getHasText() +" entre as classes ";
+                List<String> classes  = new ArrayList<String>();
+                for(Idea idea : sol.getIncludes())
+                    if(idea.getHasText().equals("Class"))
+                        classes.add(KuabaHelper.getDomainIdea(idea).getHasText());
+                question += classes.get(0) + " e " + classes.get(1) + "?";
+                return question;
+            }
+            else if (!isAssoc&&!isOwner){
+                for(Idea idea : sol.getIncludes()){
+                    if(idea.getHasText().equals("Class"))
+                        owner=KuabaHelper.getDomainIdea(idea);
+                }
+                String txt = sol.getAccepted()? " decidiu " : " desistiu de ";
+                String question ="Por quê você"+txt+ "modelar "+ owner.getHasText()+"?";
+                return question;
+            }
+            return null;
         }
+        
+        //TODO COLOCAR COMO CRITERIO DE PARADA SE JA EXISTE SOLUCAO COM ESTAS MESMAS IDEIAS
+        
+        public List<Solution> createSolutions(){
+            
+            List<Idea> designIdeas = new ArrayList<Idea>();
+            List<Idea> solutionedIdea = new ArrayList<Idea>();
+            
+            List<Solution> solutions = new ArrayList<Solution>();
+            //Algortimo da Gabriela
+            //1.
+            for(Idea idea : this.modelRepository.getQuestion(Question.ROOT_QUESTION_ID).getIsAddressedBy()){
+                for(Idea design : idea.getSuggests().iterator().next().getIsAddressedBy()){
+                    designIdeas.add(design);
+                }
+            }
+            
+            //2
+            for (Idea designIdea : designIdeas)
+            {
+                if(!solutionedIdea.contains(designIdea))
+                {
+                    //Se sugere outras questões
+                    if(designIdea.hasSuggests())
+                    {
+                        //a
+                        int cont=0;
+                        //Pego as ideias de design que respondem a questao sugerida
+                        for(Idea addrSugg : designIdea.getSuggests().iterator().next().getIsAddressedBy()){
+                            //Se a ideia de design sugere mais ideias
+                            if(addrSugg.hasSuggests()){
+                                cont++;
+                            }
+                        }
+                        //b
+                        //Se mais de uma ideia responde a questao automaticamente sugerida (na UML == connection) ja sei o que fazer
+                        if(cont>=2)
+                        {
+                         
+                            //VERIFICA SE A IDEIA É ACEITA OU REJEITADA
+                            boolean isAccepted = false;
+                            for(Question q : designIdea.getAddress()){
+                                if(q.getHasText().contains(Question.DOMAIN_QUESTION_TEXT_PREFIX)){
+                                    for(Decision dec : q.getHasDecision()){
+                                        if(dec.getConcludes().equals(designIdea)&& dec.getIsAccepted()){
+                                            isAccepted=true;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                            
+                            if(isAccepted)
+                            {
+                            
+                                if(!solutionedIdea.contains(designIdea) )
+                                {
+                                    Solution A = this.modelFactory.createSolution(this.getNextId()); //i.
+                                
+                                    KuabaFacade.solQuestion = new ArrayList<Question>();
+                                
+                                    A = this.varrerSubArvoreAceita(designIdea, A);  //iii.
+
+                                    for(Idea solIdea : A.getIncludes()){ //iv.
+                                        for(Question addressed : solIdea.getAddress()){ //1.
+                                            if(addressed.getHasText().contains(Question.DOMAIN_QUESTION_TEXT_PREFIX)){
+                                                KuabaFacade.solQuestion.add(addressed);
+                                                Idea domain = (Idea)addressed.getIsSuggestedBy().iterator().next();
+                                                A.addIncludes(domain);  
+                                            }
+                                        }
+                                    }
+                                
+                                
+                                    for(Idea solIdea : A.getIncludes()){ //iv 2.
+                                        if(designIdeas.contains(solIdea)){
+                                            int cont2=0;
+                                            for(Question q : solIdea.getAddress()){
+                                                if(KuabaFacade.solQuestion.contains(q)){
+                                                    cont2++;
+                                                }
+                                            }
+                                            if(cont2==solIdea.getAddress().size()){
+                                                solutionedIdea.add(solIdea);
+                                            }
+                                        }
+                                    }
+                                    A.setAccepted(true);
+                                    solutions.add(A);
+                                }
+                            }
+                            
+                            else
+                            {
+                            
+                            //V.
+                                if(designIdea.hasSuggests())
+                                {
+                                    int cont3 =0;
+                                    Question suggested = designIdea.getSuggests().iterator().next();
+                                    for(Decision dec: suggested.getHasDecision())
+                                    {
+                                        if(!dec.getIsAccepted())
+                                            cont3++;
+                                    }
+                                    //NAO PASSAR AQUI QUANDO A IDEIA DE DESIGN FOR ACEITA
+                                        if(cont3==suggested.getIsAddressedBy().size())
+                                        //if(!dec.getIsAccepted())
+                                        {
+                                            Solution A = this.modelFactory.createSolution(this.getNextId());
+                                            KuabaFacade.solQuestion = new ArrayList<Question>();
+                                            A = this.varrerSubArvoreRejeitada(designIdea,A);    //4.
+                                        
+                                            for(Idea solIdea : A.getIncludes()){ //5.
+                                                for(Question addressed : solIdea.getAddress()){
+                                                    if(addressed.getHasText().contains(Question.DOMAIN_QUESTION_TEXT_PREFIX)){ 
+                                                        KuabaFacade.solQuestion.add(addressed);
+                                                        Idea domain = (Idea)addressed.getIsSuggestedBy().iterator().next();
+                                                        A.addIncludes(domain);  
+                                                    }   
+                                                }
+                                            }
+                                        
+                                            for(Idea solIdea : A.getIncludes()){ //iv 2.
+                                                if(designIdeas.contains(solIdea)){
+                                                    int cont2=0;
+                                                    for(Question q : solIdea.getAddress()){
+                                                        if(KuabaFacade.solQuestion.contains(q)){
+                                                            cont2++;
+                                                        }
+                                                    }
+                                                    if(cont2==solIdea.getAddress().size()){
+                                                        solutionedIdea.add(solIdea);   
+                                                    }
+                                                }
+                                            }    
+                                            A.setAccepted(false);
+                                            solutions.add(A);    
+                                        }
+                                }    
+                            }
+                        }
+                    }
+                }
+                
+                if(!solutionedIdea.contains(designIdea))
+                {
+                    //c.
+                    Idea domain = KuabaHelper.getDomainIdea(designIdea);
+                    Question root = this.modelRepository.getQuestion(Question.ROOT_QUESTION_ID);
+                    for(Decision dec : root.getHasDecision()){
+                        if(!dec.getIsAccepted()&&dec.getConcludes().equals(domain)){
+                            Solution A = this.modelFactory.createSolution(this.getNextId());
+                            
+                            KuabaFacade.solQuestion = new ArrayList<Question>();
+                            A = this.varrerSubArvoreRejeitada(designIdea, A);
+                            
+                            
+                            for(Idea solIdea : A.getIncludes()){ //iv.
+                                for(Question addressed : solIdea.getAddress()){ //1.
+                                    if(addressed.getHasText().contains(Question.DOMAIN_QUESTION_TEXT_PREFIX)){ 
+                                        KuabaFacade.solQuestion.add(addressed);
+                                        Idea domain2 = (Idea)addressed.getIsSuggestedBy().iterator().next();
+                                        A.addIncludes(domain2);  
+                                    }
+                                }
+                            }
+                            
+                            for(Idea solIdea : A.getIncludes()){ //iv 2.
+                                if(designIdeas.contains(solIdea)){
+                                    int cont2=0;
+                                    for(Question q : solIdea.getAddress()){
+                                        if(KuabaFacade.solQuestion.contains(q)){
+                                            cont2++;
+                                        }
+                                    }
+                                    if(cont2==solIdea.getAddress().size()){
+                                        solutionedIdea.add(solIdea);
+                                    }
+                                }
+                            }
+                            
+                            A.setAccepted(false);
+                            solutions.add(A);                       
+                        }
+                    }
+                }
+                
+                if(!solutionedIdea.contains(designIdea))
+                {
+                    //d.
+                    //Listo todas as questoes respondidas como keys do hashMap, onde cada key contem uma lista com as questoes iguais
+                    Map<String,List<Question>> ideas = new HashMap<String,List<Question>>();
+                    
+                    for(Question addressed : designIdea.getAddress()){
+                        if(!addressed.getHasText().contains(Question.DOMAIN_QUESTION_TEXT_PREFIX)){
+                            for(Decision dec : addressed.getHasDecision()){
+                                if(dec.getConcludes().equals(designIdea)&&dec.getIsAccepted()){
+                                    
+                                    
+                                    if(ideas.keySet().contains(addressed.getHasText())){
+                                        List<Question> aux = ideas.get(addressed.getHasText());
+                                        aux.add(addressed);
+                                        ideas.put(dec.getConcludes().getHasText(), aux);
+                                    }
+                                    else{
+                                        List<Question> aux = new ArrayList<Question>();
+                                        aux.add(addressed);
+                                        ideas.put(addressed.getHasText(), aux);
+                                    }
+                                    
+                                }  
+                            }
+                        }
+                    }
+                    //Aqui comeca o real processamento
+                    for(String str : ideas.keySet()){
+                        List<Question> aux = ideas.get(str);
+                        if(aux.size()>1)
+                        {
+                            //Evita que execute 2 vezes este codigo para um conjunto que ja foi solucionado
+                            boolean isContained=false;
+                            for(Question q : aux){
+                                if(solutionedIdea.contains((Idea)q.getIsSuggestedBy().iterator().next()))
+                                    isContained=true;
+                            }
+                            if(isContained)
+                                break;
+                            
+                            
+                            if(((Idea)aux.get(0).getIsSuggestedBy().iterator().next()).getAddress().iterator().next().getHasText().contains(Question.DOMAIN_QUESTION_TEXT_PREFIX)){
+                            
+                            KuabaFacade.solQuestion = new ArrayList<Question>();
+                            
+                            Solution A = this.modelFactory.createSolution(this.getNextId()); //i.
+                            A.addIncludes(designIdea);                                       //ii.
+                            for(Question q : aux)
+                                A.addIncludes((Idea)q.getIsSuggestedBy().iterator().next()); //iii.
+                            for(Idea idea : A.getIncludes()){   //iv.
+                                A = this.varrerSubArvoreAceita(idea, A);
+                            }
+                            
+                            for(Idea solIdea : A.getIncludes()){ //v.
+                                for(Question addressed : solIdea.getAddress()){ //1.
+                                    if(addressed.getHasText().contains(Question.DOMAIN_QUESTION_TEXT_PREFIX)){ 
+                                        KuabaFacade.solQuestion.add(addressed);
+                                        Idea domain = (Idea)addressed.getIsSuggestedBy().iterator().next();
+                                        A.addIncludes(domain);  
+                                    }
+                                }
+                            }
+                            
+                            for(Idea solIdea : A.getIncludes()){ //iv 2.
+                                if(designIdeas.contains(solIdea)){
+                                    int cont2=0;
+                                    for(Question q : solIdea.getAddress()){
+                                        if(KuabaFacade.solQuestion.contains(q)){
+                                            cont2++;
+                                        }
+                                    }
+                                    if(cont2==solIdea.getAddress().size()){
+                                        solutionedIdea.add(solIdea);
+                                    }
+                                }
+                            }
+                            A.setAccepted(true);
+                            solutions.add(A);                        
+                        }
+                        }
+                    }
+                }
+            }
+            
+            //3.
+            for (Idea designIdea : designIdeas)
+            {
+                if(!solutionedIdea.contains(designIdea)){   
+                    
+                    Map<String,List<Question>> questions = new HashMap<String,List<Question>>();
+                    for(Question addressed : designIdea.getAddress()){
+                        if(!addressed.getHasText().equals(Question.DOMAIN_QUESTION_TEXT_PREFIX)){
+                            for(Decision dec : addressed.getHasDecision()){
+                                if(dec.getIsAccepted()&&dec.getConcludes().equals(designIdea)){
+                                    if(questions.keySet().contains(addressed.getHasText())){
+                                        List<Question> aux = questions.get(addressed.getHasText());
+                                        aux.add(addressed);
+                                        questions.put(addressed.getHasText(), aux);
+                                    }
+                                    else
+                                    {
+                                        List<Question> aux = new ArrayList<Question>();
+                                        aux.add(addressed);
+                                        questions.put(addressed.getHasText(), aux);
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    
+                    for(String str : questions.keySet()){
+                        if(questions.get(str).size()==1)
+                        {
+                            List<Question> aux = questions.get(str);
+                            if(((Idea)aux.get(0).getIsSuggestedBy().iterator().next()).getAddress().iterator().next().getHasText().contains(Question.DOMAIN_QUESTION_TEXT_PREFIX)){
+                            
+                            KuabaFacade.solQuestion = new ArrayList<Question>();
+                            
+                            Solution A = this.modelFactory.createSolution(this.getNextId());
+                            A.addIncludes(designIdea);
+                            A.addIncludes((Idea)questions.get(str).get(0).getIsSuggestedBy().iterator().next());
+                            for(Idea i : A.getIncludes()){
+                                A = this.varrerSubArvoreAceita(i, A);
+                            }
+                            
+                            for(Idea solIdea : A.getIncludes()){ //vi.
+                                for(Question addressed : solIdea.getAddress()){ //1.
+                                    if(addressed.getHasText().contains(Question.DOMAIN_QUESTION_TEXT_PREFIX)){ 
+                                        KuabaFacade.solQuestion.add(addressed);
+                                        Idea domain = (Idea)addressed.getIsSuggestedBy().iterator().next();
+                                        A.addIncludes(domain);  
+                                    }
+                                }
+                            }
+                            
+                            for(Idea solIdea : A.getIncludes()){ //iv 2.
+                                if(designIdeas.contains(solIdea)){
+                                    int cont2=0;
+                                    for(Question q : solIdea.getAddress()){
+                                        if(KuabaFacade.solQuestion.contains(q)){
+                                            cont2++;
+                                        }
+                                    }
+                                    if(cont2==solIdea.getAddress().size()){
+                                        solutionedIdea.add(solIdea);
+                                    }
+                                }
+                            }
+                            
+                            A.setAccepted(true);
+                            solutions.add(A);
+                        }
+                        }
+                    }
+                }
+            }
+            
+            //4.
+            for(Idea designIdea : designIdeas){
+                if(!solutionedIdea.contains(designIdea)){
+                    KuabaFacade.solQuestion = new ArrayList<Question>();
+                    
+                    Solution A = this.modelFactory.createSolution(this.getNextId());
+                    A = this.varrerSubArvoreAceita(designIdea, A);
+                    
+                    for(Idea solIdea : A.getIncludes()){ //iv.
+                        for(Question addressed : solIdea.getAddress()){ //1.
+                            if(addressed.getHasText().contains(Question.DOMAIN_QUESTION_TEXT_PREFIX)){ 
+                                KuabaFacade.solQuestion.add(addressed);
+                                Idea domain = (Idea)addressed.getIsSuggestedBy().
+                                        iterator().next();
+                                A.addIncludes(domain);  
+                            }
+                        }
+                    }
+                    
+                    for(Idea solIdea : A.getIncludes()){ //iv 2.
+                        if(designIdeas.contains(solIdea)){
+                            int cont2=0;
+                            for(Question q : solIdea.getAddress()){
+                                if(KuabaFacade.solQuestion.contains(q)){
+                                    cont2++;
+                                }
+                            }
+                            if(cont2==solIdea.getAddress().size()){
+                                solutionedIdea.add(solIdea);
+                            }
+                        }
+                    }
+                    
+                    A.setAccepted(true);
+                    solutions.add(A);
+                }
+            }
+            
+            
+            return solutions;
+        }
+        
+        
+        public Solution varrerSubArvoreRejeitada(Idea X, Solution A){
+            if(!A.hasIncludes()||!A.getIncludes().contains(X))
+                A.addIncludes(X);
+            
+            if(X.hasSuggests()){
+                Question suggested = X.getSuggests().iterator().next();
+                for(Decision dec : suggested.getHasDecision()){
+                    if(!dec.getIsAccepted()){
+                        KuabaFacade.solQuestion.add(X.getSuggests().iterator().next());
+                        A = this.varrerSubArvoreRejeitada(dec.getConcludes(), A);
+                    }
+                        
+                }
+            }
+            return A;
+        }
+        
+        //Funcao varrer subarvore Aceita
+        public Solution varrerSubArvoreAceita(Idea X, Solution A){
+            A.addIncludes(X);
+            if(X.hasSuggests()){
+                for(Decision dec: X.getSuggests().iterator().next().getHasDecision()){
+                    if(dec.getIsAccepted()){
+                        KuabaFacade.solQuestion.add(X.getSuggests().iterator().next());
+                        A = varrerSubArvoreAceita(dec.getConcludes(),A);
+                    }
+                }
+            }
+            return A;
+        }
+        
         
         public int getMaxNumAddressedDesign(Idea designIdea){
             if(designIdea.getSuggests().isEmpty())
@@ -756,153 +1237,7 @@ public class KuabaFacade {
         
         
         //Recuso as solucoes
-        public Solution getRefusedSolutionIdeas(Idea design,Solution S){
-             Idea domainIdea = KuabaHelper.getDomainIdea(design);
-            if(domainIdea==null)
-                domainIdea = KuabaHelper.upperDomainIdea(design);
-            
-            
-            System.out.println("Domain IDea "+domainIdea.getHasText());
-            
-            if(!KuabaFacade.actualSolutionIdeas.contains(domainIdea.getHasText())&&!KuabaFacade.refusedSolutionedIdeas.contains(domainIdea.getHasText())){
-                
-                KuabaFacade.actualSolutionIdeas.add(domainIdea.getHasText());
-                S.addSolutionElements(domainIdea);
-             
-                //Tratamento especial para casos como ssociacao
-                int numSubDesign = 0;
-                //Verifico qual o numero maximo de ideias de design que enderecam a ideia de design atual
-                for(Idea designIdea : domainIdea.getSuggests().iterator().next().getIsAddressedBy()){
-                    numSubDesign = this.getMaxNumAddressedDesign(designIdea);
-                }
-                //Sehouver um caso onde 2 ideias de design iguais enderecam a ideia atual, entao eu tenho uma associacal
-                //ou outra ideia de design similar
-                if(numSubDesign>1){
-                    int aux=0;
-                    //Portanto, para cada ideia de design, verifico se e a atual que cai no caso anterior
-                    for(Idea designIdea : domainIdea.getSuggests().iterator().next().getIsAddressedBy()){
-                        aux = this.getMaxNumAddressedDesign(designIdea);
-                        if(aux>1){
-                            //Se for verdade, entao para cada caso eu vou verificar quais sao as outras ideias de dominio
-                            //que enderecam estes casos
-                            Question Q = designIdea.getSuggests().iterator().next();
-                            for(Idea d2 : Q.getIsAddressedBy()){
-                                Question Q2 = d2.getSuggests().iterator().next();
-                                for(Decision dec : Q2.getHasDecision())
-                                    if(!dec.getIsAccepted())
-                                        S = this.getRefusedSolutionIdeas(dec.getConcludes(), S);
-                            }
-                        }
-                        //Caso esteja passando por outra ideia recusada pra mesma ideia de dominio, repito
-                        //o codigo como se fosse uma ideia de design comum.
-                        else{
-                             //Recuso quando a ideia de design sugere outras questoes
-                            if(design.hasSuggests()){
-                                Question Q = design.getSuggests().iterator().next();
-                                for(Idea d : Q.getIsAddressedBy()){
-                                    for(Decision dec : Q.getHasDecision()){
-                                        if(!dec.getIsAccepted()&&dec.getConcludes().equals(d))
-                                            S=this.getRefusedSolutionIdeas(d, S);
-                                    }
-                                }
-                            }
-                            
-                             //Recuso quando a ideia de design responde questoes sugeridas
-                            else{
-                                for(Question Q : design.getAddress()){
-                                    if(!Q.getHasText().equals("How to Model "+domainIdea.getHasText()+"?")){
-                                        for(Decision dec : Q.getHasDecision()){
-                                            if(dec.getConcludes().equals(design)&&!dec.getIsAccepted()){
-                                                S=this.getRefusedSolutionIdeas((Idea)Q.getIsSuggestedBy().iterator().next(), S);
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                
-                
-                 //Recuso quando a ideia de design sugere outras questoes
-                else if(design.hasSuggests()){
-                    Question Q = design.getSuggests().iterator().next();
-                    for(Idea d : Q.getIsAddressedBy()){
-                        for(Decision dec : Q.getHasDecision()){
-                            if(!dec.getIsAccepted()&&dec.getConcludes().equals(d))
-                                S=this.getRefusedSolutionIdeas(d, S);
-                        }
-                        
-                    }
-                }
-                //Recuso quando a ideia de design responde questoes sugeridas
-                else{
-                    for(Question Q : design.getAddress()){
-                        if(!Q.getHasText().equals("How to Model "+domainIdea.getHasText()+"?")){
-                            for(Decision dec : Q.getHasDecision()){
-                                if(dec.getConcludes().equals(design)&&!dec.getIsAccepted()){
-                                    S=this.getRefusedSolutionIdeas((Idea)Q.getIsSuggestedBy().iterator().next(), S);
-                                }
-                       
-                            }
-                        }
-                    }
-                }
-            }
-            return S;
-        }
         
-        
-        //Crio as solucoes para as ideias aceitas
-        
-        public List<Solution> createAcceptedSolutions(){
-            
-            List<Idea> acceptedIdeas = new ArrayList<Idea>();
-            System.out.println("Question: "+this.getRootQuestion().getHasText());
-            //Por alguma razao, se armazena as ideias de associacao como ideias de dominio aceitas
-            //No codigo que fiz nao encontrei este erro. Aqui eu conserto este equivoco.
-            for(Idea i : this.modelRepository.getAcceptedIdeas(this.getRootQuestion())){
-                if(!i.getHasText().equals("AssociationEnd"))
-                    acceptedIdeas.add(i);
-            }
-            
-            
-            
-            List<Solution> solutions = new ArrayList<Solution>();
-            for(Idea domain: acceptedIdeas)
-            {
-                if(!solutionedIdeas.contains(domain.getHasText())){
-                    Idea design = KuabaHelper.getAcceptedDesignIdea(domain);
-                    
-                    KuabaFacade.actualSolutionIdeas = new ArrayList<String>();
-                    //KuabaFacade.solutionIdeas.add(domain.getHasText());
-                    this.getSolutionIdeas(design);
-                    
-                    Solution s = this.modelFactory.createSolution(this.getNextId());
-                    
-                    Justification just = this.modelFactory.createJustification(this.getNextId());
-                    
-                    for(String str : KuabaFacade.actualSolutionIdeas)
-                    {
-                        for(Idea d : acceptedIdeas)
-                        {
-                            if(d.getHasText().equals(str))
-                            {
-                                for(Argument a : d.getHasArgument())
-                                    just.addIsDerivedOf(a);
-                                
-                                s.addSolutionElements(d);
-                                KuabaFacade.solutionedIdeas.add(str);
-                            }
-                        }
-                    }
-                    
-                    s.addSolutionJustification(just);
-                    solutions.add(s);
-                }
-            }
-            return solutions;
-        }
         
         //Esta funcao retorna o numero maximo de ideias de design aceitas por nivel da arvore
         public int getMaxNumAcceptedSuggestedDecisions(Idea idea){
@@ -1026,78 +1361,6 @@ public class KuabaFacade {
                 }
             }
         }
-        
-        
-        public Solution sweepAcceptedSubTree(Idea X,Solution S){
-            S.addSolutionElements(X);
-            Question Q;
-            if(X.hasSuggests())
-            {
-                Q = X.getSuggests().iterator().next();
-                for(Decision D : Q.getHasDecision()){
-                    if(D.getIsAccepted()){
-                        S.addSolutionQuestion(Q);
-                        for(Idea idea : Q.getIsAddressedBy()){
-                           if(D.getConcludes().equals(idea))
-                               S = this.sweepAcceptedSubTree(idea, S);
-                        }
-                    }
-                }
-            }
-            return S;
-            
-        }
-        
-        
-       /* public void sweepRejectedSubTree(Idea X,Solution S){
-            S.addSolutionElements(X);
-            if(X.hasSuggests()){
-                Question Q = null;
-                Q = X.getSuggests().iterator().next();
-                 
-                for(Decision D : Q.getHasDecision()){
-                    if(D.getConcludes().equals(X)){
-                        if(!D.getIsAccepted()){
-                            S.addSolutionQuestion(Q);
-                            for(Idea i : Q.getIsAddressedBy()){
-                                for(Decision D2 : Q.getHasDecision()){
-                                    if(D2.getClass().equals(i)&&!D2.getIsAccepted())
-                                        this.sweepRejectedSubTree(i, S);
-                                }
-                            }
-                        }
-                    }
-                }
-                
-            }
-        }*/
-        
-        public void createSolutions(){
-            List<Idea> ideas = new ArrayList<Idea>();
-            for(Idea i : KuabaSubsystem.getSession().unitOfWork().getConsideredIdeas())
-                ideas.add(KuabaHelper.getAcceptedDesignIdea(i));
-            //Verifico se a ideia de design gera outras ideias de design (associacao)
-            for(Idea X : ideas){
-                int cont=0;
-                Question Q = null;
-                if(X.hasSuggests()){
-                    Q = X.getSuggests().iterator().next();
-                    for(Idea i : Q.getIsAddressedBy()){
-                        for(Decision D : Q.getHasDecision()){
-                            if(D.getConcludes().equals(i)&&D.getIsAccepted())
-                                cont++;
-                        }
-                    }
-                }
-                if(cont>=2){
-                    Solution S = null;
-                }
-                
-            }
-            
-        }
-        
-        
         
         
 	public boolean saveSession() {
@@ -1556,13 +1819,6 @@ public class KuabaFacade {
             Question question = this.modelFactory.createQuestion(this.getNextId());
             question.setHasText(text);
             designIdea.addSuggests(question);
-            return question;
-        }
-        
-        public Question obtainQuestion(Solution sol,String text){
-            Question question = this.modelFactory.createQuestion(this.getNextId());
-            question.setHasText(text);
-            sol.addSolutionQuestion(question);
             return question;
         }
         
