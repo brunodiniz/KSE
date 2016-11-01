@@ -1849,6 +1849,16 @@ public class KuabaFacade {
                 return false;
             return true;
         }
+
+    public Idea createDesignIdea(Question questao, String designIdeaName) {
         
+         Idea newIdea = this.modelFactory.createIdea(this.getNextId());
+         newIdea.setHasText(designIdeaName);
+         questao.addIsAddressedBy(newIdea);
+         this.makeDecision(questao, newIdea, true);
+         return newIdea;
+    }
+        
+    
         
 }

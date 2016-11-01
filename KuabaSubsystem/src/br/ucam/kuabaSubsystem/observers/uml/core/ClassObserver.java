@@ -111,10 +111,29 @@ public class ClassObserver extends ModelElementObserver {
         @Override
         protected void nameChanged(String newName, String oldName,String designIdeaText, String elementId){
                 //Se e a primeira ideia
+                
 		if(oldName.equals(""))
                 {
-                    Idea domainIdea = KuabaSubsystem.facade.domainIdeaAdded(newName, designIdeaText, elementId);
-                    Idea acceptedDesignIdea = KuabaHelper.getAcceptedDesignIdea(domainIdea, designIdeaText);
+                    Boolean isDomainIdea=false;
+                    Idea domainIdea = null;
+                    Idea acceptedDesignIdea = null;
+                    for(Idea domId : KuabaSubsystem.facade.getRootQuestion().getIsAddressedBy())
+                    {
+                       if(domId.getHasText().equals(newName))
+                       {
+                            isDomainIdea = true;
+                            domainIdea = domId;
+                            break;
+                       }
+                    }
+                    if(!isDomainIdea){
+                        domainIdea = KuabaSubsystem.facade.domainIdeaAdded(newName, designIdeaText, elementId);
+                        acceptedDesignIdea = KuabaHelper.getAcceptedDesignIdea(domainIdea, designIdeaText);
+                    }
+                    else{
+                        acceptedDesignIdea = KuabaSubsystem.facade.createDesignIdea(domainIdea.getSuggests().iterator().next(),"Class");
+                    }
+                    
                     if(!(newName.equals(""))) 
                     {
                         ArgumentController controller = new InFavorArgumentController(new Idea[]{acceptedDesignIdea}, null);
